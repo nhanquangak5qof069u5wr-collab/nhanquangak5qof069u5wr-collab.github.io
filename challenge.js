@@ -42,6 +42,9 @@ function send(op, value) {
     clearTimeout(timer);
     if (op === "reset") ready = data.kind === "ready";
     line.textContent = prefix + (messages[data.kind] || messages.error);
+    if (op === "verify" && data.kind === "correct") {
+      try { localStorage.setItem("lc-question-done:silent-archive", "1"); } catch { /* Storage is optional. */ }
+    }
     setControls(false);
   };
   timer = setTimeout(() => {

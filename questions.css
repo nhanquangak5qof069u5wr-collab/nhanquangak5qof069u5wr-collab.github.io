@@ -1,0 +1,55 @@
+.bank{max-width:1000px;margin-block:39px 60px}
+.bank-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);border:1px solid var(--line);border-radius:14px;background:#e9ede2;overflow:hidden}
+.bank-hero>div{padding:clamp(20px,4vw,41px)}
+.bank-kicker{display:flex;align-items:center;gap:8px;margin:0 0 7px;font-size:11px;letter-spacing:1px;color:#405d40}
+.bank-kicker span{width:6px;height:6px;background:var(--green);border-radius:50%}
+.bank h1{font-size:clamp(37px,5.8vw,62px);line-height:1.2;letter-spacing:-.04em}
+.bank-lead{margin:10px 0 0;font-size:13px;line-height:1.8;color:#4d5b50}
+.bank-progress{display:flex;flex-direction:column;justify-content:center;gap:10px;background:#283e33;color:#e8f1e2;font-size:13px}
+.bank-progress strong{font:clamp(24px,4vw,45px)/1 Consolas,monospace}
+.bank-progress progress{display:block;width:100%;height:7px;appearance:none;border:0;border-radius:6px;overflow:hidden;background:#486252}
+.bank-progress progress::-webkit-progress-bar{background:#486252}
+.bank-progress progress::-webkit-progress-value{background:#bfd6b6;border-radius:6px}
+.bank-progress progress::-moz-progress-bar{background:#bfd6b6}
+.bank-body{margin-top:23px}
+.bank-toolbar{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) auto;align-items:end;gap:12px}
+.bank-toolbar label{display:grid;gap:6px;font-size:12px;color:#3d5041}
+.bank-toolbar label.bank-check{display:flex;align-items:center;min-height:40px;white-space:nowrap;cursor:pointer}
+.bank-toolbar select{width:100%;min-height:40px;padding:7px 9px;border:1px solid #a9b7a6;border-radius:6px;background:#fbfaf7;color:var(--ink);font:inherit;font-size:13px}
+.bank-toolbar input,.bank-done input{width:16px;height:16px;margin:0;accent-color:#405d40}
+.bank-list-head{display:flex;justify-content:space-between;gap:12px;margin:15px 0 8px;font-size:12px;color:#4f5d51}
+.bank-list-head p{margin:0}
+.bank-question{background:#fbfaf7;border:1px solid var(--line);border-radius:8px;margin-bottom:7px}
+.bank-question[hidden]{display:none}
+.bank-question>summary{display:grid;grid-template-columns:24px minmax(0,1fr) auto 10px;gap:10px;align-items:center;padding:12px 14px;cursor:pointer;list-style:none;border-radius:8px}
+.bank-question>summary::-webkit-details-marker{display:none}
+.bank-question>summary:hover{background:#eef0e8}
+.bank-question[open]>summary{border-radius:8px 8px 0 0;background:#eef0e8}
+.bank-number{color:#526655;font:12px Consolas,monospace}
+.bank-meta{display:flex;align-items:center;flex-wrap:wrap;gap:5px 7px;font-size:11px;color:#4f5d51}
+.bank-level,.bank-lab-tag{padding:2px 6px;border-radius:4px;background:#e6eee1;color:#36533b;white-space:nowrap}
+.bank-question[data-level="2"] .bank-level{background:#ece8d5;color:#5b512a}
+.bank-question[data-level="3"] .bank-level{background:#e3e9e1;color:#294b39;border:1px solid #a9bca8}
+.bank-title{display:block;margin-top:4px;font-size:15px;line-height:1.5}
+.bank-state{font-size:11px;white-space:nowrap;color:#365b3d}
+.bank-chevron{width:7px;height:7px;border:solid #506551;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.bank-question[open]>summary .bank-chevron{transform:rotate(225deg)}
+.bank-solved{border-color:#a6bfa0}
+.bank-prompt{padding:14px 16px 15px;border-top:1px solid var(--line);color:#354139}
+.bank-statement,.bank-answer p{margin:0 0 12px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.85}
+.bank-answer{padding:9px 11px;border:1px solid var(--line);border-radius:5px;background:#f2f3ec}
+.bank-answer>summary{cursor:pointer;font-size:13px;color:#405d40}
+.bank-answer p{margin:8px 0 0}
+.bank-done{display:flex;align-items:center;gap:7px;margin-top:12px;font-size:13px;cursor:pointer;width:fit-content}
+.bank-open-lab{display:inline-block;padding:8px 12px;border-radius:5px;background:#405d40;color:white;font-size:13px}
+.bank-open-lab:hover{background:#314b35}
+.bank-save,.bank-small,.bank-empty{margin:12px 0 0;font-size:12px;line-height:1.7;color:#4f5d51}
+.bank :is(select,input,summary):focus-visible{outline:2px solid #527452;outline-offset:2px}
+@media(max-width:600px){
+  .bank{margin-block:23px 42px}
+  .bank-hero{grid-template-columns:1fr}
+  .bank-progress{gap:7px}
+  .bank-toolbar{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:7px}
+  .bank-toolbar label.bank-check{grid-column:1 / -1;min-height:27px}
+  .bank-question>summary{padding:10px;gap:6px}
+}
