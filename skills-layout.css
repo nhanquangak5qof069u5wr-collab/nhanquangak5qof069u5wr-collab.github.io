@@ -45,3 +45,6 @@
 @media(max-width:850px){.atlas-body{grid-template-columns:148px minmax(0,1fr);gap:22px}.atlas-hero{gap:22px}.atlas .skill-card{grid-template-columns:minmax(110px,.75fr) minmax(0,1.9fr);column-gap:12px}}
 @media(max-width:680px){.atlas-hero{grid-template-columns:1fr;padding:35px 0 24px;gap:22px}.atlas-hero h1{font-size:clamp(42px,10vw,62px)}.atlas-lead{margin:15px 0}.atlas-graphic{min-height:0;max-height:210px}.atlas-graphic svg{height:min(52vw,210px)}.atlas-body{display:block;padding-top:20px}.atlas-nav{position:static;display:flex;flex-wrap:wrap;gap:7px;border:0;padding:0;margin:0 0 21px}.atlas-nav-title{flex-basis:100%;margin:0}.atlas-nav a{border:1px solid var(--line);padding:7px 9px;font-size:12px}.atlas-nav-index{flex-basis:auto}.atlas-credential{padding:17px;margin-bottom:26px}.atlas .skill-group{margin-bottom:26px}.atlas .skill-card{display:block}.atlas .skill-card h3{margin-bottom:4px}.atlas .skill-card .topics{margin-top:8px}}
 @media(max-width:370px){.atlas-credential-details{grid-template-columns:1fr;gap:9px}.atlas-medal{width:52px;height:52px}.atlas-medal svg{width:41px}}
+.atlas-challenge{margin-top:36px;padding:clamp(20px,4vw,36px);border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.atlas-challenge h2{margin:9px 0 6px}
+.atlas-challenge p:not(.atlas-kicker){color:#4f5951;font-size:14px;line-height:1.9;margin:0 0 18px}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f6f2">
+  <meta name="description" content="静默归档室：一道可以在浏览器里挑战的 SQLite 二次盲注题。">
+  <title>静默归档室 · 辣白菜的博客</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="challenge.css">
+  <script src="challenge.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="header wrap">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true">白</span>辣白菜<span class="brand-note">的博客</span></a>
+    <nav aria-label="主导航"><a href="./#notes">文章</a><a href="skills.html#challenge">技能</a><a href="./#about">关于</a></nav>
+  </header>
+  <main class="wrap lab" id="main">
+    <a class="text-link lab-back" href="skills.html#challenge">← 返回技能页</a>
+    <header class="lab-hero">
+      <p class="eyebrow"><span aria-hidden="true"></span>实战挑战 01 / WEB · 困难</p>
+      <h1>静默归档室</h1>
+      <p>你接手了一套旧归档系统。值班员平时只用它预览标签、保存设置，再回放上一份报表。归档室换过几次封条，只有当前生效的那一版算数。找出系统漏洞，恢复完整的 <code>flag{...}</code>。</p>
+    </header>
+    <div class="lab-grid">
+      <section class="lab-panel" aria-labelledby="report-title">
+        <div class="lab-heading"><h2 id="report-title">报表控制台</h2><span class="lab-badge">SQLite</span></div>
+        <label for="tag">归档标签</label>
+        <textarea id="tag" rows="3" maxlength="600" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="tag-hint">weekly</textarea>
+        <p class="lab-small" id="tag-hint">试用标签：<code>weekly</code>、<code>incident</code>。回放使用最后一次保存的标签。</p>
+        <div class="lab-actions">
+          <button type="button" data-op="preview" disabled>预览</button>
+          <button type="button" data-op="save" disabled>保存设置</button>
+          <button type="button" data-op="replay" class="lab-primary" disabled>回放报表</button>
+        </div>
+        <div class="lab-terminal" role="status" aria-atomic="true">
+          <span class="lab-terminal-label">REPORT / OUTPUT</span>
+          <span id="status">正在启动靶场…</span>
+        </div>
+        <div class="lab-meta"><span>回放次数：<output id="attempts">0</output></span><button class="lab-reset" type="button" id="reset" disabled>重置靶场</button></div>
+        <noscript><p>请启用 JavaScript 后运行靶场。</p></noscript>
+      </section>
+      <aside class="lab-side" aria-label="挑战信息">
+        <section class="lab-panel">
+          <h2>验证 flag</h2>
+          <form id="verify">
+            <label for="flag">输入完整 flag</label>
+            <input type="text" id="flag" placeholder="flag{...}" maxlength="80" required autocomplete="off" spellcheck="false">
+            <button type="submit" data-op="verify" class="lab-primary" disabled>验证</button>
+          </form>
+          <p class="lab-small" id="verify-status" role="status"></p>
+        </section>
+        <section class="lab-panel lab-hints">
+          <h2>卡住了？</h2>
+          <details><summary>提示 1：输入去了哪里</summary><p>预览和回放是两条路径。先保存输入，再比较回放对两个相反条件的反应。</p></details>
+          <details><summary>提示 2：关键字被拦截</summary><p>过滤器和 SQLite 对词与词之间的分隔符有不同的理解。</p></details>
+          <details><summary>提示 3：封条的去向</summary><p>从 SQLite 的表结构找归档库和封条清单，确认生效的版本，再按位置拼接片段。</p></details>
+        </section>
+      </aside>
+    </div>
+    <p class="lab-footnote">这是浏览器里的练习靶场。每次重置会新建独立的测试数据库，输入和结果不会上传。</p>
+  </main>
+  <footer class="footer wrap"><span>© 2026 辣白菜 · 慢慢学，认真记。</span><a href="#">回到顶部 ↑</a></footer>
+</body>
+</html>
