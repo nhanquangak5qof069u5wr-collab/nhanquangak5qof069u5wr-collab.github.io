@@ -3,26 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f7f6f2">
+  <meta name="theme-color" content="#f6f5ef">
   <meta name="description" content="静默归档室：一道可以在浏览器里挑战的 SQLite 二次盲注题。">
   <title>静默归档室 · 辣白菜的博客</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="challenge.css">
   <script src="challenge.js?v=bank" defer></script>
+  <link rel="stylesheet" href="motion.css?v=atlas1">
 </head>
-<body>
+<body class="motion-site page-lab">
   <a class="skip" href="#main">跳到正文</a>
   <header class="header wrap">
     <a class="brand" href="./"><span class="mark" aria-hidden="true">白</span>辣白菜<span class="brand-note">的博客</span></a>
-    <nav aria-label="主导航"><a href="./">首页</a><a href="skills.html">技能</a><a href="roadmap.html">路线图</a><a href="questions.html">题库</a></nav>
+    <nav aria-label="主导航"><a href="./">首页</a><a href="skills.html">技能地图</a><a href="roadmap.html">学习路线</a><a href="questions.html" aria-current="location">题库</a></nav>
   </header>
   <main class="wrap lab" id="main">
     <a class="text-link lab-back" href="questions.html#q-silent-archive">← 返回题库</a>
-    <header class="lab-hero">
-      <p class="eyebrow"><span aria-hidden="true"></span>实战挑战 01 / WEB · 困难</p>
+    <header class="lab-hero motion-stage">
+      <div class="motion-copy">
+      <p class="motion-index"><span>03.34</span>实战挑战 · WEB</p>
       <h1>静默归档室</h1>
       <p>你接手了一套旧归档系统。值班员平时只用它预览标签、保存设置，再回放上一份报表。归档室换过几次封条，只有当前生效的那一版算数。找出系统漏洞，恢复完整的 <code>flag{...}</code>。</p>
+      </div>
+      <svg class="archive-seal motion-art" viewBox="0 0 320 210" aria-hidden="true" fill="none"><g stroke="currentColor"><circle cx="170" cy="105" r="86" opacity=".25" stroke-dasharray="2 5"/><circle cx="170" cy="105" r="67" opacity=".5"/><path d="M60 105h220M170 12v186" opacity=".22"/><rect x="132" y="81" width="76" height="51" rx="7" stroke-width="1.4"/><path d="M132 94h76m-54 15h16m-16 9h28m-17-37v-6h28v6"/><circle cx="237" cy="105" r="3" fill="currentColor"/><circle cx="103" cy="105" r="3" fill="currentColor"/></g><text x="170" y="161" text-anchor="middle" fill="currentColor" font-family="monospace" font-size="9" letter-spacing="3">ARCHIVE 034</text></svg>
     </header>
     <div class="lab-grid">
       <section class="lab-panel" aria-labelledby="report-title">

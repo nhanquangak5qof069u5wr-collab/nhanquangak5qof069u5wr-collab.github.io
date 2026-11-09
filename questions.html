@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f7f6f2">
+  <meta name="theme-color" content="#f6f5ef">
   <meta name="description" content="按技能与难度筛选的练习题库，涵盖开发、攻防、应急、AI 与数据。">
   <title>题库 · 辣白菜的博客</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -11,22 +11,23 @@
   <link rel="stylesheet" href="questions.css">
   <script src="questions-data.js" defer></script>
   <script src="questions.js" defer></script>
+  <link rel="stylesheet" href="motion.css?v=atlas1">
 </head>
-<body>
+<body class="motion-site page-bank">
   <a class="skip" href="#main">跳到正文</a>
   <header class="header wrap">
     <a class="brand" href="./"><span class="mark" aria-hidden="true">白</span>辣白菜<span class="brand-note">的博客</span></a>
-    <nav aria-label="主导航"><a href="./">首页</a><a href="skills.html">技能</a><a href="roadmap.html">路线图</a><a href="questions.html" aria-current="page">题库</a></nav>
+    <nav aria-label="主导航"><a href="./">首页</a><a href="skills.html">技能地图</a><a href="roadmap.html">学习路线</a><a href="questions.html" aria-current="page">题库</a></nav>
   </header>
   <main class="wrap bank" id="main">
-    <header class="bank-hero">
-      <div>
-        <p class="bank-kicker"><span aria-hidden="true"></span>开发 / 攻防 / 应急 / AI</p>
+    <header class="bank-hero motion-stage">
+      <div class="motion-copy">
+        <p class="motion-index"><span>03</span>技能题库</p>
         <h1>技能题库</h1>
         <p class="bank-lead">先做单点练习，再试综合场景。展开题目后可以查看参考答案。</p>
       </div>
-      <div class="bank-progress">
-        <span>已完成</span>
+      <div class="bank-progress motion-art">
+        <span>练习进度</span>
         <strong id="bank-completed">0 / —</strong>
         <progress id="bank-progress" value="0" max="1" aria-label="题库完成进度"></progress>
       </div>
@@ -37,7 +38,7 @@
         <label for="bank-level">难度<select id="bank-level"><option value="">全部难度</option><option value="1">基础</option><option value="2">进阶</option><option value="3">挑战</option></select></label>
         <label class="bank-check"><input type="checkbox" id="bank-unfinished">只看未完成</label>
       </div>
-      <div class="bank-list-head"><p id="bank-count" role="status"></p><span>从易到难</span></div>
+      <div class="bank-list-head"><p id="bank-count" role="status"></p><span>基础 → 进阶 → 挑战</span></div>
       <div id="bank-list"></div>
       <p class="bank-empty" id="bank-empty" hidden>当前条件下没有题目，试试调整筛选。</p>
       <noscript><p>请启用 JavaScript 后查看题目。</p></noscript>
