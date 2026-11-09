@@ -1,23 +1,27 @@
 # 辣白菜的博客
 
-静态个人博客，无需安装依赖。网站名称、简介与内容都可以修改。
+GitHub Pages 静态站点：首页是可交互的三维安全实验台，保留技能地图、学习路线和题库三个入口。
 
-## 开启发布
+## 本地预览
+在项目目录运行 `python -m http.server 8000`，访问 http://localhost:8000/ 。三维首页使用浏览器模块，需要通过 HTTP 预览。
 
-仓库 Settings → Pages → Source 选择 Deploy from a branch，Branch 选择 main，文件夹选择 /(root)，点击 Save。
+## 页面与文件
+- `index.html`、`home-3d.css`：首页结构、响应式布局。
+- `home-3d.js`：加载、鼠标/触摸旋转、射线拾取、键盘操作和静态降级。
+- `lab-model.js`：程序化建模、材质和部件尺寸；电脑对应技能、网络设备对应路线、服务器对应题库。
+- `assets/lab-poster.webp`：从实际三维场景截取的静态预览图。
+- `skills.html`：17 项技能与专业证书。
+- `roadmap.html`：38 个站点、任务、经验和等级；沿用浏览器原有进度。
+- `questions.html`：34 道分级题目；`challenge.html`：本地 SQLite 练习靶场。
+- `motion.css`：全站视觉样式；`motion-pointer.js`：内页鼠标背景。
+- `posts/hello.html`：保留的开站手记，首页不使用文章流。
 
-博客网址：https://nhanquangak5qof069u5wr-collab.github.io/
+## 三维依赖
+本地 vendored Three.js 0.180.0：`vendor/three/`。保留上游 MIT LICENSE；两个 examples 模块仅将 Three.js 导入指向本地同一版本。运行时不访问第三方 CDN。
 
-## 修改和写文章
+交互采用按需渲染；停止拖动且场景收敛后停止绘帧，离开视区或后台标签时暂停。减少动态效果、节省流量或 WebGL 不可用时，显示静态预览，所有栏目仍可通过普通链接进入。
 
-- `index.html`：首页、文章列表和关于介绍。
-- `style.css`：颜色、排版与手机端样式。
-- `posts/hello.html`：第一篇开站说明，可作为文章模板。
-- `skills.html`：AI 开发与安全攻防技能地图。
-- `favicon.svg`：浏览器标签页图标。
+## 发布
+仓库 main 分支的根目录由 GitHub Pages 发布。提交修改后自动更新：
+https://nhanquangak5qof069u5wr-collab.github.io/
 
-在 GitHub 打开文件，点击铅笔编辑，保存 Commit changes 后网站会自动更新。
-
-新增文章：复制 `posts/hello.html` 为一个新文件，例如 `posts/cpp-note.html`，修改标题、描述、日期和正文，再在 `index.html` 中复制一段 `post-row`，更新文章链接、标题与摘要，并修改篇数。
-
-也可以把本文件夹下载到电脑，双击 `index.html` 预览。没有在线管理后台；文章通过修改仓库文件发布。

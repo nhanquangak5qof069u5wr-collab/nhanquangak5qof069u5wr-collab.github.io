@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="辣白菜的博客：安全小白成长自述、技能地图、学习路线与题库。">
+  <meta name="description" content="辣白菜的博客：交互式三维安全实验台、技能地图、学习路线与题库。">
   <meta name="theme-color" content="#f6f5ef">
   <title>辣白菜的博客</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="learning-xp.css">
   <link rel="stylesheet" href="home.css?v=motion-study">
+  <link rel="stylesheet" href="home-3d.css?v=lab1">
   <script src="roadmap-data.js" defer></script>
   <script src="learning-xp.js" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
-  <script src="motion-pointer.js" defer></script>
+  <script src="home-3d.js" defer></script>
 </head>
 <body class="motion-site page-home">
   <a class="skip" href="#main">跳到正文</a>
@@ -22,17 +23,24 @@
     <nav aria-label="主导航"><a href="https://github.com/nhanquangak5qof069u5wr-collab" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
   </header>
   <main class="wrap portal-home" id="main">
-    <section class="study-story motion-stage" aria-labelledby="study-title">
-      <figure class="study-photo">
-        <img src="assets/security-study.webp" width="1200" height="800" alt="阳光照进书桌，笔记本上画着网络拓扑，旁边是电脑和网线" fetchpriority="high">
-      </figure>
-      <div class="study-copy motion-copy">
-        <p class="motion-index"><span>00</span>安全手记</p>
-        <h1 id="study-title">安全小白的<br>成长自述</h1>
-        <p>刚学安全时，我只想先把虚拟机跑起来，再看懂一条网络请求。遇到报错，就从复现开始，一步步找原因。</p>
-        <p>后来，我更在意能不能把原理讲清楚、把结果验证出来。这里收着我整理的技能、学习路线和题目。</p>
+    <section class="lab-home" aria-labelledby="lab-home-title">
+      <div class="lab-intro">
+        <p class="lab-eyebrow"><span></span>辣白菜的安全实验室</p>
+        <h1 id="lab-home-title">保持好奇。<br><em>动手拆解。</em></h1>
+        <p class="lab-description">从一条请求，到整个系统。<br>把学过的知识，接入下一次探索。</p>
+        <div class="lab-intro-foot"><span class="lab-rule"></span><p>BUILD · BREAK · UNDERSTAND</p></div>
+      </div>
+      <div class="lab-exhibit" id="lab-exhibit">
+        <div class="exhibit-top"><span>THE WORKBENCH</span><span><i></i> 实验中</span></div>
+        <div class="lab-viewport" id="lab-viewport" tabindex="0" role="img" aria-label="可旋转的三维安全实验台，包含电脑、网络线路和服务器。用鼠标拖动或方向键旋转，按 R 复位。下方有等效栏目链接。">
+          <img class="lab-poster" src="assets/lab-poster.webp" width="1000" height="820" alt="墨绿金属底座上的电脑、网络设备和服务器组成的安全实验台">
+          <canvas id="lab-canvas" aria-hidden="true"></canvas>
+          <span id="lab-tooltip" class="lab-tooltip" hidden></span>
+        </div>
+        <div class="exhibit-bottom"><span id="lab-scene-status" role="status">正在布置实验台…</span><button type="button" id="lab-reset" aria-label="复位三维视角" hidden><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 7a6 6 0 1 1 0 6M4 3v4h4"/></svg>复位视角</button></div>
       </div>
     </section>
+    <div class="lab-section-caption"><span>继续探索</span><p>每一次练习，都让下一步更清楚。</p><span aria-hidden="true">↓</span></div>
     <nav class="portal-grid" aria-label="站点入口">
       <div class="portal">
         <a class="portal-link" href="skills.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m24 5 17 10v18L24 43 7 33V15zM7 15l17 10 17-10M24 25v18"/><path d="m17 28-4 3 4 4m14-7 4 3-4 4"/></svg><span><strong>技能地图</strong><small>开发、攻防与 AI</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
@@ -48,6 +56,7 @@
         <a class="portal-link" href="questions.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="8" width="30" height="34" rx="4"/><path d="M17 6h14v7H17zM17 21h3m6 0h6m-15 7h3m6 0h6m-15 7h3m6 0h6"/></svg><span><strong>题库</strong><small>基础练习到实战挑战</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
       </div>
     </nav>
+    <section class="lab-journal" aria-labelledby="lab-journal-title"><p class="lab-eyebrow">一点点成长</p><h2 id="lab-journal-title">从把虚拟机跑起来，<br>到把一个问题讲明白。</h2><p>刚学安全时，我追着报错找答案。后来，慢慢学会先复现、再分析，最后验证自己的判断。这个小站留着走过的路线，也留着还想继续拆解的问题。</p></section>
   </main>
   <footer class="footer wrap"><span>© 2026 辣白菜</span></footer>
 </body>
