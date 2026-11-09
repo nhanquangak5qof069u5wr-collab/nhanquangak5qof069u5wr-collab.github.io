@@ -32,7 +32,7 @@
    try{
     const [T,{buildLab},{RoomEnvironment}]=await Promise.all([
      import("./vendor/three/three.module.min.js"),
-     import("./lab-model.js?v=studio6"),
+     import("./lab-model.js?v=workshop7"),
      import("./vendor/three/RoomEnvironment.js")
     ]);
     if(!alive || reduced.matches)return;
@@ -46,16 +46,16 @@
     const environment=new RoomEnvironment();
     const pmrem=new T.PMREMGenerator(renderer);
     const envMap=pmrem.fromScene(environment,.06);
-    scene.environment=envMap.texture;scene.environmentIntensity=.7;
+    scene.environment=envMap.texture;scene.environmentIntensity=.48;
     environment.dispose();pmrem.dispose();
     const camera=new T.OrthographicCamera(-4,4,3.3,-3.3,.1,60);
     camera.position.set(7.7,7.1,10);camera.lookAt(0,1.20,0);
-    scene.add(new T.HemisphereLight(0xf9f9e6,0x69795c,2.0));
+    scene.add(new T.HemisphereLight(0xf3f3ed,0x575d58,1.4));
     const key=new T.DirectionalLight(0xfff5df,3.4);key.position.set(-3.5,7,5);
     key.castShadow=true;key.shadow.mapSize.set(1536,1536);
     Object.assign(key.shadow.camera,{left:-5,right:5,top:5,bottom:-5,near:.1,far:22});
     key.shadow.bias=-.0003;key.shadow.normalBias=.015;key.shadow.radius=4;scene.add(key);
-    const fill=new T.DirectionalLight(0xb8d8ac,1.4);fill.position.set(4,3,-3);scene.add(fill);
+    const fill=new T.DirectionalLight(0xbecbd8,1.0);fill.position.set(4,3,-3);scene.add(fill);
     const {root,targets,materials}=buildLab();scene.add(root);
     const shadow=new T.Mesh(new T.PlaneGeometry(25,25),new T.ShadowMaterial({opacity:.17}));
     shadow.name="Ground contact shadow";shadow.rotation.x=-Math.PI/2;shadow.position.y=-.087;shadow.receiveShadow=true;scene.add(shadow);

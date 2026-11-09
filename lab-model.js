@@ -7,14 +7,14 @@ export const labContract = Object.freeze({
   laptop: {width:2.55, depth:1.62, foot:.18, hingeHeight:.30},
   server: {width:1.1, height:2.18, depth:1.08, foot:.18},
   router: {width:1.38, depth:.78, height:.31, foot:.18},
-  budgets: {triangles:150000, calls:210}
+  budgets: {triangles:150000, calls:240}
 });
 
 export function buildLab() {
  const root=new T.Group();root.name='Security workbench';
  const materials={
   ceramic:new T.MeshStandardMaterial({color:0xe8e8d8,roughness:.64,metalness:.12}),
-  enamel:new T.MeshStandardMaterial({color:0x294837,roughness:.36,metalness:.48}),
+  enamel:new T.MeshStandardMaterial({color:0x303a35,roughness:.48,metalness:.56}),
   aluminum:new T.MeshStandardMaterial({color:0x929c8d,roughness:.35,metalness:.8}),
   dark:new T.MeshStandardMaterial({color:0x182b24,roughness:.48,metalness:.36}),
   edge:new T.MeshStandardMaterial({color:0x6d8d78,roughness:.4,metalness:.45}),
@@ -22,9 +22,9 @@ export function buildLab() {
   cable:new T.MeshStandardMaterial({color:0x313f32,roughness:.65}),
   brass:new T.MeshStandardMaterial({color:0xa1956c,roughness:.4,metalness:.76}),
   led:new T.MeshStandardMaterial({color:0xc6ef9c,emissive:0x81b956,emissiveIntensity:1.1,roughness:.3}),
-  blue:new T.MeshStandardMaterial({color:0x456b8b,roughness:.36,metalness:.52}),
-  clay:new T.MeshStandardMaterial({color:0xb66b4e,roughness:.78,metalness:.04}),
-  ochre:new T.MeshStandardMaterial({color:0xc89d4a,roughness:.43,metalness:.32}),
+  blue:new T.MeshStandardMaterial({color:0x50616b,roughness:.36,metalness:.52}),
+  clay:new T.MeshStandardMaterial({color:0x94745d,roughness:.78,metalness:.04}),
+  ochre:new T.MeshStandardMaterial({color:0xa48b61,roughness:.43,metalness:.32}),
   leaf:new T.MeshStandardMaterial({color:0x527c50,roughness:.63,side:T.DoubleSide}),
   paper:new T.MeshStandardMaterial({color:0xf3e4c5,roughness:.9}),
   brown:new T.MeshStandardMaterial({color:0x3b241a,roughness:.31}),
@@ -247,11 +247,7 @@ export function buildLab() {
  for(let i=0;i<3;i++)box(.21,.025,.015,materials.keys,phone,'Phone text',0,.54-i*.12,.053,.005);
  const mouse=box(.25,.12,.40,materials.ceramic,root,'Desktop mouse',.65,.26,1.55,.06);
  box(.012,.02,.12,materials.dark,root,'Mouse wheel',.65,.328,1.47,.004);
- for(let i=0;i<3;i++){
-  const x=-.65+i*.39,h=.15+i*.12;
-  box(.30,h,.30,[materials.blue,materials.clay,materials.ochre][i],root,'Growth step '+(i+1),x,.20+h/2,2.02,.025);
-  cylinder(.04,.012,materials.led,root,'Milestone indicator',x,.208+h,2.02);
- }
+
  // An architectural cutaway: real walls, a library and a climbing route.
  const wallMat=new T.MeshStandardMaterial({color:0xbccbb1,roughness:.94});
  const trimMat=new T.MeshStandardMaterial({color:0xf0dfb5,roughness:.72});
@@ -265,19 +261,57 @@ export function buildLab() {
  for(const z of [-.66,.66])box(.10,1.48,.09,materials.enamel,shelf,'Shelf side upright',0,.74,z);
  for(const y of [.12,.73,1.4])box(.55,.065,1.43,trimMat,shelf,'Open shelf',0,y,0);
  for(let i=0;i<6;i++)box(.32,.34+(i%3)*.06,.10,[materials.blue,materials.clay,materials.ochre][i%3],shelf,'Library volume',0,.33+(i%3)*.03,-.49+i*.19,.012);
- cylinder(.13,.03,materials.brass,shelf,'Achievement base',0,1.45,.22);
- cylinder(.035,.18,materials.brass,shelf,'Achievement stem',0,1.55,.22);
- mesh(new T.SphereGeometry(.14,16,10),materials.ochre,shelf,'Achievement sphere',0,1.75,.22);
- // A wall-mounted three-step path, connected by brass rails.
- for(let i=0;i<3;i++){
-  const x=1.65+i*.52,y=1.72+i*.40;
-  box(.42,.20,.36,[materials.blue,materials.clay,materials.ochre][i],root,'Wall growth step '+i,x,y,-2.00,.025);
-  box(.035,.38,.035,materials.brass,root,'Step marker '+i,x,y+.29,-2.00,.008);
-  mesh(new T.SphereGeometry(.075,12,8),materials.led,root,'Step light '+i,x,y+.52,-2.00);
- }
+
  // Warm framing strips make the room read as a miniature, not a flat board.
  box(.10,2.85,.12,trimMat,root,'Left wall trim',-3.55,1.62,-2.16);
  box(.10,2.85,.12,trimMat,root,'Right wall trim',3.55,1.62,-2.16);
+ // Physically shaded oak, plaster, rubber and brushed metal.
+ let seed=723;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+ const oak=texture(1024,512,(c,w,h)=>{c.fillStyle='#b29a75';c.fillRect(0,0,w,h);for(let i=0;i<1700;i++){const y=rnd()*h;c.strokeStyle=`rgba(${rnd()>.5?'78,57,34':'224,201,162'},${.03+rnd()*.12})`;c.lineWidth=.3+rnd()*1.3;c.beginPath();c.moveTo(0,y);c.bezierCurveTo(w*.3,y+rnd()*9,w*.7,y-rnd()*12,w,y+rnd()*5);c.stroke()}});
+ const plaster=texture(256,256,(c,w,h)=>{c.fillStyle='#c9c8ba';c.fillRect(0,0,w,h);for(let i=0;i<22000;i++){const v=Math.floor(130+rnd()*110);c.fillStyle=`rgba(${v},${v},${v},.10)`;c.fillRect(rnd()*w,rnd()*h,1,1)}});
+ wallMat.map=plaster;wallMat.bumpMap=plaster;wallMat.bumpScale=.018;wallMat.color.setHex(0xe1dfd3);
+ const woodMat=new T.MeshStandardMaterial({map:oak,roughness:.72,metalness:.02,bumpMap:oak,bumpScale:.012});
+ const oldTop=root.children.find(o=>o.name.startsWith('Inset platform top'));if(oldTop)oldTop.material=woodMat;
+ lines.visible=false;
+ // A dark desk mat and detailed audio equipment.
+ box(3.45,.012,2.05,materials.dark,root,'Woven desk mat',-.65,.203,.55,.05);
+ for(const x of [-2.35,2.92]){
+  const sp=new T.Group();sp.name='Nearfield monitor speaker';sp.position.set(x,.208,-.95);root.add(sp);
+  box(.39,.70,.35,materials.dark,sp,'Speaker cabinet',0,.35,0,.022);
+  for(const [y,r]of [[.26,.12],[.53,.055]]){
+   const ring=mesh(new T.TorusGeometry(r,.012,8,24),materials.aluminum,sp,'Speaker surround',0,y,.182);
+   const cone=mesh(new T.ConeGeometry(r*.90,.035,24),materials.cable,sp,'Speaker diaphragm',0,y,.181);cone.rotation.x=Math.PI/2;
+  }
+ }
+ const hp=new T.Group();hp.name='Over ear studio headphones';hp.position.set(1.45,.27,1.65);hp.rotation.x=-Math.PI/2;hp.rotation.z=.3;root.add(hp);
+ mesh(new T.TorusGeometry(.28,.035,10,32,Math.PI*1.2),materials.dark,hp,'Padded headphone arch',0,0,0);
+ for(const x of [-.27,.27]){box(.15,.25,.10,materials.dark,hp,'Headphone ear cushion',x,-.06,0,.04);box(.10,.20,.06,materials.aluminum,hp,'Headphone metal cup',x,-.06,-.06,.025)}
+ curve('Headphone cable',[[1.62,.22,1.62],[1.9,.22,1.85],[2.2,.22,1.55],[2.05,.23,1.1]],.012);
+ // Wall pegboard with repeated holes and workshop tools.
+ box(1.6,1.08,.065,materials.brown,root,'Workshop pegboard',2.52,2.27,-2.15,.02);
+ const holes=new T.InstancedMesh(new T.CylinderGeometry(.018,.018,.008,8),materials.dark,72);holes.name='72 pegboard apertures';
+ for(let i=0;i<72;i++){pose.position.set(1.84+(i%12)*.123,1.83+Math.floor(i/12)*.16,-2.109);pose.rotation.set(Math.PI/2,0,0);pose.updateMatrix();holes.setMatrixAt(i,pose.matrix)}root.add(holes);pose.rotation.set(0,0,0);
+ for(let i=0;i<3;i++){
+  const x=2.15+i*.29;box(.075,.28,.06,[materials.clay,materials.dark,materials.blue][i],root,'Tool rubber grip',x,2.30,-2.05,.025);
+  box(.025,.23,.025,materials.aluminum,root,'Precision tool shaft',x,2.54,-2.05,.004);
+ }
+ // An analogue clock, small wall notices, storage and fasteners.
+ const clockFace=texture(256,256,(c,w,h)=>{c.fillStyle='#e5e1d2';c.fillRect(0,0,w,h);c.translate(128,128);for(let i=0;i<12;i++){c.rotate(Math.PI/6);c.fillStyle='#3d4941';c.fillRect(-2,-109,4,12)}c.strokeStyle='#39483e';c.lineWidth=7;c.beginPath();c.moveTo(0,-67);c.lineTo(0,0);c.lineTo(57,27);c.stroke();c.fillStyle='#997c51';c.beginPath();c.arc(0,0,7,0,7);c.fill()});
+ const clock=mesh(new T.CylinderGeometry(.29,.29,.05,40),materials.aluminum,root,'Wall clock frame',-2.84,2.55,-2.15);clock.rotation.x=Math.PI/2;
+ mesh(new T.CircleGeometry(.265,40),new T.MeshStandardMaterial({map:clockFace,roughness:.75}),root,'Analogue clock dial',-2.84,2.55,-2.117);
+ for(let i=0;i<2;i++)box(.45,.23,.38,materials.ceramic,shelf,'Archive storage box',0,.87+i*.24,.15,.014);
+ const screws=new T.InstancedMesh(new T.CylinderGeometry(.018,.018,.008,10),materials.aluminum,16);screws.name='Desktop countersunk fasteners';
+ for(let i=0;i<16;i++){pose.position.set(i<8?-3.42:3.42,.204,-1.9+(i%8)*.54);pose.rotation.set(0,0,0);pose.updateMatrix();screws.setMatrixAt(i,pose.matrix)}root.add(screws);
+ const meter=new T.Group();meter.name='Handheld test meter';meter.position.set(-2.92,.22,1.93);meter.rotation.y=-.15;root.add(meter);
+ box(.30,.09,.48,materials.ochre,meter,'Protective meter shell',0,.04,0,.025);
+ box(.22,.012,.16,materials.dark,meter,'Meter display',0,.095,-.10,.008);
+ cylinder(.065,.02,materials.cable,meter,'Meter selector dial',0,.10,.09);
+ box(.44,.065,.30,materials.aluminum,root,'Portable SSD enclosure',-.55,.25,1.94,.025);
+ box(.06,.02,.02,materials.led,root,'Portable drive indicator',-.42,.289,2.08,.004);
+ curve('Test lead', [[-2.8,.23,2.08],[-2.4,.23,2.2],[-2.19,.23,1.9],[-2.3,.23,1.65]],.009,materials.clay);
+ for(let i=0;i<6;i++)box(.025,.035,.78,materials.aluminum,root,'Side wall ventilation louver',-3.48,.90+i*.11,.85,.006);
+ box(.44,.27,.035,materials.ceramic,root,'Wall power outlet',-1.95,1.60,-2.17,.015);
+ for(const x of [-2.05,-1.86])for(const y of [1.57,1.65])box(.02,.045,.012,materials.dark,root,'Outlet contact',x,y,-2.145,.002);
  for(const target of targets){
   const highlight=new T.PointLight(0xc7ed9a,0,2.7,2);highlight.name='Hover accent';highlight.position.set(0,.9,1.4);target.add(highlight);target.userData.light=highlight;
  }
