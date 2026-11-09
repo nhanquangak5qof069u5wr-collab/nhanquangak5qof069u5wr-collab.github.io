@@ -1,0 +1,97 @@
+.route{--forest:#25372e;--deep:#365b3d;--station:#fbfaf7;--track:#b8c5b3;margin-block:42px 64px}
+.route-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#e9ede2}
+.route-hero-copy{padding:clamp(25px,5vw,56px)}
+.route-kicker{margin:0 0 9px;color:#435944;font:11px/1.6 Consolas,"Microsoft YaHei",monospace;letter-spacing:1.1px}
+.route-hero-copy .route-kicker{display:flex;align-items:center;gap:8px;margin-bottom:15px}
+.route-kicker>span{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.route h1{font-size:clamp(38px,6.5vw,72px);line-height:1.13;letter-spacing:-.045em}
+.route h1 em{font-style:normal;color:#405d40}
+.route-hero-copy>p:not(.route-kicker){font-size:14px;color:#45534a;line-height:1.85;max-width:36ch;margin:15px 0 20px}
+.route-button,.route-next button{display:inline-flex;align-items:center;gap:13px;border-radius:5px;padding:9px 13px;background:#405d40;color:white;font:inherit;font-size:13px}
+.route-button:hover{background:#314b35}
+.route-dashboard{padding:clamp(24px,4.2vw,47px);background:var(--forest);color:#f1f3e9;display:flex;justify-content:center;flex-direction:column;gap:11px}
+.route-dashboard-label{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#cadbc8;font-size:13px}
+.route-dashboard-label span:last-child{font:15px Consolas,monospace}
+.route-total{display:flex;align-items:baseline;gap:5px;font-size:15px}
+.route-total strong{font:clamp(38px,6vw,72px)/1 Consolas,monospace}
+.route-dashboard progress{display:block;width:100%;height:8px;appearance:none;border:0;border-radius:8px;background:#405548;overflow:hidden}
+.route-dashboard progress::-webkit-progress-bar{background:#405548}
+.route-dashboard progress::-webkit-progress-value{background:#b9d9a8;border-radius:8px}
+.route-dashboard progress::-moz-progress-bar{background:#b9d9a8;border-radius:8px}
+.route-dashboard>p{font-size:13px;color:#cadbc8;margin:1px 0 12px}
+.route-next{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid #617767;padding-top:13px;font-size:13px}
+.route-next button{border:1px solid #b8cdb3;background:#e7eee0;color:#283e2e;cursor:pointer}
+.route-next button:hover{background:white}
+.route-next button[hidden]{display:none}
+.route-area{margin-top:42px}
+.route-section-head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:8px 16px;margin-bottom:14px}
+.route-section-head .route-kicker{margin-bottom:1px}
+.route-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:#46544a;margin:0 0 3px}
+.route-legend span{display:flex;align-items:center;gap:5px}
+.route-legend i{width:9px;height:9px;border:1px solid #65776a;border-radius:50%;display:inline-block}
+.route-legend span:nth-child(2) i{background:linear-gradient(90deg,#65776a 50%,transparent 50%)}
+.route-legend span:nth-child(3) i{background:var(--deep);border-color:var(--deep)}
+.route-stage-nav{display:flex;flex-wrap:wrap;gap:6px 8px;padding-bottom:19px;font-size:12px}
+.route-stage-nav a{padding:5px 9px;border:1px solid var(--track);border-radius:4px;color:#405d40}
+.route-stage-nav a:hover{background:var(--soft)}
+.route-main-groups{margin-left:16px;border-left:2px solid var(--track);padding:0 0 0 26px}
+.route-stage{position:relative;border:1px solid var(--line);border-radius:12px;background:#eeefe7;padding:17px 18px}
+.route-main-groups .route-stage+.route-stage{margin-top:16px}
+.route-main-groups .route-stage::before{content:"";width:27px;height:2px;background:var(--track);position:absolute;top:34px;left:-28px}
+.route-main-groups .route-stage::after{content:"";width:10px;height:10px;border:2px solid var(--deep);border-radius:50%;background:var(--paper);position:absolute;top:29px;left:-33px}
+.route-stage-head{display:flex;align-items:flex-start;gap:11px;margin:0 0 13px}
+.route-stage-marker{flex:0 0 30px;display:grid;place-items:center;height:30px;border:1px solid var(--track);border-radius:6px;background:var(--station);color:var(--deep);font:13px Consolas,monospace}
+.route-stage-copy{flex:1}
+.route-stage-copy h3{margin:0;font-size:17px;line-height:1.45}
+.route-stage-copy p{margin:3px 0 0;font-size:12px;line-height:1.65;color:#4b5950}
+.route-stage-count{flex:none;padding-top:3px;font:12px/1.5 Consolas,monospace;color:#435944}
+.route-stations{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;list-style:none;margin:0;padding:0}
+.route-stations li{position:relative;min-width:0}
+.route-stations li:not(:last-child)::after{content:"";height:2px;width:9px;background:var(--track);position:absolute;left:100%;top:22px}
+.route-station{position:relative;display:flex;flex-direction:column;gap:7px;text-align:left;width:100%;height:100%;min-height:100px;padding:10px;background:var(--station);color:var(--ink);border:1px solid #bfc8b9;border-radius:7px;cursor:pointer;font:inherit;transition:background .18s,border-color .18s}
+.route-station:hover{background:#f2f5ec;border-color:#728b73}
+.route-station:focus-visible,.route-next button:focus-visible,.route-dialog button:focus-visible,.route-dialog input:focus-visible{outline:2px solid #527452;outline-offset:3px}
+.route-station-top{display:flex;justify-content:space-between;align-items:center;gap:5px}
+.route-station-number{color:#405d40;font:12px/1.3 Consolas,monospace}
+.route-station-dot{width:9px;height:9px;border:1px solid #687b69;border-radius:50%}
+.route-station strong{font-size:13px;line-height:1.4}
+.route-station-status{color:#536053;font-size:11px;margin-top:auto}
+.route-station[data-state="started"] .route-station-dot{background:linear-gradient(90deg,#65776a 50%,transparent 50%)}
+.route-station[data-next]{border-color:#68876a}
+.route-station[data-state="done"]{background:#deedda;border-color:#70946f}
+.route-station[data-state="done"] .route-station-dot{background:var(--deep);border-color:var(--deep);box-shadow:0 0 0 3px #bddeaf}
+.route-station[data-state="done"] .route-station-status{color:#33593a;font-weight:700}
+.route-side-count,.route-save-note{font-size:12px;color:#4c5b50}
+.route-side-groups{display:grid;grid-template-columns:1.15fr 1fr;gap:16px}
+.route-side-groups .route-stations{grid-template-columns:repeat(3,minmax(0,1fr))}
+.route-side-groups .route-stations li::after{content:none}
+.route-save-note{margin:21px 0 0;line-height:1.7}
+.route-dialog{width:min(510px,calc(100% - 30px));max-height:calc(100% - 36px);border:1px solid #bfc8b9;border-radius:13px;background:var(--paper);color:var(--ink);padding:clamp(16px,4vw,27px);box-shadow:0 20px 70px #1b2d2a44}
+.route-dialog::backdrop{background:#17251dd0}
+.route-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}
+.route-dialog-head h2{font-size:23px;letter-spacing:0}
+.route-dialog-head .route-kicker{margin-bottom:3px}
+.route-close{width:34px;height:34px;border:1px solid #aebbae;border-radius:6px;background:transparent;color:#283e2e;cursor:pointer;font:22px/1 system-ui}
+.route-dialog-status{color:#365b3d;background:var(--soft);padding:9px 11px;border-radius:5px;margin:15px 0;font-size:13px}
+.route-dialog fieldset{border:0;margin:0;padding:0}
+.route-dialog legend{font-weight:700;font-size:13px;margin-bottom:7px}
+.route-task{display:flex;align-items:flex-start;gap:9px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;line-height:1.65;cursor:pointer}
+.route-task input{width:17px;height:17px;flex:none;margin:3px 0 0;accent-color:#405d40}
+.route-dialog-note{font-size:12px;color:#4c5b50;line-height:1.7;margin:14px 0 0}
+.route-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:900px){
+  .route-main-groups .route-stations{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .route-stations li:nth-child(3n)::after{content:none}
+}
+@media(max-width:690px){
+  .route{margin-block:24px 42px}
+  .route-hero,.route-side-groups{grid-template-columns:1fr}
+  .route-area{margin-top:30px}
+  .route-main-groups{margin-left:7px;padding-left:15px}
+  .route-main-groups .route-stage::before{left:-17px;width:16px}
+  .route-main-groups .route-stage::after{left:-22px}
+  .route-stage{padding:13px 10px}
+  .route-main-groups .route-stations,.route-side-groups .route-stations{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .route-main-groups .route-stations li:nth-child(odd):not(:last-child)::after{content:""}
+  .route-stations li:nth-child(even)::after{content:none}
+}

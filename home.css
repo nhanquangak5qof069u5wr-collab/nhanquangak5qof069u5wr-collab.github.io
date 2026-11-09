@@ -32,6 +32,12 @@
 .home-post-meta span{border-radius:3px;padding:2px 7px;background:var(--soft);color:#405d40}
 .home-arrow,.home-topics a span{color:#405d40}
 .home-topics a{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:11px 10px 11px 0;font-size:14px}
+.home-route{display:flex;align-items:center;gap:13px;padding:14px 17px;margin-top:14px;border:1px solid var(--line);border-radius:9px;background:#eeefe7}
+.home-route:hover{background:var(--soft)}
+.home-route-mark{display:grid;place-items:center;width:43px;height:43px;flex:none;border:1px solid #b8c5b3;border-radius:6px;color:#405d40}
+.home-route-copy{display:grid;gap:3px;flex:1}
+.home-route-copy strong{font-size:15px}
+.home-route-copy>span{color:#48564c;font-size:12px;line-height:1.65}
 @media(max-width:700px){
   .home{margin-block:25px 48px}
   .home-opening,.home-index{grid-template-columns:1fr}
