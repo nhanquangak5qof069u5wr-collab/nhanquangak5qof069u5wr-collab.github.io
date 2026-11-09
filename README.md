@@ -10,10 +10,12 @@ GitHub Pages 静态站点：首页是可交互的三维安全实验台，采用�
 - `home-3d.js`：加载、鼠标/触摸旋转、射线拾取、键盘操作和静态降级。
 - `lab-model.js`：程序化建模、材质和部件尺寸；电脑对应技能、网络设备对应路线、服务器对应题库。
 - `assets/lab-poster.webp`：从实际三维场景截取的静态预览图。
-- `skills.html`：17 项技能与专业证书。
+- `skills.html`：17 项技能、技能图解弹窗与专业证书。
+- `skills-guide-data.js`：17 项技能图解的概念、流程、实践和误区说明；`assets/skill-guides/` 为桌面与手机图片。
 - `roadmap.html`：38 个站点、任务、经验和等级；沿用浏览器原有进度。
-- `questions.html`：68 道分级 flag 题目；`challenge.html`：本地 SQLite 练习靶场。
+- `questions.html`：51 道分级 flag 题目（17 项技能，每项基础、进阶、挑战各 1 题）；`challenge.html`：本地 SQLite 练习靶场。
 - `motion.css`：全站视觉样式；`motion-pointer.js`：内页鼠标背景。
+- `interior-refresh.css`：写实内页配图、卡片外框、排版及弹窗滚动布局；`assets/image-prompts.md` 记录配图提示词。
 - `posts/hello.html`：保留的开站手记，首页不使用文章流。
 
 ## 三维依赖
@@ -24,4 +26,8 @@ GitHub Pages 静态站点：首页是可交互的三维安全实验台，采用�
 ## 发布
 仓库 main 分支的根目录由 GitHub Pages 发布。提交修改后自动更新：
 https://nhanquangak5qof069u5wr-collab.github.io/
+
+## 技能图解生成
+
+修改 `skills-guide-data.js` 后，先启动本地静态服务，再使用已安装的 Playwright 运行 `scripts/render-skill-guides.cjs`。脚本将中文内容分别排成桌面和手机长图，输出到 `assets/skill-guides/`；转换为同名 WebP 后供弹窗加载。`PLAYWRIGHT_MODULE`、`CHROME_EXECUTABLE` 和 `PREVIEW_URL` 可指定本机工具与预览地址。
 

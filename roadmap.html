@@ -12,11 +12,12 @@
   <link rel="stylesheet" href="learning-xp.css">
   <script src="roadmap-data.js" defer></script>
   <script src="learning-xp.js" defer></script>
-  <script src="roadmap.js?v=detail3" defer></script>
+  <script src="roadmap.js?v=gallery1" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
   <script src="motion-pointer.js" defer></script>
   <link rel="stylesheet" href="inner-surfaces.css?v=texture1">
   <link rel="stylesheet" href="inner-detail.css?v=detail3">
+<link rel="stylesheet" href="interior-refresh.css?v=gallery1">
 </head>
 <body class="motion-site page-route">
   <a class="skip" href="#main">跳到正文</a>
@@ -32,7 +33,7 @@
         <p>38 个站点，76 项动手任务。从环境、编程到攻防和工程能力，把“看懂了”变成“能独立完成”。</p>
         <a class="route-button" href="#main-route">查看主线 <span aria-hidden="true">↓</span></a>
       </div>
-      <div class="route-scene motion-art"><img class="detail-scene-image" src="assets/route-terrain.svg" width="680" height="250" alt="以五个主线路标和两个分支构成的地形路线图"><div class="route-dashboard">
+      <div class="route-scene motion-art"><img class="detail-scene-image" src="assets/route-studio.webp" width="1536" height="1024" alt="有工作台、网络设备和实验笔记的安全学习空间"><div class="route-dashboard">
         <div class="route-dashboard-label"><span>主线进度</span><span id="route-percent">0%</span></div>
         <div class="route-total"><strong id="route-done">0</strong><span> / <span id="route-total">—</span> 个站点</span></div>
         <progress id="route-progress" max="1" value="0" aria-label="主线完成进度"></progress>
@@ -77,13 +78,13 @@
       <div><p id="route-dialog-index" class="route-kicker"></p><h2 id="route-dialog-title"></h2></div>
       <form method="dialog"><button type="submit" class="route-close" aria-label="关闭任务">×</button></form>
     </div>
-    <p id="route-dialog-status" class="route-dialog-status" role="status"></p>
+    <div class="route-dialog-scroll"><img id="route-dialog-photo" class="route-dialog-photo" alt=""><div class="route-dialog-content"><p id="route-dialog-status" class="route-dialog-status" role="status"></p>
     <p id="route-dialog-level" class="route-dialog-level"></p>
     <fieldset id="route-checklist">
       <legend>完成一项，勾选一项</legend>
       <div id="route-tasks"></div>
     </fieldset>
-    <p class="route-dialog-note">每项任务 +10 XP。完成本站全部任务后，站点会自动点亮。</p>
+    <p class="route-dialog-note">每项任务 +10 XP。完成本站全部任务后，站点会自动点亮。</p></div></div>
   </dialog>
   <footer class="footer wrap"><span>© 2026 辣白菜的博客</span><a href="#">回到顶部 ↑</a></footer>
 </body>

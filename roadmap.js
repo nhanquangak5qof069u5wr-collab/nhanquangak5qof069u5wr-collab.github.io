@@ -44,6 +44,19 @@ function el(tag, className, text) {
   return result;
 }
 
+const routePhotos = {
+ foundations: ["route-studio","route-network","portal-photo-terminal","route-code","entry-server","route-network"],
+ "first-security": ["route-code","route-code","route-analysis","portal-photo-chip","route-analysis","portal-photo-terminal"],
+ "offense-defense": ["route-network","route-analysis","route-studio","route-code","portal-photo-terminal","portal-photo-notebook"],
+ "python-network": ["route-code","portal-photo-terminal","route-network","route-network","portal-photo-notebook"],
+ advanced: ["route-network","route-code","portal-photo-terminal","route-code","portal-photo-chip"],
+ specialties: ["portal-photo-notebook","route-analysis","portal-photo-chip","route-analysis","portal-photo-chip","portal-photo-chip"],
+ career: ["route-studio","route-network","portal-photo-notebook","route-code"]
+};
+function nodePhoto(node) {
+ const stageIndex = node.stage.nodes.findIndex(item => item[0] === node.id);
+ return "assets/" + (routePhotos[node.stage.id]?.[stageIndex] || "route-studio") + ".webp";
+}
 function renderStage(stage) {
   const section = el("section", "route-stage");
   section.id = stage.id;
@@ -71,7 +84,8 @@ function renderStage(stage) {
     const dot = el("span", "route-station-dot");
     dot.setAttribute("aria-hidden", "true");
     top.append(marker, dot);
-    button.append(top, el("strong", null, node.title), el("span", "route-station-preview", node.tasks[0]), status);
+    const photo=el("img","route-station-photo");photo.src=nodePhoto(node);photo.alt=node.title+"实验与学习场景";photo.loading="lazy";photo.width=600;photo.height=180;
+    button.append(photo, top, el("strong", null, node.title), el("span", "route-station-preview", node.tasks[0]), status);
     button.addEventListener("click", () => openNode(node));
     tiles.set(node.id, {button, status});
     item.append(button);
@@ -131,6 +145,8 @@ function refreshDialog(levelUp = false) {
 
 function openNode(node) {
   activeNode = node;
+  get("route-dialog-photo").src = nodePhoto(node);
+  get("route-dialog-photo").alt = node.title + "学习场景";
   get("route-dialog-index").textContent = "站点 " + node.number + " / " + node.stage.title;
   get("route-dialog-title").textContent = node.title;
   const tasks = get("route-tasks");
@@ -140,10 +156,12 @@ function openNode(node) {
     const input = el("input");
     input.type = "checkbox";
     input.value = node.id + ":" + i;
-    label.append(input, el("span", null, task));
+    const copy=el("span","route-task-copy");copy.append(el("strong",null,"任务 0"+(i+1)),el("span",null,task));
+    label.append(input, copy);
     tasks.append(label);
   }
   dialog.showModal();
+  document.querySelector(".route-dialog-scroll").scrollTop=0;
   refreshDialog();
 }
 
