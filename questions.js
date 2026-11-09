@@ -139,6 +139,8 @@ for (const category of questionBank) {
   }
   get("bank-skill").append(group);
 }
+const requestedSkill = new URLSearchParams(location.search).get("skill");
+if ([...get("bank-skill").options].some(option => option.value === requestedSkill)) get("bank-skill").value = requestedSkill;
 questions.forEach(renderQuestion);
 readProgress();
 refresh();

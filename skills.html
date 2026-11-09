@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="skills-layout.css">
   <link rel="stylesheet" href="motion.css?v=pointer2">
   <script src="motion-pointer.js" defer></script>
+  <link rel="stylesheet" href="inner-surfaces.css?v=texture1">
+  <link rel="stylesheet" href="skills-redesign.css?v=atlas2">
 </head>
 <body class="motion-site page-skills">
   <a class="skip" href="#main">跳到正文</a>
@@ -23,24 +25,17 @@
       <header class="atlas-hero motion-stage">
         <div class="atlas-hero-copy motion-copy">
           <p class="motion-index"><span>01</span>技能地图</p>
-          <h1>AI 开发与<br><span class="accent">安全攻防</span></h1>
+          <h1>把技术连起来，<br><span class="accent">在实践中用起来。</span></h1>
           <p class="atlas-lead">从写代码、搭服务，到审计应用、分析流量和响应告警。这是我在 AI 与网络安全课程中掌握的技术。</p>
-          <a class="atlas-jump" href="#development">浏览技能 <span aria-hidden="true">↓</span></a>
+          <a class="atlas-jump" href="#development">浏览技能 <span aria-hidden="true">↓</span></a><div class="atlas-metrics"><span><b>17</b>项技能</span><span><b>04</b>大方向</span><a href="questions.html"><b>68</b>道 flag 练习 ↗</a></div>
         </div>
-        <div class="atlas-graphic motion-art" aria-hidden="true">
-          <svg viewBox="0 0 420 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="currentColor" opacity=".32"><circle cx="210" cy="140" r="106" stroke-dasharray="2 6"/><circle cx="210" cy="140" r="79"/><circle cx="210" cy="140" r="52"/><path d="M36 140h348M210 22v236M73 58l274 164M73 222L347 58"/></g>
-            <g stroke="currentColor" stroke-width="1.4"><path d="M94 63h53l63 77 63-77h53M94 217h53l63-77 63 77h53"/><path d="M200 133l-8 7 8 7m20-14 8 7-8 7m-6-21-8 28" stroke-linecap="round" stroke-linejoin="round"/></g>
-            <g fill="currentColor"><circle cx="94" cy="63" r="4"/><circle cx="326" cy="63" r="4"/><circle cx="94" cy="217" r="4"/><circle cx="326" cy="217" r="4"/></g>
-            <g fill="currentColor" font-family="ui-monospace, Consolas, monospace" font-size="12" letter-spacing="1.8"><text x="35" y="49">BUILD</text><text x="335" y="49">TEST</text><text x="35" y="241">DEFEND</text><text x="335" y="241">DATA</text></g>
-          </svg>
-        </div>
+        <div class="atlas-graphic motion-art"><img src="assets/skills-architecture.svg" width="680" height="410" alt="连接开发、安全、运维、防御、AI 和数据分析六类能力的电路结构图"><div class="atlas-graphic-caption"><span>能力结构图</span><span>学懂原理 / 连接方法 / 动手验证</span></div></div>
       </header>
 
       <div class="atlas-body">
       <aside class="atlas-sidebar">
         <nav class="atlas-nav" aria-label="技能页目录">
-          <p class="atlas-nav-title">页内目录</p>
+          
           <a href="#development"><span class="atlas-nav-index" aria-hidden="true">01</span>开发与基础</a>
           <a href="#offensive"><span class="atlas-nav-index" aria-hidden="true">02</span>漏洞分析与攻防</a>
           <a href="#defense"><span class="atlas-nav-index" aria-hidden="true">03</span>检测与响应</a>
@@ -54,41 +49,41 @@
       <section class="skill-group" id="development" aria-labelledby="development-title">
         <div class="skill-heading"><span class="number" aria-hidden="true">01</span><h2 id="development-title">开发与基础</h2></div>
         <div class="skill-grid">
-          <section class="skill-card"><h3>系统管理与网络工程</h3><p>能管理 Windows 和 Linux 上的账户、权限、进程与服务，搭建虚拟机实验网络。理解 TCP/IP、ARP、ICMP、子网、交换与路由，能配置 VLAN 并排查连通性。</p><div class="topics"><span>Windows / Linux</span><span>Kali</span><span>TCP/IP</span><span>VLAN</span></div></section>
-          <section class="skill-card"><h3>Python 编程与网络工具</h3><p>能用 Python 处理文件和结构化数据，使用线程、进程和协程组织并发任务。能用 Socket 编写网络程序，并用 Scapy、PyDivert 和 mitmproxy 分析实验流量。</p><div class="topics"><span>Python</span><span>并发</span><span>Socket</span><span>流量分析</span></div></section>
-          <section class="skill-card"><h3>Web 全栈与数据库</h3><p>能用 HTML、CSS、JavaScript、Bootstrap 或 Vue 3 构建页面，用 Flask、FastAPI、Spring Boot 或 ThinkPHP 实现业务接口。掌握 MySQL 的表结构、关联查询、索引、事务和备份恢复。</p><div class="topics"><span>Flask / FastAPI</span><span>Vue 3</span><span>Spring Boot</span><span>ThinkPHP</span><span>MySQL</span></div></section>
-          <section class="skill-card"><h3>Linux 运维与云原生部署</h3><p>能部署 Web 服务和反向代理，配置负载均衡、防火墙与备份。掌握 Docker 镜像、网络和数据卷，理解 Kubernetes 架构，并能用 Prometheus、Grafana 和 Zabbix 观察系统状态。</p><div class="topics"><span>Nginx</span><span>Docker</span><span>Kubernetes</span><span>Prometheus</span></div></section>
+          <section class="skill-card"><h3>系统管理与网络工程</h3><p>能管理 Windows 和 Linux 上的账户、权限、进程与服务，搭建虚拟机实验网络。理解 TCP/IP、ARP、ICMP、子网、交换与路由，能配置 VLAN 并排查连通性。</p><div class="topics"><span>Windows / Linux</span><span>Kali</span><span>TCP/IP</span><span>VLAN</span></div><a class="skill-practice" href="questions.html?skill=system">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>Python 编程与网络工具</h3><p>能用 Python 处理文件和结构化数据，使用线程、进程和协程组织并发任务。能用 Socket 编写网络程序，并用 Scapy、PyDivert 和 mitmproxy 分析实验流量。</p><div class="topics"><span>Python</span><span>并发</span><span>Socket</span><span>流量分析</span></div><a class="skill-practice" href="questions.html?skill=python">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>Web 全栈与数据库</h3><p>能用 HTML、CSS、JavaScript、Bootstrap 或 Vue 3 构建页面，用 Flask、FastAPI、Spring Boot 或 ThinkPHP 实现业务接口。掌握 MySQL 的表结构、关联查询、索引、事务和备份恢复。</p><div class="topics"><span>Flask / FastAPI</span><span>Vue 3</span><span>Spring Boot</span><span>ThinkPHP</span><span>MySQL</span></div><a class="skill-practice" href="questions.html?skill=fullstack">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>Linux 运维与云原生部署</h3><p>能部署 Web 服务和反向代理，配置负载均衡、防火墙与备份。掌握 Docker 镜像、网络和数据卷，理解 Kubernetes 架构，并能用 Prometheus、Grafana 和 Zabbix 观察系统状态。</p><div class="topics"><span>Nginx</span><span>Docker</span><span>Kubernetes</span><span>Prometheus</span></div><a class="skill-practice" href="questions.html?skill=ops">对应练习 <span>4 道 flag 题 ↗</span></a></section>
         </div>
       </section>
 
       <section class="skill-group" id="offensive" aria-labelledby="offensive-title">
         <div class="skill-heading"><span class="number" aria-hidden="true">02</span><h2 id="offensive-title">漏洞分析与攻防</h2></div>
         <div class="skill-grid">
-          <section class="skill-card"><h3>Web 渗透测试与漏洞挖掘</h3><p>能在授权范围内梳理资产和接口，验证 SQL 注入、XSS、CSRF、SSRF、文件上传与反序列化风险。能比较不同角色和业务状态下的请求，识别越权、验证码和并发逻辑问题，整理复现步骤与修复建议。</p><div class="topics"><span>Burp Suite</span><span>SRC / EduSRC</span><span>业务逻辑</span><span>漏洞报告</span></div></section>
-          <section class="skill-card"><h3>源码审计与组件安全</h3><p>能沿路由、权限检查和数据流追踪 PHP、Java 应用中的风险点，复核扫描发现。能在靶场复现 ThinkPHP、Shiro、Log4j、Fastjson、Spring Boot、Tomcat、Jenkins 和 Redis 等组件的典型问题。</p><div class="topics"><span>PHP / Java</span><span>Vulhub</span><span>代码审计</span><span>中间件</span></div></section>
-          <section class="skill-card"><h3>内网攻防与红队对抗</h3><p>理解 Windows 域、网络分段、代理和隧道，能在实验环境中分析主机权限、横向路径及可见痕迹。能识别 C2、Webshell、载荷与反调试的常见特征，结合防守视角解释检测难点。</p><div class="topics"><span>Active Directory</span><span>Metasploit</span><span>C2 特征</span><span>攻防演练</span></div></section>
-          <section class="skill-card"><h3>CTF 与二进制分析</h3><p>能按 Web、Misc、Crypto、Reverse、Pwn 方向拆解题目，用 IDA 和 GDB 结合静态与动态分析。理解 RSA、对称密码、栈与堆漏洞、格式化字符串和 ROP，并能组织题解赛与攻防赛的靶场练习。</p><div class="topics"><span>Jeopardy / AWD</span><span>IDA / GDB</span><span>RSA</span><span>ROP</span></div></section>
-          <section class="skill-card"><h3>移动应用与小程序安全</h3><p>能检查 APK 结构、反编译结果和运行时行为，结合抓包定位客户端请求、登录流程与数据处理问题。理解小程序请求链路，能在实验环境中区分客户端校验和服务端校验。</p><div class="topics"><span>APK</span><span>静态分析</span><span>动态调试</span><span>移动抓包</span></div></section>
+          <section class="skill-card"><h3>Web 渗透测试与漏洞挖掘</h3><p>能在授权范围内梳理资产和接口，验证 SQL 注入、XSS、CSRF、SSRF、文件上传与反序列化风险。能比较不同角色和业务状态下的请求，识别越权、验证码和并发逻辑问题，整理复现步骤与修复建议。</p><div class="topics"><span>Burp Suite</span><span>SRC / EduSRC</span><span>业务逻辑</span><span>漏洞报告</span></div><a class="skill-practice" href="questions.html?skill=web-pentest">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>源码审计与组件安全</h3><p>能沿路由、权限检查和数据流追踪 PHP、Java 应用中的风险点，复核扫描发现。能在靶场复现 ThinkPHP、Shiro、Log4j、Fastjson、Spring Boot、Tomcat、Jenkins 和 Redis 等组件的典型问题。</p><div class="topics"><span>PHP / Java</span><span>Vulhub</span><span>代码审计</span><span>中间件</span></div><a class="skill-practice" href="questions.html?skill=audit">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>内网攻防与红队对抗</h3><p>理解 Windows 域、网络分段、代理和隧道，能在实验环境中分析主机权限、横向路径及可见痕迹。能识别 C2、Webshell、载荷与反调试的常见特征，结合防守视角解释检测难点。</p><div class="topics"><span>Active Directory</span><span>Metasploit</span><span>C2 特征</span><span>攻防演练</span></div><a class="skill-practice" href="questions.html?skill=intranet">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>CTF 与二进制分析</h3><p>能按 Web、Misc、Crypto、Reverse、Pwn 方向拆解题目，用 IDA 和 GDB 结合静态与动态分析。理解 RSA、对称密码、栈与堆漏洞、格式化字符串和 ROP，并能组织题解赛与攻防赛的靶场练习。</p><div class="topics"><span>Jeopardy / AWD</span><span>IDA / GDB</span><span>RSA</span><span>ROP</span></div><a class="skill-practice" href="questions.html?skill=binary">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>移动应用与小程序安全</h3><p>能检查 APK 结构、反编译结果和运行时行为，结合抓包定位客户端请求、登录流程与数据处理问题。理解小程序请求链路，能在实验环境中区分客户端校验和服务端校验。</p><div class="topics"><span>APK</span><span>静态分析</span><span>动态调试</span><span>移动抓包</span></div><a class="skill-practice" href="questions.html?skill=mobile">对应练习 <span>4 道 flag 题 ↗</span></a></section>
         </div>
       </section>
 
       <section class="skill-group" id="defense" aria-labelledby="defense-title">
         <div class="skill-heading"><span class="number" aria-hidden="true">03</span><h2 id="defense-title">检测与响应</h2></div>
         <div class="skill-grid">
-          <section class="skill-card"><h3>蓝队研判与应急响应</h3><p>能围绕 Windows、Linux、Web 与容器环境排查异常，从日志、进程、文件和网络连接建立时间线。能分析后门、挖矿、勒索与 Java 内存马线索，记录隔离、修复和复核结果。</p><div class="topics"><span>ELK</span><span>YARA</span><span>Snort</span><span>Wazuh</span></div></section>
-          <section class="skill-card"><h3>数字取证与安全防护</h3><p>能结合磁盘、内存、浏览器和进程等证据核对事件线索。能部署 WAF、蜜罐和堡垒机，结合告警分析、证据留存与应急报告支持复盘。</p><div class="topics"><span>数字取证</span><span>日志研判</span><span>WAF</span><span>安全运营</span></div></section>
-          <section class="skill-card"><h3>云与容器安全</h3><p>能从云身份、对象存储、密钥、实例元数据与容器权限梳理风险，理解容器逃逸的常见条件。能检查 Kubernetes 鉴权、etcd 暴露和配置泄露，提出隔离和最小权限措施。</p><div class="topics"><span>云身份</span><span>对象存储</span><span>容器隔离</span><span>Kubernetes 鉴权</span></div></section>
-          <section class="skill-card"><h3>数据治理与等级保护</h3><p>理解数据分类分级、风险评估与保护措施，能按主机、网络、应用、数据和管理制度整理评估证据。熟悉护网工作流程，以及态势感知、端点和云工作负载防护产品的用途。</p><div class="topics"><span>数据治理</span><span>等保</span><span>风险评估</span><span>态势感知</span></div></section>
+          <section class="skill-card"><h3>蓝队研判与应急响应</h3><p>能围绕 Windows、Linux、Web 与容器环境排查异常，从日志、进程、文件和网络连接建立时间线。能分析后门、挖矿、勒索与 Java 内存马线索，记录隔离、修复和复核结果。</p><div class="topics"><span>ELK</span><span>YARA</span><span>Snort</span><span>Wazuh</span></div><a class="skill-practice" href="questions.html?skill=blue">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>数字取证与安全防护</h3><p>能结合磁盘、内存、浏览器和进程等证据核对事件线索。能部署 WAF、蜜罐和堡垒机，结合告警分析、证据留存与应急报告支持复盘。</p><div class="topics"><span>数字取证</span><span>日志研判</span><span>WAF</span><span>安全运营</span></div><a class="skill-practice" href="questions.html?skill=forensics">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>云与容器安全</h3><p>能从云身份、对象存储、密钥、实例元数据与容器权限梳理风险，理解容器逃逸的常见条件。能检查 Kubernetes 鉴权、etcd 暴露和配置泄露，提出隔离和最小权限措施。</p><div class="topics"><span>云身份</span><span>对象存储</span><span>容器隔离</span><span>Kubernetes 鉴权</span></div><a class="skill-practice" href="questions.html?skill=cloud">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>数据治理与等级保护</h3><p>理解数据分类分级、风险评估与保护措施，能按主机、网络、应用、数据和管理制度整理评估证据。熟悉护网工作流程，以及态势感知、端点和云工作负载防护产品的用途。</p><div class="topics"><span>数据治理</span><span>等保</span><span>风险评估</span><span>态势感知</span></div><a class="skill-practice" href="questions.html?skill=governance">对应练习 <span>4 道 flag 题 ↗</span></a></section>
         </div>
       </section>
 
       <section class="skill-group" id="ai" aria-labelledby="ai-title">
         <div class="skill-heading"><span class="number" aria-hidden="true">04</span><h2 id="ai-title">AI 与数据</h2></div>
         <div class="skill-grid">
-          <section class="skill-card"><h3>生成式 AI 与辅助开发</h3><p>能设计提示词，把需求拆成可验证的小任务，用 AI 辅助生成页面、脚本、图像和分析材料。能审查生成代码、补充验证，并通过 CLI、模型 API 和 Ollama 接入不同模型。</p><div class="topics"><span>提示词</span><span>AI 编程</span><span>模型 API</span><span>Ollama</span></div></section>
-          <section class="skill-card"><h3>AI Agent 与安全评估</h3><p>能设计基础 Agent 的任务规划和工具调用流程，识别直接与间接提示注入、越狱、数据泄露和越权调用。能为工具划分权限边界，并为高影响操作安排确认与审计。</p><div class="topics"><span>Agent</span><span>提示注入</span><span>工具权限</span><span>安全评估</span></div></section>
-          <section class="skill-card"><h3>数据清洗、分析与可视化</h3><p>能用 NumPy、Pandas 清洗和统计数据，用 Matplotlib 或 Dash 表达变化趋势、分布和对比。掌握 K-means、PCA、ARIMA 的基本用途，能结合数据特征选择分析方法。</p><div class="topics"><span>NumPy</span><span>Pandas</span><span>Matplotlib / Dash</span><span>Jupyter</span></div></section>
-          <section class="skill-card"><h3>深度学习与论文阅读</h3><p>能用 PyTorch 完成数据加载、模型搭建、训练、保存和复用，并通过 TensorBoard 观察训练。理解卷积与池化、VGG 和 ResNet 的基本结构，能用 Zotero 管理文献并拆解论文方法与实验。</p><div class="topics"><span>PyTorch</span><span>TensorBoard</span><span>CNN</span><span>Zotero</span></div></section>
+          <section class="skill-card"><h3>生成式 AI 与辅助开发</h3><p>能设计提示词，把需求拆成可验证的小任务，用 AI 辅助生成页面、脚本、图像和分析材料。能审查生成代码、补充验证，并通过 CLI、模型 API 和 Ollama 接入不同模型。</p><div class="topics"><span>提示词</span><span>AI 编程</span><span>模型 API</span><span>Ollama</span></div><a class="skill-practice" href="questions.html?skill=genai">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>AI Agent 与安全评估</h3><p>能设计基础 Agent 的任务规划和工具调用流程，识别直接与间接提示注入、越狱、数据泄露和越权调用。能为工具划分权限边界，并为高影响操作安排确认与审计。</p><div class="topics"><span>Agent</span><span>提示注入</span><span>工具权限</span><span>安全评估</span></div><a class="skill-practice" href="questions.html?skill=agent">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>数据清洗、分析与可视化</h3><p>能用 NumPy、Pandas 清洗和统计数据，用 Matplotlib 或 Dash 表达变化趋势、分布和对比。掌握 K-means、PCA、ARIMA 的基本用途，能结合数据特征选择分析方法。</p><div class="topics"><span>NumPy</span><span>Pandas</span><span>Matplotlib / Dash</span><span>Jupyter</span></div><a class="skill-practice" href="questions.html?skill=analytics">对应练习 <span>4 道 flag 题 ↗</span></a></section>
+          <section class="skill-card"><h3>深度学习与论文阅读</h3><p>能用 PyTorch 完成数据加载、模型搭建、训练、保存和复用，并通过 TensorBoard 观察训练。理解卷积与池化、VGG 和 ResNet 的基本结构，能用 Zotero 管理文献并拆解论文方法与实验。</p><div class="topics"><span>PyTorch</span><span>TensorBoard</span><span>CNN</span><span>Zotero</span></div><a class="skill-practice" href="questions.html?skill=deep">对应练习 <span>4 道 flag 题 ↗</span></a></section>
         </div>
       </section>
 

@@ -1,0 +1,13 @@
+/* Shared tactile outlines for inner-page cards and controls. */
+body:not(.page-home) :is(.skill-card,.atlas-nav,.atlas-credential,.atlas-challenge,.skills-source,.route-stage,.route-station,.route-dialog,.route-task,.xp-panel,.bank-toolbar,.bank-question,.bank-answer,.lab-panel,.lab-terminal,.route-stage-nav a,.topics span,.lab-badge){border:1px solid #a1af95;box-shadow:inset 0 1px 0 #ffffffa6,0 3px 0 #86977412,0 8px 22px #28482f08}
+body:not(.page-home) :is(.route-dashboard,.bank-progress){border:1px solid #a1c09685;box-shadow:inset 0 1px 0 #ffffff20,0 5px 20px #112e2330}
+body:not(.page-home) .bank-question{border-radius:9px;margin:0 0 11px;background:#fbfbf4;overflow:hidden}
+body:not(.page-home) .bank-question:last-child{border:1px solid #a1af95}
+body:not(.page-home) .bank-answer{padding:12px;border-radius:6px;background:#f1f3e8}
+body:not(.page-home) :is(button,input:not([type=checkbox]),select,textarea){border:1px solid #8fa082;box-shadow:inset 0 1px 0 #fff5}
+body:not(.page-home) .topics span{border-radius:4px;background:#f0f3e7;box-shadow:inset 0 1px 0 #fff8;padding:4px 8px}
+body:not(.page-home) .article-body blockquote{border:1px solid #a1af95;border-left:3px solid #526c48;border-radius:6px}
+@media(prefers-reduced-motion:no-preference){body:not(.page-home) :is(.skill-card,.bank-question,.lab-panel,.route-station){transition:box-shadow .2s,border-color .2s}body:not(.page-home) :is(.skill-card,.bank-question,.lab-panel,.route-station):hover{border-color:#617c55;box-shadow:inset 0 1px 0 #fff9,0 5px 18px #28482f12}}
+
+body:not(.page-home) :is(.route-hero,.bank-hero,.lab-hero,.journal-stage){border:1px solid #829e7970;box-shadow:inset 0 1px 0 #ffffff17,0 6px 20px #183c2510}
+body:not(.page-home) .lab-hints details{border:1px solid #acbaa0;border-radius:6px;padding:11px 13px;margin-top:10px;background:#f0f3e8;box-shadow:inset 0 1px 0 #fff8}
