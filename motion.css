@@ -197,3 +197,35 @@ html,body{background:#f6f5ef;color:#18291f}
   .motion-site .portal-arrow{transform:none}
 }
 
+
+/* The light follows a fine pointer, while all content stays still. */
+.motion-light{display:none;pointer-events:none}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .motion-site.has-pointer-light{
+    background:radial-gradient(ellipse 410px 310px at var(--page-x) var(--page-y),#8fae8a42 0%,#abc0a323 43%,transparent 100%) fixed,var(--paper);
+  }
+  .motion-stage .motion-light{
+    display:block;position:absolute;inset:0;z-index:0;opacity:0;
+    background:radial-gradient(ellipse min(36vw,410px) min(29vw,300px) at var(--light-x,50%) var(--light-y,50%),#c6eeae4d 0%,#9cd6a42b 42%,transparent 100%);
+    transition:opacity .28s var(--ease);
+  }
+  .motion-stage.is-lit .motion-light{opacity:1}
+  .motion-stage .motion-copy{position:relative;z-index:1}
+  .motion-stage .motion-art{z-index:1}
+  .motion-site .study-photo{
+    inset:-9px;
+    transform:translate(var(--drift-x,0px),var(--drift-y,0px));
+    transition:transform .32s var(--ease);
+  }
+  .motion-stage:not(.study-story,.journal-stage)::before{
+    background-position:var(--drift-x,0px) var(--drift-y,0px);
+    transition:background-position .32s var(--ease);
+  }
+  .motion-stage.is-lit{--drift-x:var(--pointer-drift-x,0px);--drift-y:var(--pointer-drift-y,0px)}
+  .motion-site .journal-stage{
+    background-size:auto,calc(100% + 20px) auto,auto;
+    background-position:center,calc(50% + var(--drift-x,0px)) calc(53% + var(--drift-y,0px)),center;
+    transition:background-position .32s var(--ease);
+  }
+}
+
