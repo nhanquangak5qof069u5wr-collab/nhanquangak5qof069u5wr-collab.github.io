@@ -3,12 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="辣白菜的博客：技能地图、学习路线、网络安全题库与专业证书。">
+  <meta name="description" content="辣白菜的博客：安全小白成长自述、技能地图、学习路线与题库。">
   <meta name="theme-color" content="#f7f6f2">
   <title>辣白菜的博客</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="home.css?v=portal">
+  <link rel="stylesheet" href="learning-xp.css">
+  <link rel="stylesheet" href="home.css?v=motion-study">
+  <script src="roadmap-data.js" defer></script>
+  <script src="learning-xp.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到正文</a>
@@ -17,56 +20,30 @@
     <nav aria-label="主导航"><a href="https://github.com/nhanquangak5qof069u5wr-collab" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
   </header>
   <main class="wrap portal-home" id="main">
-    <header class="portal-mast">
-      <div class="portal-crest" aria-hidden="true">
-        <svg viewBox="0 0 100 100" fill="none">
-          <rect x="9" y="9" width="82" height="82" rx="23" fill="#30463a"/>
-          <path d="M50 78c-10-3-24-13-27-28-1-8 2-14 7-19 5 8 10 12 13 14-1-11 3-20 7-25 4 5 8 14 7 25 3-2 8-6 13-14 5 5 8 11 7 19-3 15-17 25-27 28Z" stroke="#dce8d1" stroke-width="2.6" stroke-linejoin="round"/>
-          <path d="M50 78V39m0 26c-10-2-16-8-20-15m20 15c10-2 16-8 20-15" stroke="#a9c6a0" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="76" cy="23" r="2" fill="#dce8d1"/>
-        </svg>
+    <section class="study-story" aria-labelledby="study-title">
+      <figure class="study-photo">
+        <img src="assets/security-study.webp" width="1200" height="800" alt="阳光照进书桌，笔记本上画着网络拓扑，旁边是电脑和网线" fetchpriority="high">
+      </figure>
+      <div class="study-copy">
+        <h1 id="study-title">安全小白的<br>成长自述</h1>
+        <p>刚学安全时，我只想先把虚拟机跑起来，再看懂一条网络请求。遇到报错，就从复现开始，一步步找原因。</p>
+        <p>后来，我更在意能不能把原理讲清楚、把结果验证出来。这里收着我整理的技能、学习路线和题目。</p>
       </div>
-      <h1>辣白菜</h1>
-    </header>
+    </section>
     <nav class="portal-grid" aria-label="站点入口">
-      <a class="portal portal-atlas" href="skills.html">
-        <svg class="portal-icon" viewBox="0 0 128 128" fill="none" aria-hidden="true">
-          <circle cx="64" cy="64" r="54" class="portal-orbit" stroke="currentColor" stroke-dasharray="2 5"/>
-          <path d="m64 23 37 21v40l-37 21-37-21V44z" fill="#dbe6d5" stroke="currentColor" stroke-width="2"/>
-          <path d="m27 44 37 21 37-21M64 65v40M46 33l37 21v17" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-          <circle cx="64" cy="65" r="6" fill="#4b7050"/><path d="m46 69-6 4 6 7m38-11 6 4-6 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>技能地图 <span aria-hidden="true">↗</span></span>
-      </a>
-      <a class="portal portal-route" href="roadmap.html">
-        <svg class="portal-icon" viewBox="0 0 128 128" fill="none" aria-hidden="true">
-          <circle cx="64" cy="64" r="54" class="portal-orbit" stroke="currentColor" stroke-dasharray="2 5"/>
-          <path d="m25 36 26-12 26 12 26-12v68l-26 12-26-12-26 12z" fill="#e1ead9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M51 24v68m26-56v68" stroke="currentColor" opacity=".45"/>
-          <path d="M39 77h17V54h31" stroke="#4b7050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="39" cy="77" r="5" fill="#f7f6f2" stroke="#4b7050" stroke-width="2"/><circle cx="87" cy="54" r="9" fill="#b5cdb0"/><circle cx="87" cy="54" r="4.5" fill="#4b7050"/>
-        </svg>
-        <span>学习路线 <span aria-hidden="true">↗</span></span>
-      </a>
-      <a class="portal portal-quiz" href="questions.html">
-        <svg class="portal-icon" viewBox="0 0 128 128" fill="none" aria-hidden="true">
-          <circle cx="64" cy="64" r="54" class="portal-orbit" stroke="currentColor" stroke-dasharray="2 5"/>
-          <rect x="33" y="25" width="62" height="78" rx="9" fill="#375145" stroke="currentColor" stroke-width="2"/>
-          <path d="M47 25v-4h34v13H47z" fill="#a8c4a4" stroke="#c9ddc3" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M47 51h10m-10 17h10m-10 17h10m11-34h13m-13 17h13m-13 17h13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="m92 79 13-13 7 7-13 13-9 3z" fill="#a8c4a4" stroke="#213a2d" stroke-width="2" stroke-linejoin="round"/>
-        </svg>
-        <span>题库 <span aria-hidden="true">↗</span></span>
-      </a>
-      <a class="portal portal-cert" href="skills.html#certifications">
-        <svg class="portal-icon" viewBox="0 0 128 128" fill="none" aria-hidden="true">
-          <circle cx="64" cy="64" r="54" class="portal-orbit" stroke="currentColor" stroke-dasharray="2 5"/>
-          <path d="m46 77-9 27 17-7 10 12 9-29m10-1 8 25-16-7" fill="#d7e3d3" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="m64 20 10 7 12 2 4 12 8 9-4 12 1 12-11 7-7 10-13-1-13 1-7-10-11-7 1-12-4-12 8-9 4-12 12-2z" fill="#e0e9da" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <circle cx="64" cy="56" r="20" stroke="currentColor" stroke-width="1.5"/><path d="m55 56 6 6 12-13" stroke="#4b7050" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>专业证书 <span aria-hidden="true">↗</span></span>
-      </a>
+      <div class="portal">
+        <a class="portal-link" href="skills.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m24 5 17 10v18L24 43 7 33V15zM7 15l17 10 17-10M24 25v18"/><path d="m17 28-4 3 4 4m14-7 4 3-4 4"/></svg><span><strong>技能地图</strong><small>开发、攻防与 AI</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="portal portal-route">
+        <a class="portal-link" href="roadmap.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12 12-6 12 6 12-6v30l-12 6-12-6-12 6zM18 6v30m12-24v30"/><path d="M12 29h11V20h13"/><circle cx="12" cy="29" r="2.5" fill="currentColor"/><circle cx="36" cy="20" r="2.5" fill="currentColor"/></svg><span><strong>学习路线</strong><small>完成任务，点亮站点</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
+        <div class="xp-meter xp-compact" data-learning-xp data-xp-autoload>
+          <div class="xp-top"><strong data-xp-level>Lv. 1 安全小白</strong><span data-xp-value>0 / 20 XP</span></div>
+          <progress data-xp-bar value="0" max="20" aria-label="当前等级经验"></progress>
+        </div>
+      </div>
+      <div class="portal">
+        <a class="portal-link" href="questions.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="8" width="30" height="34" rx="4"/><path d="M17 6h14v7H17zM17 21h3m6 0h6m-15 7h3m6 0h6m-15 7h3m6 0h6"/></svg><span><strong>题库</strong><small>基础练习到实战挑战</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
+      </div>
     </nav>
   </main>
   <footer class="footer wrap"><span>© 2026 辣白菜</span></footer>

@@ -9,8 +9,10 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="roadmap.css">
+  <link rel="stylesheet" href="learning-xp.css">
   <script src="roadmap-data.js" defer></script>
-  <script src="roadmap.js" defer></script>
+  <script src="learning-xp.js" defer></script>
+  <script src="roadmap.js?v=xp" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到正文</a>
@@ -37,6 +39,15 @@
         </div>
       </div>
     </header>
+    <section class="xp-meter xp-panel" data-learning-xp aria-labelledby="route-xp-title">
+      <div class="xp-panel-heading">
+        <h2 id="route-xp-title">成长经验</h2>
+        <span>主线和支线每项任务 +10 XP</span>
+      </div>
+      <div class="xp-top"><strong data-xp-level>Lv. 1 安全小白</strong><span data-xp-value>0 / 20 XP</span></div>
+      <progress data-xp-bar value="0" max="20" aria-label="当前等级经验"></progress>
+      <div class="xp-bottom"><span data-xp-total>累计 0 XP</span><span data-xp-next>再完成 2 项任务升至 Lv. 2</span></div>
+    </section>
     <noscript><p>请启用 JavaScript 后查看站点和记录完成进度。</p></noscript>
     <section id="main-route" class="route-area" aria-labelledby="main-route-title">
       <div class="route-section-head">
@@ -63,11 +74,12 @@
       <form method="dialog"><button type="submit" class="route-close" aria-label="关闭任务">×</button></form>
     </div>
     <p id="route-dialog-status" class="route-dialog-status" role="status"></p>
+    <p id="route-dialog-level" class="route-dialog-level"></p>
     <fieldset id="route-checklist">
       <legend>完成一项，勾选一项</legend>
       <div id="route-tasks"></div>
     </fieldset>
-    <p class="route-dialog-note">完成本站所有任务后，地图上的站点会自动点亮。</p>
+    <p class="route-dialog-note">每项任务 +10 XP。完成本站全部任务后，站点会自动点亮。</p>
   </dialog>
   <footer class="footer wrap"><span>© 2026 辣白菜的博客</span><a href="#">回到顶部 ↑</a></footer>
 </body>

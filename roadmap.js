@@ -1,12 +1,12 @@
 "use strict";
 
-const storageKey = "lc-cyber-roadmap-v1";
+const {storageKey, parseProgress} = learningXp;
 const nodes = roadmap.flatMap(stage => stage.nodes.map(([id, number, title, ...tasks]) => ({
   id, number, title, tasks, stage
 })));
 const mainNodes = nodes.filter(node => !node.stage.optional);
 const sideNodes = nodes.filter(node => node.stage.optional);
-const taskIds = new Set(nodes.flatMap(node => node.tasks.map((_, i) => node.id + ":" + i)));
+const {taskIds} = learningXp;
 const tiles = new Map();
 const stageCounts = new Map();
 const get = id => document.getElementById(id);
@@ -15,11 +15,6 @@ let activeNode;
 let nextNode;
 let storage;
 let completed = new Set();
-
-function parseProgress(raw) {
-  const data = JSON.parse(raw || "[]");
-  return new Set(Array.isArray(data) ? data.filter(id => taskIds.has(id)) : []);
-}
 
 function storageUnavailable() {
   storage = null;
@@ -93,6 +88,7 @@ const tally = node => node.tasks.reduce((sum, _, i) => sum + Number(completed.ha
 const lit = node => tally(node) === node.tasks.length;
 
 function refreshMap() {
+  learningXp.render(completed);
   nextNode = mainNodes.find(node => !lit(node));
   for (const node of nodes) {
     const count = tally(node);
@@ -120,12 +116,14 @@ function refreshMap() {
   get("route-resume").disabled = !nextNode;
 }
 
-function refreshDialog() {
+function refreshDialog(levelUp = false) {
   if (!activeNode || !dialog.open) return;
   const count = tally(activeNode);
   get("route-dialog-status").textContent = count === activeNode.tasks.length
     ? "✓ 站点已点亮"
     : count + " / " + activeNode.tasks.length + " 项任务已完成";
+  const xp = learningXp.calculate(completed.size);
+  get("route-dialog-level").textContent = (levelUp ? "升级了！" : "") + "Lv. " + xp.level + " " + xp.title + "，累计 " + xp.total + " XP";
   for (const input of get("route-tasks").querySelectorAll("input")) {
     input.checked = completed.has(input.value);
   }
@@ -153,16 +151,18 @@ get("route-checklist").addEventListener("change", event => {
   const input = event.target;
   if (input.type !== "checkbox" || !taskIds.has(input.value)) return;
   const wasLit = lit(activeNode);
+  const previousLevel = learningXp.calculate(completed.size).level;
   if (input.checked) completed.add(input.value);
   else completed.delete(input.value);
   saveProgress();
   refreshMap();
-  refreshDialog();
-  if (!wasLit && lit(activeNode)) {
-    get("route-announcement").textContent = "已点亮站点：" + activeNode.title;
-  } else if (wasLit && !lit(activeNode)) {
-    get("route-announcement").textContent = "已取消点亮：" + activeNode.title;
-  }
+  const newLevel = learningXp.calculate(completed.size).level;
+  refreshDialog(newLevel > previousLevel);
+  const announcements = [];
+  if (!wasLit && lit(activeNode)) announcements.push("已点亮站点：" + activeNode.title);
+  if (wasLit && !lit(activeNode)) announcements.push("已取消点亮：" + activeNode.title);
+  if (newLevel > previousLevel) announcements.push("升级至 Lv. " + newLevel);
+  get("route-announcement").textContent = announcements.join("。");
 });
 
 get("route-resume").addEventListener("click", () => {
