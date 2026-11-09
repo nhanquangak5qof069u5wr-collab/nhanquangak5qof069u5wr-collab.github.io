@@ -16,7 +16,10 @@ const learningXp = (() => {
     [260, "攻防探索者"],
     [380, "安全进阶者"],
     [520, "综合实践者"],
-    [650, "安全研习者"]
+    [650, "安全研习者"],
+    [760, "实践引路人"],
+    [980, "工程研习者"],
+    [1240, "综合守望者"]
   ].filter(([threshold]) => threshold < maximum);
   steps.push([maximum, "路线全通"]);
 
@@ -44,6 +47,7 @@ const learningXp = (() => {
 
   function render(completed) {
     const model = calculate(completed.size);
+    const petNames = ["初醒幼体","探路幼猫","工具小猫","巡游伙伴","靶场伙伴","探索搭档","侦察伙伴","工程伙伴","守望伙伴","云端搭档","研习伙伴","星光伙伴","全通守护者"];
     for (const root of document.querySelectorAll("[data-learning-xp]")) {
       const write = (selector, value) => {
         const item = root.querySelector(selector);
@@ -55,6 +59,13 @@ const learningXp = (() => {
       write("[data-xp-next]", model.isMax
         ? "已完成全部路线任务"
         : "再完成 " + model.remainingTasks + " 项任务升至 Lv. " + (model.level + 1));
+      write("[data-xp-pet-stage]", petNames[model.level-1]);
+      write("[data-xp-next-pet-name]", model.isMax ? "最终形态已解锁" : petNames[model.level]);
+      const pet=root.querySelector("[data-xp-pet]");
+      if(pet){pet.src="assets/pet-lv-"+model.level+".svg";pet.alt="等级 "+model.level+" 的成长宠物："+petNames[model.level-1];}
+      const nextPet=root.querySelector("[data-xp-next-pet]");
+      if(nextPet){nextPet.src="assets/pet-lv-"+Math.min(13,model.level+1)+".svg";nextPet.alt=model.isMax?"最终宠物形态":"下一等级的宠物形态："+petNames[model.level];}
+      root.dataset.petLevel=model.level;
       const bar = root.querySelector("[data-xp-bar]");
       bar.max = model.range;
       bar.value = model.value;

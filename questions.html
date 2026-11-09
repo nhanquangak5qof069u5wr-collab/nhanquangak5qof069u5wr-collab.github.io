@@ -9,13 +9,15 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="questions.css?v=flags68">
-  <script src="questions-data.js?v=gallery51" defer></script>
-  <script src="questions.js?v=gallery51" defer></script>
+  <script src="questions-data.js?v=lab141" defer></script>
+  <script src="questions.js?v=lab141" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
   <script src="motion-pointer.js" defer></script>
   <link rel="stylesheet" href="inner-surfaces.css?v=texture1">
   <link rel="stylesheet" href="inner-detail.css?v=detail3">
 <link rel="stylesheet" href="interior-refresh.css?v=gallery1">
+<link rel="stylesheet" href="atmosphere.css?v=tech141">
+<script src="atmosphere.js?v=tech141" defer></script>
 </head>
 <body class="motion-site page-bank">
   <a class="skip" href="#main">跳到正文</a>
@@ -28,7 +30,7 @@
       <div class="motion-copy">
         <p class="motion-index"><span>03</span>技能题库</p>
         <h1>带着问题来，<br><em>带着答案走。</em></h1>
-        <p class="bank-lead">4 个方向，17 项技能，每项 3 道分级练习。选择一个方向，把学过的知识变成经得起验证的答案。</p><div class="bank-hero-stats"><span><b>51</b>道练习</span><span><b>17</b>项技能</span><span><b>03</b>个难度</span></div>
+        <p class="bank-lead">141 道 flag 练习，11 个分类、47 个专题。从一条数据包到一次模型实验，把知识逐步变成解题能力。</p><div class="bank-hero-stats"><span><b>141</b>道练习</span><span><b>11</b>个分类</span><span><b>47</b>个专题</span></div>
       </div>
       <div class="bank-scene motion-art"><img class="detail-scene-image" src="assets/route-analysis.webp" width="1536" height="1024" alt="包含分析屏幕、证据硬盘和实验记录的安全分析工作台"><div class="bank-progress">
         <span>练习进度</span>
@@ -36,18 +38,18 @@
         <progress id="bank-progress" value="0" max="1" aria-label="题库完成进度"></progress>
       </div></div>
     </header>
-<section class="bank-categories" aria-labelledby="bank-categories-title"><div class="detail-section-heading"><div><p>CHOOSE A DIRECTION</p><h2 id="bank-categories-title">按方向进入练习</h2></div><span>方向 → 技能 → 题目</span></div><div id="bank-category-grid" class="bank-category-grid"></div></section><div class="detail-guide"><div><span class="guide-number">01</span><strong>基础 · 找准一个概念</strong><p>读清输入、单位与格式，用一个关键知识点得到确定结果。</p></div><div><span class="guide-number">02</span><strong>进阶 · 串起几步推理</strong><p>处理边界、顺序与组合条件，解释结果为什么成立。</p></div><div><span class="guide-number">03</span><strong>挑战 · 验证完整思路</strong><p>从多条线索或实验反馈中推导答案，再用解析检查遗漏。</p></div></div>
+<section class="bank-categories" aria-labelledby="bank-categories-title"><div class="detail-section-heading"><div><p>CHOOSE A DIRECTION</p><h2 id="bank-categories-title">选择你的实验分区</h2></div><span>分类 → 专题 → 题目</span></div><div id="bank-category-grid" class="bank-category-grid"></div></section><div class="detail-guide"><div><span class="guide-number">01</span><strong>基础 · 找准一个概念</strong><p>读清输入、单位与格式，用一个关键知识点得到确定结果。</p></div><div><span class="guide-number">02</span><strong>进阶 · 串起几步推理</strong><p>处理边界、顺序与组合条件，解释结果为什么成立。</p></div><div><span class="guide-number">03</span><strong>挑战 · 验证完整思路</strong><p>从多条线索或实验反馈中推导答案，再用解析检查遗漏。</p></div></div>
     <div id="bank-parking" hidden></div>
     <p class="bank-save" id="bank-save">练习进度仅保存在当前浏览器。</p>
   </main>
 
   <dialog id="bank-category-dialog" class="bank-dialog bank-category-dialog" aria-labelledby="bank-category-title" aria-describedby="bank-category-description">
     <header class="bank-dialog-head"><div><p class="bank-dialog-eyebrow">LEVEL 01 / 选择技能</p><h2 id="bank-category-title"></h2></div><button type="button" class="bank-dialog-close" data-close="category" aria-label="关闭方向分类">×</button></header>
-    <p id="bank-category-description" class="bank-dialog-description">选择一个技能，进入基础、进阶、挑战三道练习。</p><div id="bank-category-skills" class="bank-category-skills"></div>
+    <p id="bank-category-description" class="bank-dialog-description">选择一个专题，进入基础、进阶与挑战练习。</p><div id="bank-category-skills" class="bank-category-skills"></div>
   </dialog>
   <dialog id="bank-skill-dialog" class="bank-dialog bank-skill-dialog" aria-labelledby="bank-skill-title" aria-describedby="bank-skill-description">
     <header class="bank-dialog-head"><div><p id="bank-skill-breadcrumb" class="bank-dialog-eyebrow"></p><h2 id="bank-skill-title"></h2></div><button type="button" class="bank-dialog-close" data-close="skill" aria-label="关闭技能练习">×</button></header>
-    <div class="bank-dialog-subhead"><button type="button" id="bank-dialog-back">← 返回方向分类</button><span>基础 → 进阶 → 挑战</span></div><p id="bank-skill-description" class="bank-dialog-description">每个技能 3 题。展开后提交 flag，验证通过即记录进度；可随时查看解析。</p>
+    <div class="bank-dialog-subhead"><button type="button" id="bank-dialog-back">← 返回方向分类</button><span>基础 → 进阶 → 挑战</span></div><p id="bank-skill-description" class="bank-dialog-description">按基础、进阶与挑战排序。提交 flag 验证结果，完成后自动保存进度。</p>
     <div class="bank-exercise-scroll"><div class="bank-skill-cover-wrap"><img id="bank-skill-cover" width="900" height="220" alt=""><span>01 基础 / 02 进阶 / 03 挑战</span></div><div id="bank-dialog-list"></div></div>
   </dialog>
   <footer class="footer wrap"><span>© 2026 辣白菜</span><a href="#">回到顶部 ↑</a></footer>

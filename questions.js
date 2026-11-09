@@ -65,13 +65,9 @@ function renderQuestion(q, i) {
 
 
 const categoryDialog=get("bank-category-dialog"),skillDialog=get("bank-skill-dialog");
-const categoryVisuals=[
- {photo:"route-code",label:"BUILD / 开发与基础",copy:"从系统与网络，到代码、数据库和服务部署。",keywords:["地址与路由","数据处理","接口与事务","发布与恢复"]},
- {photo:"route-network",label:"INVESTIGATE / 漏洞分析与攻防",copy:"读懂输入和权限边界，在实验中追踪漏洞与行为。",keywords:["Web 与授权","源码与组件","内网与身份","二进制与移动"]},
- {photo:"route-analysis",label:"RESPOND / 检测与响应",copy:"关联日志、证据与配置，让风险判断有据可查。",keywords:["告警研判","证据时间线","云端边界","控制与治理"]},
- {photo:"portal-photo-chip",label:"EXPERIMENT / AI 与数据",copy:"从提示与工具调用，到数据指标和模型实验。",keywords:["生成式 AI","Agent 边界","数据与指标","训练与评估"]}
-];
 const skillPhotos={system:"route-network",python:"route-code",fullstack:"route-code",ops:"route-network","web-pentest":"route-analysis",audit:"route-code",intranet:"route-network",binary:"portal-photo-chip",mobile:"portal-photo-chip",blue:"route-analysis",forensics:"route-analysis",cloud:"route-network",governance:"portal-photo-notebook",genai:"route-code",agent:"route-analysis",analytics:"route-analysis",deep:"portal-photo-chip"};
+const sourceNames={system:"系统管理与网络工程",python:"Python 编程与网络工具",fullstack:"Web 全栈与数据库",ops:"Linux 运维与云原生部署","web-pentest":"Web 渗透与 SQL 注入",audit:"源码审计与组件安全",intranet:"内网攻防与红队对抗",binary:"CTF 与二进制分析",mobile:"移动应用与小程序安全",blue:"蓝队研判与应急响应",forensics:"数字取证与安全防护",cloud:"云与容器安全",governance:"数据治理与等级保护",genai:"生成式 AI 与辅助开发",agent:"AI Agent 与安全评估",analytics:"数据清洗、分析与可视化",deep:"深度学习与论文阅读"};
+function topicPhoto(skill){return skillPhotos[skill.source||skill.id]||activeCategory?.photo||"route-code";}
 let activeCategory=null,activeSkill=null,categoryTrigger=null,returningToCategory=false;
 function photo(name,className,alt){const img=el("img",className);img.src="assets/"+name+".webp";img.alt=alt;img.width=600;img.height=320;img.loading="lazy";return img;}
 function refresh(){
@@ -84,15 +80,15 @@ function refresh(){
 function openCategory(category,trigger){
  activeCategory=category;categoryTrigger=trigger || categoryTrigger;
  get("bank-category-title").textContent=category.group;
- get("bank-category-description").textContent=category.skills.length+" 项技能，每项各 3 题。选择一个技能，从基础到挑战循序验证。";
+ get("bank-category-description").textContent=category.skills.length+" 个细分专题，共 "+category.skills.reduce((n,s)=>n+s.questions.length,0)+" 道练习。按知识点选择，逐步完成验证。";
  const list=get("bank-category-skills");list.replaceChildren();
  for(const [i,skill] of category.skills.entries()){
   const button=el("button","bank-skill-tile");button.type="button";button.dataset.skill=skill.id;button.setAttribute("aria-haspopup","dialog");
   const copy=el("span","bank-skill-tile-copy");copy.append(el("span","bank-skill-index",String(i+1).padStart(2,"0")+" / SKILL"),el("strong",null,skill.name));
-  const tags=el("span","bank-skill-count");for(const level of [1,2,3])tags.append(el("span",null,levels[level]));
+  const tags=el("span","bank-skill-count");for(const level of [...new Set(skill.questions.map(q=>q.level))].sort())tags.append(el("span",null,levels[level]));
   const progress=el("span","bank-skill-progress");progress.dataset.skillProgress=skill.id;
   copy.append(tags,progress);
-  button.append(photo(skillPhotos[skill.id],"bank-skill-photo",skill.name+"实验场景"),copy,el("span","bank-tile-arrow","↗"));
+  button.append(photo(topicPhoto(skill),"bank-skill-photo",skill.name+"实验场景"),copy,el("span","bank-tile-arrow","↗"));
   button.addEventListener("click",()=>openSkill(skill));list.append(button);
  }
  refresh();categoryDialog.showModal();list.scrollTop=0;
@@ -100,21 +96,21 @@ function openCategory(category,trigger){
 function openSkill(skill,questionId){
  activeSkill=skill;
  get("bank-skill-title").textContent=skill.name;
- get("bank-skill-breadcrumb").textContent=activeCategory.group+" / 03 EXERCISES";
- const cover=get("bank-skill-cover");cover.src="assets/"+skillPhotos[skill.id]+".webp";cover.alt=skill.name+"实验场景";
+ get("bank-skill-breadcrumb").textContent=activeCategory.group+" / "+skill.questions.length+" 道练习";
+ const cover=get("bank-skill-cover");cover.src="assets/"+topicPhoto(skill)+".webp";cover.alt=skill.name+"实验场景";
  const list=get("bank-dialog-list");for(const node of [...list.children])get("bank-parking").append(node);
- for(const q of skill.questions){const node=byId.get(q.id).details;node.open=q.id===questionId;list.append(node);}
+ for(const [i,q] of [...skill.questions].sort((a,b)=>a.level-b.level||Number(!!a.lab)-Number(!!b.lab)).entries()){const node=byId.get(q.id).details;node.querySelector(".bank-number").textContent=String(i+1).padStart(2,"0");node.open=q.id===questionId;list.append(node);}
  if(categoryDialog.open)categoryDialog.close();if(!skillDialog.open)skillDialog.showModal();document.querySelector(".bank-exercise-scroll").scrollTop=0;
  if(questionId)requestAnimationFrame(()=>byId.get(questionId).details.scrollIntoView({block:"nearest"}));
  refresh();
 }
 questionBank.forEach((category,i)=>{
- const visual=categoryVisuals[i];const button=el("button","bank-category category-"+i);button.type="button";button.setAttribute("aria-haspopup","dialog");
- const media=el("span","bank-category-media");media.append(photo(visual.photo,"bank-category-photo",category.group+"实践工作台"),el("span","bank-category-label","0"+(i+1)+" / "+visual.label));
+ const visual={photo:category.photo,label:category.label,copy:category.description};const button=el("button","bank-category category-"+i);button.type="button";button.setAttribute("aria-haspopup","dialog");
+ const media=el("span","bank-category-media");const diagram=el("img","bank-category-diagram");diagram.src="assets/category-"+category.id+".svg";diagram.alt="";diagram.width=480;diagram.height=360;diagram.loading="lazy";media.append(photo(visual.photo,"bank-category-photo",category.group+"实践工作台"),diagram,el("span","bank-category-label",String(i+1).padStart(2,"0")+" / "+visual.label.split(" / ")[0]));
  const copy=el("span","bank-category-content");const heading=el("span","bank-category-heading");heading.append(el("strong",null,category.group),el("span",null,"↗"));
  const tags=el("span","bank-category-tags");for(const skill of category.skills)tags.append(el("span",null,skill.name));
  const footer=el("span","bank-category-footer");const progress=el("span","bank-category-progress");progress.dataset.categoryProgress=i;
- footer.append(el("strong",null,category.skills.length+" 技能 · "+category.skills.length*3+" 题"),progress);
+ footer.append(el("strong",null,category.skills.length+" 专题 · "+category.skills.reduce((n,s)=>n+s.questions.length,0)+" 题"),progress);
  copy.append(heading,el("span","bank-category-copy",visual.copy),tags,footer);
  button.append(media,copy);button.addEventListener("click",()=>openCategory(category,button));get("bank-category-grid").append(button);
 });
@@ -125,13 +121,15 @@ document.querySelector('[data-close="skill"]').addEventListener("click",()=>skil
 categoryDialog.addEventListener("close",()=>{if(!skillDialog.open)categoryTrigger?.focus();});
 skillDialog.addEventListener("close",()=>{
  for(const q of questions)get("bank-parking").append(byId.get(q.id).details);
- if(returningToCategory){returningToCategory=false;openCategory(activeCategory,categoryTrigger);get("bank-category-skills").querySelector('[data-skill="'+activeSkill.id+'"]')?.focus();}else categoryTrigger?.focus();
+ if(returningToCategory){returningToCategory=false;openCategory(activeCategory,categoryTrigger);(get("bank-category-skills").querySelector('[data-skill="'+activeSkill.id+'"]')||get("bank-category-skills").querySelector("button"))?.focus();}else categoryTrigger?.focus();
 });
 for(const dialog of [categoryDialog,skillDialog]){dialog.addEventListener("click",event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});}
 function openLinkedQuestion(){
  const qId=location.hash.startsWith("#q-")?location.hash.slice(3):null;
  const requested=new URLSearchParams(location.search).get("skill");
- for(const [i,category] of questionBank.entries()){const skill=category.skills.find(s=>s.id===requested||s.questions.some(q=>q.id===qId));if(!skill)continue;
+ for(const [i,category] of questionBank.entries()){let skill=category.skills.find(s=>s.id===requested||s.questions.some(q=>q.id===qId));
+  if(!skill&&requested){const matching=questionBank.flatMap(c=>c.skills).filter(s=>s.source===requested);if(matching.length&&matching.some(s=>category.skills.includes(s)))skill={id:requested,source:requested,name:sourceNames[requested]||matching[0].name,questions:matching.flatMap(s=>s.questions)};}
+  if(!skill)continue;
   if(categoryDialog.open)categoryDialog.close();activeCategory=category;categoryTrigger=get("bank-category-grid").children[i];openSkill(skill,qId);break;
  }
 }

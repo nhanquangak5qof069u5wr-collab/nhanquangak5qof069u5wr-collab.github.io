@@ -10,14 +10,16 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="roadmap.css">
   <link rel="stylesheet" href="learning-xp.css">
-  <script src="roadmap-data.js" defer></script>
-  <script src="learning-xp.js" defer></script>
+  <script src="roadmap-data.js?v=growth2" defer></script>
+  <script src="learning-xp.js?v=growth2" defer></script>
   <script src="roadmap.js?v=gallery1" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
   <script src="motion-pointer.js" defer></script>
   <link rel="stylesheet" href="inner-surfaces.css?v=texture1">
   <link rel="stylesheet" href="inner-detail.css?v=detail3">
 <link rel="stylesheet" href="interior-refresh.css?v=gallery1">
+<link rel="stylesheet" href="atmosphere.css?v=tech120">
+<script src="atmosphere.js?v=tech120" defer></script>
 </head>
 <body class="motion-site page-route">
   <a class="skip" href="#main">跳到正文</a>
@@ -30,7 +32,7 @@
       <div class="route-hero-copy motion-copy">
         <p class="motion-index"><span>02</span>学习路线</p>
         <h1>每一站练习，<br><em>都算数。</em></h1>
-        <p>38 个站点，76 项动手任务。从环境、编程到攻防和工程能力，把“看懂了”变成“能独立完成”。</p>
+        <p>38 个站点，154 项动手任务。从环境、编程到攻防和工程能力，把“看懂了”变成“能独立完成”。</p>
         <a class="route-button" href="#main-route">查看主线 <span aria-hidden="true">↓</span></a>
       </div>
       <div class="route-scene motion-art"><img class="detail-scene-image" src="assets/route-studio.webp" width="1536" height="1024" alt="有工作台、网络设备和实验笔记的安全学习空间"><div class="route-dashboard">
@@ -45,14 +47,14 @@
       </div></div>
     </header>
 <div class="detail-guide"><div><span class="guide-number">01</span><strong>选定这一站</strong><p>主线补基础，支线按兴趣探索；不用一次做完所有方向。</p></div><div><span class="guide-number">02</span><strong>独立做一次</strong><p>先读任务要求，再搭环境、动手验证，保留过程与结果。</p></div><div><span class="guide-number">03</span><strong>点亮并复盘</strong><p>每项任务 +10 XP，完成本站全部任务点亮站点；进度可随时续上。</p></div></div>
-    <section class="xp-meter xp-panel" data-learning-xp aria-labelledby="route-xp-title">
-      <div class="xp-panel-heading">
-        <h2 id="route-xp-title">成长经验</h2>
-        <span>主线和支线每项任务 +10 XP</span>
+    <section class="xp-meter xp-panel xp-habitat" data-learning-xp aria-labelledby="route-xp-title">
+      <div class="xp-pet-stage"><div class="xp-pet-orbit"><img data-xp-pet src="assets/pet-lv-1.svg" width="150" height="150" alt="等级 1 的成长宠物"></div><span data-xp-pet-stage>初醒幼体</span></div>
+      <div class="xp-habitat-main"><div class="xp-panel-heading"><h2 id="route-xp-title">小白的成长搭档</h2><span>每完成一项任务 +10 XP</span></div>
+        <div class="xp-top"><strong data-xp-level>Lv. 1 安全小白</strong><span data-xp-value>0 / 20 XP</span></div>
+        <progress data-xp-bar value="0" max="20" aria-label="当前等级经验"></progress>
+        <div class="xp-bottom"><span data-xp-total>累计 0 XP</span><span data-xp-next>再完成 2 项任务升至 Lv. 2</span></div>
       </div>
-      <div class="xp-top"><strong data-xp-level>Lv. 1 安全小白</strong><span data-xp-value>0 / 20 XP</span></div>
-      <progress data-xp-bar value="0" max="20" aria-label="当前等级经验"></progress>
-      <div class="xp-bottom"><span data-xp-total>累计 0 XP</span><span data-xp-next>再完成 2 项任务升至 Lv. 2</span></div>
+      <div class="xp-evolution"><span>下一次进化</span><img data-xp-next-pet src="assets/pet-lv-2.svg" width="82" height="82" alt="下一等级的宠物形态"><strong data-xp-next-pet-name>探路幼猫</strong><small>一点点积累，陪你一起成长。</small></div>
     </section>
     <noscript><p>请启用 JavaScript 后查看站点和记录完成进度。</p></noscript>
     <section id="main-route" class="route-area" aria-labelledby="main-route-title">

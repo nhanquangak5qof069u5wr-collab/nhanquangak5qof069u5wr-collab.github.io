@@ -12,8 +12,8 @@ GitHub Pages 静态站点：首页是可交互的三维安全实验台，采用�
 - `assets/lab-poster.webp`：从实际三维场景截取的静态预览图。
 - `skills.html`：17 项技能、技能图解弹窗与专业证书。
 - `skills-guide-data.js`：17 项技能图解的概念、流程、实践和误区说明；`assets/skill-guides/` 为桌面与手机图片。
-- `roadmap.html`：38 个站点、任务、经验和等级；沿用浏览器原有进度。
-- `questions.html`：51 道分级 flag 题目（17 项技能，每项基础、进阶、挑战各 1 题）；`challenge.html`：本地 SQLite 练习靶场。
+- `roadmap.html`：38 个站点、154 项任务、13 级成长宠物与紧凑经验条；沿用浏览器原有进度。
+- `questions.html`：141 道分级 flag 题目（11 个分类、47 个专题，覆盖基础、进阶与挑战）；`challenge.html`：本地 SQLite 练习靶场。
 - `motion.css`：全站视觉样式；`motion-pointer.js`：内页鼠标背景。
 - `interior-refresh.css`：写实内页配图、卡片外框、排版及弹窗滚动布局；`assets/image-prompts.md` 记录配图提示词。
 - `posts/hello.html`：保留的开站手记，首页不使用文章流。
