@@ -13,6 +13,7 @@
 - `index.html`：首页、文章列表和关于介绍。
 - `style.css`：颜色、排版与手机端样式。
 - `posts/hello.html`：第一篇开站说明，可作为文章模板。
+- `skills.html`：AI 开发与安全攻防技能地图。
 - `favicon.svg`：浏览器标签页图标。
 
 在 GitHub 打开文件，点击铅笔编辑，保存 Commit changes 后网站会自动更新。

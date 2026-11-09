@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="辣白菜的技能地图：Python 全栈、漏洞分析、CTF、云安全、应急响应、AI Agent 与数据分析。">
+  <meta name="theme-color" content="#f7f6f2">
+  <title>我的技能地图：AI 开发与安全攻防 · 辣白菜的博客</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+  <header class="header wrap">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true">白</span>辣白菜<span class="brand-note">的博客</span></a>
+    <nav aria-label="主导航"><a href="./#notes">文章</a><a href="skills.html" aria-current="page">技能</a><a href="./#about">关于</a><a href="https://github.com/nhanquangak5qof069u5wr-collab" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+  </header>
+  <main class="wrap" id="main">
+    <article class="skills-page">
+      <div class="skills-intro">
+        <a class="back" href="./#notes">← 返回文章列表</a>
+        <p class="eyebrow"><span></span>技能地图 / <time datetime="2026-11-09">2026 年 11 月 9 日</time></p>
+        <h1>我的技能地图：<br><span class="accent">AI 开发与安全攻防</span></h1>
+        <p class="lead">我能用 Python 做自动化工具和 Web 应用，也能从网络流量、应用代码和系统日志追踪问题。这份地图把课程中掌握的技术整理成四组，方便往后把笔记和项目记录归到对应的位置。</p>
+      </div>
+      <nav class="skills-nav" aria-label="技能分类">
+        <a href="#development">01 开发与基础</a><a href="#offensive">02 漏洞分析与攻防</a><a href="#defense">03 检测与响应</a><a href="#ai">04 AI 与数据</a>
+      </nav>
+
+      <section class="skill-group" id="development" aria-labelledby="development-title">
+        <div class="skill-heading"><span class="number" aria-hidden="true">01</span><h2 id="development-title">开发与基础</h2></div>
+        <div class="skill-grid">
+          <section class="skill-card"><h3>系统管理与网络工程</h3><p>能管理 Windows 和 Linux 上的账户、权限、进程与服务，搭建虚拟机实验网络。理解 TCP/IP、ARP、ICMP、子网、交换与路由，能配置 VLAN 并排查连通性。</p><div class="topics"><span>Windows / Linux</span><span>Kali</span><span>TCP/IP</span><span>VLAN</span></div></section>
+          <section class="skill-card"><h3>Python 编程与网络工具</h3><p>能用 Python 处理文件和结构化数据，使用线程、进程和协程组织并发任务。能用 Socket 编写网络程序，并用 Scapy、PyDivert 和 mitmproxy 分析实验流量。</p><div class="topics"><span>Python</span><span>并发</span><span>Socket</span><span>流量分析</span></div></section>
+          <section class="skill-card"><h3>Web 全栈与数据库</h3><p>能用 HTML、CSS、JavaScript、Bootstrap 或 Vue 3 构建页面，用 Flask、FastAPI、Spring Boot 或 ThinkPHP 实现业务接口。掌握 MySQL 的表结构、关联查询、索引、事务和备份恢复。</p><div class="topics"><span>Flask / FastAPI</span><span>Vue 3</span><span>Spring Boot</span><span>ThinkPHP</span><span>MySQL</span></div></section>
+          <section class="skill-card"><h3>Linux 运维与云原生部署</h3><p>能部署 Web 服务和反向代理，配置负载均衡、防火墙与备份。掌握 Docker 镜像、网络和数据卷，理解 Kubernetes 架构，并能用 Prometheus、Grafana 和 Zabbix 观察系统状态。</p><div class="topics"><span>Nginx</span><span>Docker</span><span>Kubernetes</span><span>Prometheus</span></div></section>
+        </div>
+      </section>
+
+      <section class="skill-group" id="offensive" aria-labelledby="offensive-title">
+        <div class="skill-heading"><span class="number" aria-hidden="true">02</span><h2 id="offensive-title">漏洞分析与攻防</h2></div>
+        <div class="skill-grid">
+          <section class="skill-card"><h3>Web 渗透测试与漏洞挖掘</h3><p>能在授权范围内梳理资产和接口，验证 SQL 注入、XSS、CSRF、SSRF、文件上传与反序列化风险。能比较不同角色和业务状态下的请求，识别越权、验证码和并发逻辑问题，整理复现步骤与修复建议。</p><div class="topics"><span>Burp Suite</span><span>SRC / EduSRC</span><span>业务逻辑</span><span>漏洞报告</span></div></section>
+          <section class="skill-card"><h3>源码审计与组件安全</h3><p>能沿路由、权限检查和数据流追踪 PHP、Java 应用中的风险点，复核扫描发现。能在靶场复现 ThinkPHP、Shiro、Log4j、Fastjson、Spring Boot、Tomcat、Jenkins 和 Redis 等组件的典型问题。</p><div class="topics"><span>PHP / Java</span><span>Vulhub</span><span>代码审计</span><span>中间件</span></div></section>
+          <section class="skill-card"><h3>内网攻防与红队对抗</h3><p>理解 Windows 域、网络分段、代理和隧道，能在实验环境中分析主机权限、横向路径及可见痕迹。能识别 C2、Webshell、载荷与反调试的常见特征，结合防守视角解释检测难点。</p><div class="topics"><span>Active Directory</span><span>Metasploit</span><span>C2 特征</span><span>攻防演练</span></div></section>
+          <section class="skill-card"><h3>CTF 与二进制分析</h3><p>能按 Web、Misc、Crypto、Reverse、Pwn 方向拆解题目，用 IDA 和 GDB 结合静态与动态分析。理解 RSA、对称密码、栈与堆漏洞、格式化字符串和 ROP，并能组织题解赛与攻防赛的靶场练习。</p><div class="topics"><span>Jeopardy / AWD</span><span>IDA / GDB</span><span>RSA</span><span>ROP</span></div></section>
+          <section class="skill-card"><h3>移动应用与小程序安全</h3><p>能检查 APK 结构、反编译结果和运行时行为，结合抓包定位客户端请求、登录流程与数据处理问题。理解小程序请求链路，能在实验环境中区分客户端校验和服务端校验。</p><div class="topics"><span>APK</span><span>静态分析</span><span>动态调试</span><span>移动抓包</span></div></section>
+        </div>
+      </section>
+
+      <section class="skill-group" id="defense" aria-labelledby="defense-title">
+        <div class="skill-heading"><span class="number" aria-hidden="true">03</span><h2 id="defense-title">检测与响应</h2></div>
+        <div class="skill-grid">
+          <section class="skill-card"><h3>蓝队研判与应急响应</h3><p>能围绕 Windows、Linux、Web 与容器环境排查异常，从日志、进程、文件和网络连接建立时间线。能分析后门、挖矿、勒索与 Java 内存马线索，记录隔离、修复和复核结果。</p><div class="topics"><span>ELK</span><span>YARA</span><span>Snort</span><span>Wazuh</span></div></section>
+          <section class="skill-card"><h3>数字取证与安全防护</h3><p>能结合磁盘、内存、浏览器和进程等证据核对事件线索。能部署 WAF、蜜罐和堡垒机，结合告警分析、证据留存与应急报告支持复盘。</p><div class="topics"><span>数字取证</span><span>日志研判</span><span>WAF</span><span>安全运营</span></div></section>
+          <section class="skill-card"><h3>云与容器安全</h3><p>能从云身份、对象存储、密钥、实例元数据与容器权限梳理风险，理解容器逃逸的常见条件。能检查 Kubernetes 鉴权、etcd 暴露和配置泄露，提出隔离和最小权限措施。</p><div class="topics"><span>云身份</span><span>对象存储</span><span>容器隔离</span><span>Kubernetes 鉴权</span></div></section>
+          <section class="skill-card"><h3>数据治理与等级保护</h3><p>理解数据分类分级、风险评估与保护措施，能按主机、网络、应用、数据和管理制度整理评估证据。熟悉护网工作流程，以及态势感知、端点和云工作负载防护产品的用途。</p><div class="topics"><span>数据治理</span><span>等保</span><span>风险评估</span><span>态势感知</span></div></section>
+        </div>
+      </section>
+
+      <section class="skill-group" id="ai" aria-labelledby="ai-title">
+        <div class="skill-heading"><span class="number" aria-hidden="true">04</span><h2 id="ai-title">AI 与数据</h2></div>
+        <div class="skill-grid">
+          <section class="skill-card"><h3>生成式 AI 与辅助开发</h3><p>能设计提示词，把需求拆成可验证的小任务，用 AI 辅助生成页面、脚本、图像和分析材料。能审查生成代码、补充验证，并通过 CLI、模型 API 和 Ollama 接入不同模型。</p><div class="topics"><span>提示词</span><span>AI 编程</span><span>模型 API</span><span>Ollama</span></div></section>
+          <section class="skill-card"><h3>AI Agent 与安全评估</h3><p>能设计基础 Agent 的任务规划和工具调用流程，识别直接与间接提示注入、越狱、数据泄露和越权调用。能为工具划分权限边界，并为高影响操作安排确认与审计。</p><div class="topics"><span>Agent</span><span>提示注入</span><span>工具权限</span><span>安全评估</span></div></section>
+          <section class="skill-card"><h3>数据清洗、分析与可视化</h3><p>能用 NumPy、Pandas 清洗和统计数据，用 Matplotlib 或 Dash 表达变化趋势、分布和对比。掌握 K-means、PCA、ARIMA 的基本用途，能结合数据特征选择分析方法。</p><div class="topics"><span>NumPy</span><span>Pandas</span><span>Matplotlib / Dash</span><span>Jupyter</span></div></section>
+          <section class="skill-card"><h3>深度学习与论文阅读</h3><p>能用 PyTorch 完成数据加载、模型搭建、训练、保存和复用，并通过 TensorBoard 观察训练。理解卷积与池化、VGG 和 ResNet 的基本结构，能用 Zotero 管理文献并拆解论文方法与实验。</p><div class="topics"><span>PyTorch</span><span>TensorBoard</span><span>CNN</span><span>Zotero</span></div></section>
+        </div>
+      </section>
+
+      <div class="skills-source">
+        <h2>课程来源</h2>
+        <p>这份技能地图根据《AI与安全攻防全栈工程师》课程明细与计划（v26.9）整理，覆盖主课、附加课程和数据治理、等级保护等就业专题。</p>
+        <p><a class="text-link" href="./#notes">返回文章列表 ↗</a></p>
+      </div>
+    </article>
+  </main>
+  <footer class="footer wrap"><span>© 2026 辣白菜 · 慢慢学，认真记。</span><a href="#">回到顶部 ↑</a></footer>
+</body>
+</html>
