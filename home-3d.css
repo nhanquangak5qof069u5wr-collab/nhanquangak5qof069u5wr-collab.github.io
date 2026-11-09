@@ -214,3 +214,6 @@ body.page-home{
 .workshop-caption{position:absolute;z-index:3;left:17px;right:17px;top:53px;display:flex;justify-content:space-between;gap:8px;font:8px/1.5 var(--mono);color:#65705c;pointer-events:none}.workshop-caption span{padding:5px 8px;border:1px solid #b2b8a1;background:#ececddbd;border-radius:3px}
 @media(max-width:640px){.chapter-photo{width:100%;height:75%;top:8px;opacity:.8;mask-image:linear-gradient(to bottom,#000 65%,transparent)}.chapter-kicker{z-index:3;background:#edeedcbf;color:#344834;padding:2px 3px;border-radius:2px}.chapter-card .card-copy,.chapter-card .card-xp{z-index:3}.workshop-caption{display:none}}
 @media(prefers-reduced-motion:reduce){.chapter-photo{transition:none;transform:none!important}}
+
+.chapter-photo{width:43%;height:100%;object-fit:contain;opacity:1;mask-image:none;filter:none;right:-2px;padding:2px}.chapter-card:hover .chapter-photo{filter:none;transform:translateY(-4px) rotate(-2deg)}
+@media(max-width:640px){.chapter-photo{width:100%;height:79%;top:10px;right:-3px;object-fit:contain;mask-image:none;opacity:1}.chapter-kicker{font-size:6px;background:none;padding:0;color:inherit;opacity:.8}.chapter-card .card-copy{background:none}.chapter-card.card-route{padding-bottom:29px}}

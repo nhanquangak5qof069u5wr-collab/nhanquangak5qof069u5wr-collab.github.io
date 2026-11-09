@@ -32,7 +32,7 @@
    try{
     const [T,{buildLab},{RoomEnvironment}]=await Promise.all([
      import("./vendor/three/three.module.min.js"),
-     import("./lab-model.js?v=flags68"),
+     import("./lab-model.js?v=fullroom8"),
      import("./vendor/three/RoomEnvironment.js")
     ]);
     if(!alive || reduced.matches)return;
@@ -84,7 +84,7 @@
       const {width,height}=viewport.getBoundingClientRect();
       if(width===0 || height===0)return;
       const aspect=width/height;
-      const half=Math.max(3.60,5.3/aspect);
+      const half=Math.max(3.70,6.0/aspect);
       camera.left=-half*aspect;camera.right=half*aspect;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();
       renderer.setSize(width,height,false);schedule();
     }

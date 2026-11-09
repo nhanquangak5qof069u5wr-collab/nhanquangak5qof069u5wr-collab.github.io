@@ -3,11 +3,11 @@ import { RoundedBoxGeometry } from './vendor/three/RoundedBoxGeometry.js';
 
 export const labContract = Object.freeze({
   units: 'metres', frame: '+Y up; +Z front; platform top Y=.18',
-  platform: {width:7.4, depth:4.8, top:.18},
+  platform: {width:9.8, depth:4.8, top:.18},
   laptop: {width:2.55, depth:1.62, foot:.18, hingeHeight:.30},
   server: {width:1.1, height:2.18, depth:1.08, foot:.18},
   router: {width:1.38, depth:.78, height:.31, foot:.18},
-  budgets: {triangles:150000, calls:240}
+  budgets: {triangles:150000, calls:290}
 });
 
 export function buildLab() {
@@ -68,8 +68,8 @@ export function buildLab() {
   paint(c.getContext('2d'),w,h);
   const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;t.anisotropy=2;return t;
  }
- const plate=box(7.4,.2,4.8,materials.enamel,root,'Continuous beveled plinth',0,.08,0,.1);
- box(7.23,.018,4.63,materials.edge,root,'Inset platform top',0,.187,0,.05);
+ const plate=box(9.8,.2,4.8,materials.enamel,root,'Continuous beveled plinth',0,.08,0,.1);
+ box(9.63,.018,4.63,materials.edge,root,'Inset platform top',0,.187,0,.05);
  for(const x of [-3.1,3.1])for(const z of [-1.95,1.95])cylinder(.13,.07,materials.dark,root,'Elastomer support',x,-.045,z);
  const lines=new T.Group();lines.name='Etched network traces';root.add(lines);
  const lineMat=new T.LineBasicMaterial({color:0x829780,transparent:true,opacity:.30});
@@ -251,9 +251,9 @@ export function buildLab() {
  // An architectural cutaway: real walls, a library and a climbing route.
  const wallMat=new T.MeshStandardMaterial({color:0xbccbb1,roughness:.94});
  const trimMat=new T.MeshStandardMaterial({color:0xf0dfb5,roughness:.72});
- box(7.3,2.85,.13,wallMat,root,'Back wall of learning studio',0,1.62,-2.27,.035);
- box(.13,1.65,4.5,wallMat,root,'Cutaway side wall',-3.56,1.02,0,.035);
- box(7.35,.08,.18,materials.enamel,root,'Wall cap',0,3.08,-2.27,.025);
+ box(9.7,2.85,.13,wallMat,root,'Back wall of learning studio',0,1.62,-2.27,.035);
+ box(.13,1.65,4.5,wallMat,root,'Cutaway side wall',-4.76,1.02,0,.035);
+ box(9.75,.08,.18,materials.enamel,root,'Wall cap',0,3.08,-2.27,.025);
  const sign=texture(1024,224,(c,w,h)=>{c.fillStyle='#294837';c.fillRect(0,0,w,h);c.fillStyle='#e7d5a0';c.font='bold 67px monospace';c.fillText('THE LEARNING LAB',45,100);c.font='25px monospace';c.fillStyle='#afc5a2';c.fillText('START SMALL. BUILD SOMETHING. GROW.',47,165);});
  mesh(new T.PlaneGeometry(3.75,.82),new T.MeshBasicMaterial({map:sign}),root,'Learning lab wall sign',.4,2.43,-2.185).castShadow=false;
  // Open shelves with colorful volumes and a physical achievement cup.
@@ -263,8 +263,8 @@ export function buildLab() {
  for(let i=0;i<6;i++)box(.32,.34+(i%3)*.06,.10,[materials.blue,materials.clay,materials.ochre][i%3],shelf,'Library volume',0,.33+(i%3)*.03,-.49+i*.19,.012);
 
  // Warm framing strips make the room read as a miniature, not a flat board.
- box(.10,2.85,.12,trimMat,root,'Left wall trim',-3.55,1.62,-2.16);
- box(.10,2.85,.12,trimMat,root,'Right wall trim',3.55,1.62,-2.16);
+ box(.10,2.85,.12,trimMat,root,'Left wall trim',-4.75,1.62,-2.16);
+ box(.10,2.85,.12,trimMat,root,'Right wall trim',4.75,1.62,-2.16);
  // Physically shaded oak, plaster, rubber and brushed metal.
  let seed=723;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
  const oak=texture(1024,512,(c,w,h)=>{c.fillStyle='#b29a75';c.fillRect(0,0,w,h);for(let i=0;i<1700;i++){const y=rnd()*h;c.strokeStyle=`rgba(${rnd()>.5?'78,57,34':'224,201,162'},${.03+rnd()*.12})`;c.lineWidth=.3+rnd()*1.3;c.beginPath();c.moveTo(0,y);c.bezierCurveTo(w*.3,y+rnd()*9,w*.7,y-rnd()*12,w,y+rnd()*5);c.stroke()}});
@@ -310,16 +310,45 @@ export function buildLab() {
  box(.06,.02,.02,materials.led,root,'Portable drive indicator',-.42,.289,2.08,.004);
  curve('Test lead', [[-2.8,.23,2.08],[-2.4,.23,2.2],[-2.19,.23,1.9],[-2.3,.23,1.65]],.009,materials.clay);
  const windowMat=new T.MeshStandardMaterial({color:0xc9d7d5,roughness:.25,metalness:.25,emissive:0x9caaa4,emissiveIntensity:.18});
- box(.035,.98,1.32,materials.dark,root,'Side window frame',-3.475,1.25,.85,.015);
- box(.042,.88,1.22,windowMat,root,'Frosted window glass',-3.45,1.25,.85,.01);
- for(let i=0;i<9;i++)box(.075,.035,1.2,materials.ceramic,root,'Window blind slat',-3.40,.86+i*.097,.85,.004);
- box(.16,.045,1.39,materials.aluminum,root,'Window sill',-3.40,.75,.85,.012);
+ box(.035,.98,1.32,materials.dark,root,'Side window frame',-4.675,1.25,.85,.015);
+ box(.042,.88,1.22,windowMat,root,'Frosted window glass',-4.65,1.25,.85,.01);
+ for(let i=0;i<9;i++)box(.075,.035,1.2,materials.ceramic,root,'Window blind slat',-4.60,.86+i*.097,.85,.004);
+ box(.16,.045,1.39,materials.aluminum,root,'Window sill',-4.60,.75,.85,.012);
  box(.72,.075,.22,materials.ceramic,root,'Desktop power strip',2.12,.25,1.97,.02);
  for(let i=0;i<3;i++)for(const z of [1.94,2.00])box(.04,.008,.015,materials.dark,root,'Power strip socket',1.91+i*.20,.292,z,.002);
  curve('Power strip cable',[[2.47,.24,1.98],[2.75,.22,2.14],[3.15,.22,1.75],[3.21,.22,1.15]],.014);
 
  box(.44,.27,.035,materials.ceramic,root,'Wall power outlet',-1.95,1.60,-2.17,.015);
  for(const x of [-2.05,-1.86])for(const y of [1.57,1.65])box(.02,.045,.012,materials.dark,root,'Outlet contact',x,y,-2.145,.002);
+ // The two wings complete the room: print/filing station and network bench.
+ const filing=new T.Group();filing.name='Print and filing station';filing.position.set(-4.02,.21,.70);root.add(filing);
+ box(1.10,.78,1.32,materials.enamel,filing,'Metal drawer cabinet',0,.39,0,.025);
+ for(let i=0;i<3;i++){box(1.02,.215,.025,materials.aluminum,filing,'Filing drawer face',0,.15+i*.23,.675,.012);box(.25,.028,.065,materials.dark,filing,'Drawer pull',0,.20+i*.23,.71,.008)}
+ box(1.18,.065,1.40,woodMat,filing,'Cabinet oak top',0,.81,0,.025);
+ box(.91,.27,.79,materials.ceramic,filing,'Desktop printer body',0,.99,-.1,.055);
+ box(.84,.07,.70,materials.dark,filing,'Printer scanner lid',0,1.16,-.1,.02);
+ box(.66,.04,.32,materials.dark,filing,'Printer output tray',0,.89,.40,.012);
+ for(let i=0;i<4;i++)box(.55,.006,.40,materials.paper,filing,'Printed output page',.02+i*.008,.92+i*.008,.38,.002);
+ box(.19,.018,.10,materials.blue,filing,'Printer status display',.25,1.135,.24,.008);
+ const rack=new T.Group();rack.name='Network equipment bench';rack.position.set(4.04,.21,-.68);root.add(rack);
+ box(1.12,1.36,.94,materials.dark,rack,'Open equipment cabinet',0,.68,0,.025);
+ for(let i=0;i<4;i++){
+  box(.98,.23,.035,materials.aluminum,rack,'Rack switch front',0,.24+i*.29,.49,.012);
+  for(let j=0;j<5;j++)box(.09,.05,.018,materials.dark,rack,'Switch ethernet socket',-.34+j*.14,.25+i*.29,.515,.003);
+  cylinder(.018,.012,materials.led,rack,'Rack status LED',.39,.25+i*.29,.51).rotation.x=Math.PI/2;
+ }
+ box(1.16,.055,1.02,woodMat,rack,'Rack top work surface',0,1.39,0,.02);
+ box(.76,.08,.42,materials.ceramic,rack,'Wireless test access point',0,1.46,0,.03);
+ for(const x of [-.25,.25])cylinder(.016,.53,materials.dark,rack,'Access point antenna',x,1.73,-.13);
+ curve('Network bench uplink',[[4.30,.24,-.1],[4.45,.22,.45],[3.83,.22,.85],[3.25,.23,.60]],.019,materials.blue);
+ const tablet=new T.Group();tablet.name='Bench diagnostic tablet';tablet.position.set(4.01,.23,1.36);tablet.rotation.set(-.45,-.2,0);root.add(tablet);
+ box(.75,.55,.045,materials.dark,tablet,'Tablet chassis',0,.31,0,.025);
+ box(.66,.45,.012,materials.blue,tablet,'Tablet glass',0,.31,.03,.015);
+ for(let i=0;i<5;i++)box(.38+i*.025,.013,.008,materials.keys,tablet,'Diagnostic row',-.04,.45-i*.07,.042,.002);
+ box(.62,.045,.40,materials.aluminum,tablet,'Tablet support foot',0,.025,0,.015);
+ const blueprint=texture(384,440,(c,w,h)=>{c.fillStyle='#e2ddc9';c.fillRect(0,0,w,h);c.strokeStyle='#6a8075';c.lineWidth=2;for(let i=0;i<4;i++){c.strokeRect(38+(i%2)*165,92+Math.floor(i/2)*145,120,75)}c.beginPath();c.moveTo(98,167);c.lineTo(98,237);c.moveTo(263,167);c.lineTo(263,237);c.moveTo(158,125);c.lineTo(203,125);c.stroke();c.fillStyle='#536a5b';c.font='20px monospace';c.fillText('NETWORK / LAB',38,43);c.font='12px monospace';c.fillText('observe / test / document',37,402)});
+ mesh(new T.PlaneGeometry(.92,1.06),new T.MeshStandardMaterial({map:blueprint,roughness:.9}),root,'Network topology wall print',-3.98,2.36,-2.185).castShadow=false;
+ box(.96,1.10,.025,materials.brown,root,'Topology print frame',-3.98,2.36,-2.21,.012);
  for(const target of targets){
   const highlight=new T.PointLight(0xc7ed9a,0,2.7,2);highlight.name='Hover accent';highlight.position.set(0,.9,1.4);target.add(highlight);target.userData.light=highlight;
  }
