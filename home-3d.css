@@ -161,3 +161,23 @@ body.page-home{
 @media(min-width:981px) and (min-height:741px){.card-copy{max-width:calc(100% - 122px)}.card-art{width:163px;height:125px;right:4px;top:30px}.page-home .portal-home{grid-template-rows:minmax(0,1fr) clamp(175px,25vh,210px)}.page-home .lab-intro h1{font-size:clamp(37px,6.4vh,61px)}.lab-description{font-size:12px}.lab-notes{margin-top:12px}.notes-code{font-size:11px}.tool-ribbon{margin-top:10px}}
 @media(max-width:980px),(max-height:740px){.card-stages{display:none}}
 @media(prefers-reduced-motion:reduce){.explore-card{transform:none!important}}
+
+/* Drafting-board exhibit and three chapter tickets. */
+.lab-exhibit{background:#e4e8d6;border-color:#aebc9b;box-shadow:inset 0 0 65px #f8efdba0}
+.scene-blueprint{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}.scene-blueprint svg{width:100%;height:100%;opacity:.9;transition:transform .7s ease}.lab-exhibit:hover .scene-blueprint svg{transform:scale(1.025) rotate(.5deg)}
+.lab-exhibit:after{content:'LEARN · TRY · REPEAT';position:absolute;right:16px;top:50%;font:8px var(--mono);letter-spacing:.18em;writing-mode:vertical-rl;color:#788468;pointer-events:none}
+.lab-viewport{z-index:1}.exhibit-top{background:#eef0dfc7;inset:0 0 auto;padding:12px 18px;border-bottom:1px solid #a9b79850}.exhibit-bottom{background:#eef0dfc7;border-top:1px solid #a9b79850;inset:auto 0 0;padding:5px 12px 5px 18px}
+.explore-card{border-radius:7px;border-color:#aebc9b;box-shadow:0 3px 0 #c5ceb6;padding:13px 17px;gap:5px;background-color:#edf0e2}
+.card-route{background-color:#e1ece5;border-color:#a1bfae;box-shadow:0 3px 0 #b9cfc1}.card-questions{background-color:#eee4d4;border-color:#c7b28f;box-shadow:0 3px 0 #d6c4a7}
+.card-topline{padding-bottom:9px;border-bottom:1px dashed #81966e70;height:28px;letter-spacing:.08em;font-size:10px;font-weight:600}
+.card-arrow{border-radius:4px;background:#405c43;color:#fff;border:0;width:25px;height:25px}.card-route .card-arrow{background:#396654}.card-questions .card-arrow{background:#8c6e45}
+.card-watermark{position:absolute;right:12px;bottom:-14px;font:700 88px/1 var(--display);color:#6e87600e;pointer-events:none;z-index:-1}
+.card-art{right:5px;top:45px;filter:drop-shadow(3px 6px 0 #4d694512)}
+.card-copy>strong{font-weight:750}.card-tagline{color:#42563b}.card-detail{letter-spacing:.015em}
+.card-stages{gap:0;border-top:1px solid #83956f45;padding-top:7px;margin-top:7px}.card-stages i{background:none;border:0;padding:2px 9px 2px 0;border-radius:0}.card-stages i+i:before{content:'→';margin-right:9px;color:#87957d}.card-stages i:last-child{color:#37573a;background:none;font-weight:700}
+@media(min-width:981px) and (min-height:741px){.card-art{width:145px;height:115px;top:49px}.card-copy{gap:3px}.card-copy>strong{font-size:28px}.card-tagline{font-size:12px}.card-detail{font-size:10px}}
+@media(max-width:640px){.explore-card{padding:8px 8px}.card-topline{font-size:8px;letter-spacing:0;height:23px;padding-bottom:6px}.card-art{top:34px;width:64px;height:45px;right:calc(50% - 32px)}.card-copy{padding-top:51px}.card-copy>strong{font-size:18px}.card-watermark{font-size:53px;bottom:0;right:1px}.exhibit-top{padding:9px 11px}.exhibit-bottom{padding:2px 8px 2px 11px}.lab-exhibit:after{font-size:7px;right:8px}}
+@media(max-height:450px) and (min-width:641px){.card-art{top:24px;width:85px;height:65px}.card-topline{height:18px;padding-bottom:3px}.explore-card{padding-block:7px}.card-watermark{font-size:65px}}
+@media(prefers-reduced-motion:reduce){.scene-blueprint svg{transition:none;transform:none!important}}
+
+@media(max-width:640px){.card-topline>span:first-child{white-space:nowrap;font-size:7px}.card-arrow{width:18px;height:18px;font-size:11px;flex-shrink:0}.scene-blueprint svg{opacity:.55}}

@@ -13,8 +13,8 @@
   <script src="roadmap-data.js" defer></script>
   <script src="learning-xp.js" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
-  <link rel="stylesheet" href="home-3d.css?v=growth4">
-  <script src="home-3d.js?v=growth4" defer></script>
+  <link rel="stylesheet" href="home-3d.css?v=labboard5">
+  <script src="home-3d.js?v=labboard5" defer></script>
 </head>
 <body class="motion-site page-home">
   <a class="skip" href="#main">跳到正文</a>
@@ -36,9 +36,10 @@
         <div class="tool-ribbon" aria-label="探索方向"><span><b>&lt;/&gt;</b> CODE</span><span><b>⌘</b> SECURITY</span><span><b>✳</b> AI</span></div>
       </div>
       <div class="lab-exhibit" id="lab-exhibit">
+        <div class="scene-blueprint" aria-hidden="true"><svg viewBox="0 0 900 500" preserveAspectRatio="xMidYMid slice"><defs><pattern id="draft-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#6e8765" stroke-opacity=".15"/></pattern></defs><rect width="900" height="500" fill="url(#draft-grid)"/><circle cx="470" cy="270" r="205" fill="none" stroke="#718963" stroke-opacity=".22"/><circle cx="470" cy="270" r="234" fill="none" stroke="#718963" stroke-opacity=".18" stroke-dasharray="3 9"/><path d="M46 360V116Q46 72 90 72H260M673 70h140v262M647 444H200" fill="none" stroke="#69816c" stroke-opacity=".35"/><g fill="#a47b45"><circle cx="46" cy="360" r="5"/><circle cx="260" cy="72" r="5"/><circle cx="813" cy="332" r="5"/></g><g font-family="monospace" font-size="10" fill="#627258"><text x="65" y="105">01 / START SMALL</text><text x="683" y="97">02 / KEEP BUILDING</text><text x="650" y="438">03 / LEVEL UP</text></g><path d="M15 22h16m-8-8v16M866 470h16m-8-8v16" stroke="#8b9c77"/></svg></div>
         <div class="exhibit-top"><span>THE WORKBENCH</span><span><i></i> 实验中</span></div>
         <div class="lab-viewport" id="lab-viewport" tabindex="0" role="img" aria-label="可旋转的三维安全实验台，包含双屏电脑、服务器、网络设备、台灯和桌面物件。用鼠标拖动或方向键旋转，按 R 复位。下方有等效栏目链接。">
-          <img class="lab-poster" src="assets/lab-poster.webp?v=growth4" width="1000" height="820" alt="包含双屏电脑、服务器、网络设备、台灯、绿植、笔记本和咖啡杯的彩色安全实验台">
+          <img class="lab-poster" src="assets/lab-poster.webp?v=labboard5" width="1000" height="820" alt="包含双屏电脑、服务器、网络设备、台灯、绿植、笔记本和咖啡杯的彩色安全实验台">
           <canvas id="lab-canvas" aria-hidden="true"></canvas>
           <span id="lab-tooltip" class="lab-tooltip" hidden></span>
         </div>
@@ -47,29 +48,29 @@
     </section>
     <nav class="explore-grid" aria-label="站点入口">
       <a class="explore-card card-skills" href="skills.html">
-        <span class="card-topline"><span>01 / BUILD</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        <span class="card-topline"><span>01 / 学习装备</span><span class="card-arrow" aria-hidden="true">↗</span></span>
         <svg class="card-art art-skills" viewBox="0 0 150 100" fill="none" aria-hidden="true">
           <path d="m72 13 36 21v41L72 96 36 75V34z" fill="#b9cdaa" stroke="#43694a"/><path d="m36 34 36 21 36-21M72 55v41" stroke="#43694a"/><path d="m72 13 36 21-36 21-36-21z" fill="#d9e5c8" stroke="#43694a"/><path d="m57 58-10 5 10 6m30-11 10 5-10 6" stroke="#43694a" stroke-width="2"/><path d="M17 26h15m80 49h20M20 78h8" stroke="#95ad83"/><circle cx="123" cy="24" r="9" fill="#d2b879"/><circle cx="22" cy="56" r="4" fill="#6e8d72"/>
         </svg>
-        <span class="card-copy"><strong>技能地图</strong><span class="card-tagline">从看懂一个概念，到亲手实现。</span><span class="card-detail">17 项技能 · 开发 / 攻防 / AI</span><span class="card-stages"><i>认识</i><i>理解</i><i>实践 ↗</i></span></span>
+        <span class="card-watermark" aria-hidden="true">01</span><span class="card-copy"><strong>技能地图</strong><span class="card-tagline">从看懂一个概念，到亲手实现。</span><span class="card-detail">17 项技能 · 开发 / 攻防 / AI</span><span class="card-stages"><i>认识</i><i>理解</i><i>实践 ↗</i></span></span>
       </a>
       <a class="explore-card card-route" href="roadmap.html">
-        <span class="card-topline"><span>02 / GROW</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        <span class="card-topline"><span>02 / 成长旅程</span><span class="card-arrow" aria-hidden="true">↗</span></span>
         <svg class="card-art art-route" viewBox="0 0 150 100" fill="none" aria-hidden="true">
           <path d="m25 68 29-17 27 16 43-26" stroke="#629088" stroke-width="12" stroke-linejoin="round"/><path d="m25 65 29-17 27 16 43-26" stroke="#e1f0e4" stroke-width="3" stroke-dasharray="4 5"/><path d="m35 32 22-13 23 13v24L57 69 35 56z" fill="#a9cfc2" stroke="#497a71"/><path d="m35 32 22 13 23-13M57 45v24" stroke="#497a71"/><path d="M111 16v25" stroke="#386b62" stroke-width="2"/><path d="m111 16 17 5-17 7" fill="#d0a061" stroke="#a9824c"/><circle cx="24" cy="66" r="7" fill="#4f8171"/><circle cx="124" cy="40" r="5" fill="#c2b577"/>
         </svg>
-        <span class="card-copy"><strong>学习路线</strong><span class="card-tagline">今天学一点，明天再进一步。</span><span class="card-detail">28 站主线 + 10 条支线</span></span>
+        <span class="card-watermark" aria-hidden="true">02</span><span class="card-copy"><strong>学习路线</strong><span class="card-tagline">今天学一点，明天再进一步。</span><span class="card-detail">28 站主线 + 10 条支线</span></span>
         <span class="xp-meter xp-compact card-xp" data-learning-xp data-xp-autoload>
           <span class="xp-top"><strong data-xp-level>Lv. 1 安全小白</strong><span data-xp-value>0 / 20 XP</span></span>
           <progress data-xp-bar value="0" max="20" aria-label="当前等级经验"></progress>
         </span>
       </a>
       <a class="explore-card card-questions" href="questions.html">
-        <span class="card-topline"><span>03 / CHALLENGE</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        <span class="card-topline"><span>03 / 实践关卡</span><span class="card-arrow" aria-hidden="true">↗</span></span>
         <svg class="card-art art-questions" viewBox="0 0 150 100" fill="none" aria-hidden="true">
           <path d="m39 31 57-15 18 62-57 15z" fill="#dcbaa4" stroke="#946c58"/><path d="m32 23 58-8 9 66-58 8z" fill="#f4e7ce" stroke="#a57b60"/><path d="m45 39 9 7 13-17m-18 29 9 7 13-17" stroke="#8a7054" stroke-width="2"/><path d="m75 33 11-2M77 51l11-2" stroke="#a58a6d"/><path d="m102 29 8-3 20 52-8 3z" fill="#6d8f96" stroke="#4b6d76"/><path d="m122 81 6 7 2-10" fill="#d7bba0"/><circle cx="23" cy="68" r="8" fill="#b9c7ad"/>
         </svg>
-        <span class="card-copy"><strong>题库</strong><span class="card-tagline">试一试，让“懂了”变成“会了”。</span><span class="card-detail">34 道练习 · 基础 → 进阶 → 挑战</span><span class="card-stages"><i>入门</i><i>进阶</i><i>挑战 ↗</i></span></span>
+        <span class="card-watermark" aria-hidden="true">03</span><span class="card-copy"><strong>题库</strong><span class="card-tagline">试一试，让“懂了”变成“会了”。</span><span class="card-detail">34 道练习 · 基础 → 进阶 → 挑战</span><span class="card-stages"><i>入门</i><i>进阶</i><i>挑战 ↗</i></span></span>
       </a>
     </nav>
   </main>
