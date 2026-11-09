@@ -30,9 +30,9 @@
    status.textContent="正在布置实验台…";
    let renderer;
    try{
-    const [T,{buildLab},{RoomEnvironment}]=await Promise.all([
+    const [T,{buildLab,buildWorkshopBackdrop},{RoomEnvironment}]=await Promise.all([
      import("./vendor/three/three.module.min.js"),
-     import("./lab-model.js?v=fullroom8"),
+     import("./lab-model.js?v=interior9"),
      import("./vendor/three/RoomEnvironment.js")
     ]);
     if(!alive || reduced.matches)return;
@@ -57,6 +57,7 @@
     key.shadow.bias=-.0003;key.shadow.normalBias=.015;key.shadow.radius=4;scene.add(key);
     const fill=new T.DirectionalLight(0xbecbd8,1.0);fill.position.set(4,3,-3);scene.add(fill);
     const {root,targets,materials}=buildLab();scene.add(root);
+    const surroundingRoom=buildWorkshopBackdrop();scene.add(surroundingRoom);
     const shadow=new T.Mesh(new T.PlaneGeometry(25,25),new T.ShadowMaterial({opacity:.17}));
     shadow.name="Ground contact shadow";shadow.rotation.x=-Math.PI/2;shadow.position.y=-.087;shadow.receiveShadow=true;scene.add(shadow);
 

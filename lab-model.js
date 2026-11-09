@@ -358,3 +358,45 @@ export function buildLab() {
  return {root,targets,materials};
 }
 
+
+// Full-viewport architectural environment; separate from the rotating workbench.
+export function buildWorkshopBackdrop(){
+ const room=new T.Group();room.name='Surrounding studio interior';
+ function tex(size,paint){const c=document.createElement('canvas');c.width=c.height=size;paint(c.getContext('2d'),size);const t=new T.CanvasTexture(c);t.colorSpace=T.SRGBColorSpace;return t}
+ let seed=871;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296};
+ const plaster=tex(256,(c,n)=>{c.fillStyle='#c5c5b4';c.fillRect(0,0,n,n);for(let i=0;i<15000;i++){const v=130+Math.floor(rnd()*100);c.fillStyle=`rgba(${v},${v},${v},.13)`;c.fillRect(rnd()*n,rnd()*n,1,1)}});plaster.wrapS=plaster.wrapT=T.RepeatWrapping;plaster.repeat.set(5,2);
+ const tile=tex(512,(c,n)=>{c.fillStyle='#a9ae9c';c.fillRect(0,0,n,n);for(let i=0;i<22000;i++){const v=100+Math.floor(rnd()*110);c.fillStyle=`rgba(${v},${v},${v},.10)`;c.fillRect(rnd()*n,rnd()*n,1+rnd()*2,1+rnd()*2)}c.strokeStyle='#787f6e';c.lineWidth=2;c.strokeRect(1,1,n-2,n-2);c.strokeStyle='#d7d7c0';c.lineWidth=1;c.strokeRect(4,4,n-8,n-8)});tile.wrapS=tile.wrapT=T.RepeatWrapping;tile.repeat.set(12,12);
+ const wood=tex(256,(c,n)=>{c.fillStyle='#796a4e';c.fillRect(0,0,n,n);for(let i=0;i<400;i++){c.strokeStyle=`rgba(210,192,147,${rnd()*.16})`;const x=rnd()*n;c.beginPath();c.moveTo(x,0);c.lineTo(x+rnd()*6,n);c.stroke()}});
+ const wall=new T.MeshStandardMaterial({map:plaster,roughness:.92,bumpMap:plaster,bumpScale:.015});
+ const floor=new T.MeshStandardMaterial({map:tile,roughness:.81,bumpMap:tile,bumpScale:.008});
+ const timber=new T.MeshStandardMaterial({map:wood,roughness:.75});
+ const steel=new T.MeshStandardMaterial({color:0x3b4942,roughness:.5,metalness:.6});
+ const paper=new T.MeshStandardMaterial({color:0xd9d6c1,roughness:.9});
+ function box(w,h,d,m,x,y,z){const o=new T.Mesh(new T.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;room.add(o);return o}
+ const ground=new T.Mesh(new T.PlaneGeometry(36,36),floor);ground.rotation.x=-Math.PI/2;ground.position.y=-.105;ground.receiveShadow=true;room.add(ground);
+ box(28,9,.16,wall,0,4.3,-5.5);box(.16,9,25,wall,-8,4.3,3.5);
+ box(28,.12,.12,steel,0,.03,-5.35);box(.12,.12,25,steel,-7.85,.03,3.5);
+ // Tall windows, reveals and reflected daylight, left of the bench.
+ const glass=new T.MeshStandardMaterial({color:0xbdcfc8,roughness:.28,metalness:.24,emissive:0x91b4a9,emissiveIntensity:.32});
+ box(5.1,4.9,.14,steel,-4.45,3.55,-5.29);box(4.9,4.7,.08,glass,-4.45,3.55,-5.19);
+ for(let i=0;i<4;i++)box(.065,4.72,.16,paper,-6.85+i*1.6,3.55,-5.10);
+ for(const y of [2.02,3.56,5.10])box(4.92,.055,.16,paper,-4.45,y,-5.10);
+ box(5.3,.13,.48,paper,-4.45,1.08,-5.05);
+ // Acoustic timber wall, brass wall labels and a continuous warm light.
+ box(6.9,5.4,.14,steel,4.15,3.28,-5.27);
+ const slats=new T.InstancedMesh(new T.BoxGeometry(.10,5.36,.12),timber,37);slats.name='Acoustic timber slats';const pose=new T.Object3D();
+ for(let i=0;i<37;i++){pose.position.set(.80+i*.185,3.28,-5.12);pose.updateMatrix();slats.setMatrixAt(i,pose.matrix)}slats.castShadow=true;slats.receiveShadow=true;room.add(slats);
+ const light=new T.MeshStandardMaterial({color:0xf0d5a0,emissive:0xffd396,emissiveIntensity:1.2,roughness:.5});box(15,.045,.08,light,0,6.10,-5.07);
+ // A real shelving unit along the left edge of the visible room.
+ for(const x of [-6.8,-5.35])box(.055,2.6,.055,steel,x,1.2,-2.8);
+ for(let i=0;i<4;i++){box(1.65,.07,.65,timber,-6.075,.12+i*.73,-2.8);for(let j=0;j<4;j++){const mat=[paper,timber,steel][(i+j)%3];box(.21,.36+(j%2)*.09,.35,mat,-6.60+j*.32,.335+i*.73+(j%2)*.045,-2.8)}}
+ // Tall plant and low reading table populate the foreground corners.
+ const pot=new T.Mesh(new T.CylinderGeometry(.40,.29,.60,32),new T.MeshStandardMaterial({color:0x847562,roughness:.9}));pot.position.set(-6.05,.21,1.6);pot.castShadow=true;room.add(pot);
+ const stemMat=new T.MeshStandardMaterial({color:0x40583c,roughness:.8});
+ const leafShape=new T.Shape();leafShape.moveTo(0,0);leafShape.bezierCurveTo(.45,.22,.42,.78,0,1.0);leafShape.bezierCurveTo(-.28,.62,-.18,.16,0,0);
+ const leafGeo=new T.ShapeGeometry(leafShape,14),leafMat=new T.MeshStandardMaterial({color:0x566d4d,side:T.DoubleSide,roughness:.82});
+ for(let i=0;i<12;i++){const angle=i*2.39,base=.55+(i%4)*.23;const leaf=new T.Mesh(leafGeo,leafMat);leaf.position.set(-6.05+Math.cos(angle)*.10,base,1.6+Math.sin(angle)*.10);leaf.rotation.set(-.55,angle,.35);leaf.scale.setScalar(.8+(i%3)*.14);leaf.castShadow=true;room.add(leaf)}
+ box(1.4,.08,.95,timber,5.60,.63,2.25);for(const x of [5.03,6.17])for(const z of [1.89,2.61])box(.045,.72,.045,steel,x,.23,z);
+ for(let i=0;i<3;i++)box(.74,.05,.54,[paper,steel,timber][i],5.57,.72+i*.055,2.20);
+ room.userData.staticBackdrop=true;return room;
+}
