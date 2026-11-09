@@ -1,0 +1,41 @@
+.home{margin-block:42px 68px}
+.home-opening{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#eeefe7}
+.home-title-block{padding:clamp(25px,5vw,56px);align-self:center}
+.home-label,.home-feature-label,.home-section-head>span{font:11px/1.5 Consolas,"Microsoft YaHei",monospace;letter-spacing:1.1px}
+.home-label{display:flex;align-items:center;gap:9px;color:#415843;margin:0 0 17px}
+.home-label span{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.home h1{font-size:clamp(44px,6.5vw,82px);line-height:1.09;letter-spacing:-.045em}
+.home h1 em{color:#405d40;font-style:normal}
+.home-description{max-width:320px;margin:19px 0 23px;color:#48564c;font-size:14px;line-height:1.8}
+.home-jumps{display:flex;align-items:center;flex-wrap:wrap;gap:10px 20px;font-size:13px}
+.home-button{display:inline-flex;gap:17px;align-items:center;padding:11px 15px;border-radius:5px;background:#405d40;color:white}
+.home-button:hover{background:#314b35}
+.home-secondary{color:#405d40;padding:8px 0;text-decoration:underline;text-underline-offset:4px}
+.home-feature{min-width:0;background:#25372e;color:#f1f3e9;padding:clamp(23px,3.6vw,38px);display:flex;flex-direction:column;justify-content:space-between;transition:background .16s}
+.home-feature:hover{background:#304539}
+.home-feature:focus-visible{outline-offset:-6px;outline-color:#c8dcbf}
+.home-feature-label{display:flex;flex-wrap:wrap;justify-content:space-between;gap:7px 12px;color:#cad9c8}
+.home-diagram{display:block;width:100%;max-height:90px;color:#b2cba9;margin:20px 0}
+.home-feature h2{font-size:clamp(26px,3.5vw,37px);letter-spacing:.03em}
+.home-feature p{margin:5px 0 18px;color:#d0dacb;font-size:14px;line-height:1.8}
+.home-feature-cta{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #657c68;padding-top:13px;font-size:13px}
+.home-feature-cta span,.home-arrow{font-size:19px}
+.home-index{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:clamp(18px,4vw,44px);margin-top:40px}
+.home-section-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding:0 0 12px}
+.home-section-head h2{font-size:22px;letter-spacing:0}
+.home-section-head>span{white-space:nowrap;color:#526451}
+.home-post{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid var(--line);padding:20px 10px 20px 0}
+.home-post:hover,.home-topics a:hover{background:var(--soft)}
+.home-post h3{font-size:17px;line-height:1.6;margin:8px 0 4px}
+.home-post p{margin:0;color:#4f5951;font-size:13px;line-height:1.8}
+.home-post .home-post-meta{display:flex;align-items:center;gap:12px;font-size:11px}
+.home-post-meta span{border-radius:3px;padding:2px 7px;background:var(--soft);color:#405d40}
+.home-arrow,.home-topics a span{color:#405d40}
+.home-topics a{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:11px 10px 11px 0;font-size:14px}
+@media(max-width:700px){
+  .home{margin-block:25px 48px}
+  .home-opening,.home-index{grid-template-columns:1fr}
+  .home-index{margin-top:29px;gap:26px}
+  .home-title-block{padding:27px 23px}
+  .home-diagram{max-height:70px;margin:12px 0}
+}
