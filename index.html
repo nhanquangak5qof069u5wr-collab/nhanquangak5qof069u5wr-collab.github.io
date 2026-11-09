@@ -13,8 +13,8 @@
   <script src="roadmap-data.js" defer></script>
   <script src="learning-xp.js" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
-  <link rel="stylesheet" href="home-3d.css?v=onescreen2">
-  <script src="home-3d.js?v=onescreen2" defer></script>
+  <link rel="stylesheet" href="home-3d.css?v=dense3">
+  <script src="home-3d.js?v=dense3" defer></script>
 </head>
 <body class="motion-site page-home">
   <a class="skip" href="#main">跳到正文</a>
@@ -28,12 +28,17 @@
         <p class="lab-eyebrow"><span></span>辣白菜的安全实验室</p>
         <h1 id="lab-home-title">保持好奇。<br><em>动手拆解。</em></h1>
         <p class="lab-description">从一条请求，到整个系统。<br>把学过的知识，接入下一次探索。</p>
-        <p class="lab-growth">从把虚拟机跑起来，到把一个问题讲明白。</p>
+        <div class="lab-notes" aria-label="实验笔记">
+          <div class="notes-bar"><span class="terminal-dots" aria-hidden="true">● ● ●</span><span>LAB NOTES / 001</span><span>↗</span></div>
+          <div class="notes-code"><span class="code-prompt">~/lab $</span> explore --curiosity<br><span class="code-muted">01</span> 观察请求 <span class="code-arrow">→</span> 理解系统<br><span class="code-muted">02</span> 复现问题 <span class="code-arrow">→</span> 记录答案</div>
+          <div class="notes-bottom"><span>从第一行代码，到独立解决问题。</span><span aria-hidden="true">▥</span></div>
+        </div>
+        <div class="tool-ribbon" aria-label="探索方向"><span><b>&lt;/&gt;</b> CODE</span><span><b>⌘</b> SECURITY</span><span><b>✳</b> AI</span></div>
       </div>
       <div class="lab-exhibit" id="lab-exhibit">
         <div class="exhibit-top"><span>THE WORKBENCH</span><span><i></i> 实验中</span></div>
         <div class="lab-viewport" id="lab-viewport" tabindex="0" role="img" aria-label="可旋转的三维安全实验台，包含双屏电脑、服务器、网络设备、台灯和桌面物件。用鼠标拖动或方向键旋转，按 R 复位。下方有等效栏目链接。">
-          <img class="lab-poster" src="assets/lab-poster.webp?v=onescreen2" width="1000" height="820" alt="包含双屏电脑、服务器、网络设备、台灯、绿植、笔记本和咖啡杯的彩色安全实验台">
+          <img class="lab-poster" src="assets/lab-poster.webp?v=dense3" width="1000" height="820" alt="包含双屏电脑、服务器、网络设备、台灯、绿植、笔记本和咖啡杯的彩色安全实验台">
           <canvas id="lab-canvas" aria-hidden="true"></canvas>
           <span id="lab-tooltip" class="lab-tooltip" hidden></span>
         </div>
