@@ -32,7 +32,7 @@
    try{
     const [T,{buildLab},{RoomEnvironment}]=await Promise.all([
      import("./vendor/three/three.module.min.js"),
-     import("./lab-model.js?v=onescreen2"),
+     import("./lab-model.js?v=growth4"),
      import("./vendor/three/RoomEnvironment.js")
     ]);
     if(!alive || reduced.matches)return;
@@ -191,3 +191,13 @@
  boot();
 })();
 
+
+// Pointer light and gentle physical response on the home navigation.
+(()=>{const media=matchMedia('(prefers-reduced-motion: reduce)');
+const main=document.querySelector('.portal-home');if(!main)return;
+main.addEventListener('pointermove',e=>{if(media.matches||e.pointerType!=='mouse')return;const r=main.getBoundingClientRect();main.style.setProperty('--glow-x',(e.clientX-r.left)+'px');main.style.setProperty('--glow-y',(e.clientY-r.top)+'px')},{passive:true});
+for(const card of document.querySelectorAll('.explore-card')){
+card.addEventListener('pointermove',e=>{if(media.matches||e.pointerType!=='mouse')return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.setProperty('--px',(x*100)+'%');card.style.setProperty('--py',(y*100)+'%');card.style.transform=`perspective(900px) rotateX(${(0.5-y)*5}deg) rotateY(${(x-.5)*5}deg) translateY(-3px)`},{passive:true});
+card.addEventListener('pointerleave',()=>{card.style.transform=''});
+}media.addEventListener('change',()=>{for(const c of document.querySelectorAll('.explore-card'))c.style.transform=''});
+})();

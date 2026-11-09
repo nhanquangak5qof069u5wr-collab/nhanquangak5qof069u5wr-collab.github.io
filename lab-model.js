@@ -233,6 +233,25 @@ export function buildLab() {
  for(let i=0;i<16;i++){pose.position.set(-.22+(i%8)*.062,.084,i<8?-.25:.25);pose.rotation.set(0,0,0);pose.updateMatrix();pins.setMatrixAt(i,pose.matrix);}board.add(pins);
  box(.14,.08,.18,materials.aluminum,board,'Controller USB shell',.265,.073,.03,.014);
 
+ // Learning objects: books, a handheld device and three physical milestones.
+ const books=new T.Group();books.name='Beginner reference library';books.position.set(-1.75,.20,1.75);books.rotation.y=.10;root.add(books);
+ for(let i=0;i<3;i++){
+  const m=[materials.blue,materials.clay,materials.ochre][i];
+  box(.85,.035,.56,m,books,'Book cover',0,i*.145+.02,0);
+  box(.80,.09,.52,materials.paper,books,'Book pages',0,i*.145+.08,0);
+  box(.85,.025,.56,m,books,'Book upper cover',0,i*.145+.135,0);
+ }
+ const phone=new T.Group();phone.name='Mobile practice device';phone.position.set(-1.9,.20,-1.45);phone.rotation.set(-.28,.18,0);root.add(phone);
+ box(.39,.69,.065,materials.dark,phone,'Phone body',0,.39,0);
+ box(.33,.56,.014,materials.blue,phone,'Phone glass',0,.41,.041);
+ for(let i=0;i<3;i++)box(.21,.025,.015,materials.keys,phone,'Phone text',0,.54-i*.12,.053,.005);
+ const mouse=box(.25,.12,.40,materials.ceramic,root,'Desktop mouse',.65,.26,1.55,.06);
+ box(.012,.02,.12,materials.dark,root,'Mouse wheel',.65,.328,1.47,.004);
+ for(let i=0;i<3;i++){
+  const x=-.65+i*.39,h=.15+i*.12;
+  box(.30,h,.30,[materials.blue,materials.clay,materials.ochre][i],root,'Growth step '+(i+1),x,.20+h/2,2.02,.025);
+  cylinder(.04,.012,materials.led,root,'Milestone indicator',x,.208+h,2.02);
+ }
  for(const target of targets){
   const highlight=new T.PointLight(0xc7ed9a,0,2.7,2);highlight.name='Hover accent';highlight.position.set(0,.9,1.4);target.add(highlight);target.userData.light=highlight;
  }

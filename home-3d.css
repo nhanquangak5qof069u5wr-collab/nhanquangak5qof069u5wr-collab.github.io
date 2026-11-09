@@ -154,3 +154,10 @@ body.page-home{
 @media(max-width:640px){.page-home .wrap{width:calc(100% - 28px)}.page-home .lab-intro{padding:0 3px}.page-home .lab-intro h1{font-size:clamp(23px,7.6vw,42px)}.tool-ribbon>span{padding:4px 6px;font-size:8px}.tool-ribbon b{font-size:12px}.lab-description{margin-top:7px}}
 @media(max-height:600px) and (min-width:851px){.lab-notes{display:none}}
 @media(min-width:851px){.page-home .lab-home{grid-template-rows:minmax(0,1fr)}.page-home .lab-intro{min-height:0}.page-home .lab-intro h1{font-size:clamp(36px,6.7vh,64px)}.lab-eyebrow{margin-bottom:14px}.lab-description{margin-top:14px}.lab-notes{margin-top:15px}.notes-code{padding:9px 13px;line-height:1.7}.notes-bottom{display:none}.tool-ribbon{margin-top:12px}}
+
+.page-home .portal-home{position:relative;isolation:isolate;background:radial-gradient(240px circle at var(--glow-x,-500px) var(--glow-y,-500px),#b6cba936,transparent 100%)}
+.explore-card{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;background-image:radial-gradient(180px circle at var(--px,-100%) var(--py,-100%),#fff9,transparent)}
+.card-stages{display:flex;gap:5px;margin-top:6px}.card-stages i{font-style:normal;font-size:10px;padding:3px 8px;border:1px solid #6a805b35;border-radius:4px;background:#ffffff40}.card-stages i:last-child{background:#436346;color:#f4f5df}
+@media(min-width:981px) and (min-height:741px){.card-copy{max-width:calc(100% - 122px)}.card-art{width:163px;height:125px;right:4px;top:30px}.page-home .portal-home{grid-template-rows:minmax(0,1fr) clamp(175px,25vh,210px)}.page-home .lab-intro h1{font-size:clamp(37px,6.4vh,61px)}.lab-description{font-size:12px}.lab-notes{margin-top:12px}.notes-code{font-size:11px}.tool-ribbon{margin-top:10px}}
+@media(max-width:980px),(max-height:740px){.card-stages{display:none}}
+@media(prefers-reduced-motion:reduce){.explore-card{transform:none!important}}
