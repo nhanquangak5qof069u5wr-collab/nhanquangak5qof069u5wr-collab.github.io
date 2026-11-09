@@ -15,7 +15,8 @@
  function fallback() {
    exhibit.classList.remove("scene-ready");
    reset.hidden=true;tooltip.hidden=true;
-   status.textContent="静态预览 · 通过下方入口继续";
+   viewport.tabIndex=-1;
+   status.textContent="静态预览 · 选择下方入口继续";
  }
  function stop() {
    destroy?.();destroy=null;fallback();
@@ -31,7 +32,7 @@
    try{
     const [T,{buildLab},{RoomEnvironment}]=await Promise.all([
      import("./vendor/three/three.module.min.js"),
-     import("./lab-model.js"),
+     import("./lab-model.js?v=onescreen2"),
      import("./vendor/three/RoomEnvironment.js")
     ]);
     if(!alive || reduced.matches)return;
@@ -39,7 +40,7 @@
     renderer.setPixelRatio(Math.min(devicePixelRatio,fine.matches?1.6:1.25));
     renderer.setClearColor(0xe7ecdc,0);
     renderer.outputColorSpace=T.SRGBColorSpace;
-    renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+    renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=.98;
     renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
     const scene=new T.Scene();
     const environment=new RoomEnvironment();
@@ -83,7 +84,7 @@
       const {width,height}=viewport.getBoundingClientRect();
       if(width===0 || height===0)return;
       const aspect=width/height;
-      const half=Math.max(2.9,4.05/aspect);
+      const half=Math.max(3.13,5.0/aspect);
       camera.left=-half*aspect;camera.right=half*aspect;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();
       renderer.setSize(width,height,false);schedule();
     }
@@ -181,7 +182,7 @@
     };
     resize();renderer.render(scene,camera);
     exhibit.classList.add("scene-ready");
-    viewport.dataset.renderer="webgl";
+    viewport.dataset.renderer="webgl";viewport.tabIndex=0;
     reset.hidden=false;
     status.textContent=fine.matches?"拖动旋转 · 点击设备探索":"左右轻拖旋转 · 点击设备探索";
     schedule();

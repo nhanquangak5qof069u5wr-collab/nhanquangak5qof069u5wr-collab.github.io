@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="learning-xp.css">
   <link rel="stylesheet" href="home.css?v=motion-study">
-  <link rel="stylesheet" href="home-3d.css?v=lab1">
   <script src="roadmap-data.js" defer></script>
   <script src="learning-xp.js" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
-  <script src="home-3d.js" defer></script>
+  <link rel="stylesheet" href="home-3d.css?v=onescreen2">
+  <script src="home-3d.js?v=onescreen2" defer></script>
 </head>
 <body class="motion-site page-home">
   <a class="skip" href="#main">跳到正文</a>
@@ -28,36 +28,46 @@
         <p class="lab-eyebrow"><span></span>辣白菜的安全实验室</p>
         <h1 id="lab-home-title">保持好奇。<br><em>动手拆解。</em></h1>
         <p class="lab-description">从一条请求，到整个系统。<br>把学过的知识，接入下一次探索。</p>
-        <div class="lab-intro-foot"><span class="lab-rule"></span><p>BUILD · BREAK · UNDERSTAND</p></div>
+        <p class="lab-growth">从把虚拟机跑起来，到把一个问题讲明白。</p>
       </div>
       <div class="lab-exhibit" id="lab-exhibit">
         <div class="exhibit-top"><span>THE WORKBENCH</span><span><i></i> 实验中</span></div>
-        <div class="lab-viewport" id="lab-viewport" tabindex="0" role="img" aria-label="可旋转的三维安全实验台，包含电脑、网络线路和服务器。用鼠标拖动或方向键旋转，按 R 复位。下方有等效栏目链接。">
-          <img class="lab-poster" src="assets/lab-poster.webp" width="1000" height="820" alt="墨绿金属底座上的电脑、网络设备和服务器组成的安全实验台">
+        <div class="lab-viewport" id="lab-viewport" tabindex="0" role="img" aria-label="可旋转的三维安全实验台，包含双屏电脑、服务器、网络设备、台灯和桌面物件。用鼠标拖动或方向键旋转，按 R 复位。下方有等效栏目链接。">
+          <img class="lab-poster" src="assets/lab-poster.webp?v=onescreen2" width="1000" height="820" alt="包含双屏电脑、服务器、网络设备、台灯、绿植、笔记本和咖啡杯的彩色安全实验台">
           <canvas id="lab-canvas" aria-hidden="true"></canvas>
           <span id="lab-tooltip" class="lab-tooltip" hidden></span>
         </div>
         <div class="exhibit-bottom"><span id="lab-scene-status" role="status">正在布置实验台…</span><button type="button" id="lab-reset" aria-label="复位三维视角" hidden><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 7a6 6 0 1 1 0 6M4 3v4h4"/></svg>复位视角</button></div>
       </div>
     </section>
-    <div class="lab-section-caption"><span>继续探索</span><p>每一次练习，都让下一步更清楚。</p><span aria-hidden="true">↓</span></div>
-    <nav class="portal-grid" aria-label="站点入口">
-      <div class="portal">
-        <a class="portal-link" href="skills.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m24 5 17 10v18L24 43 7 33V15zM7 15l17 10 17-10M24 25v18"/><path d="m17 28-4 3 4 4m14-7 4 3-4 4"/></svg><span><strong>技能地图</strong><small>开发、攻防与 AI</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
-      </div>
-      <div class="portal portal-route">
-        <a class="portal-link" href="roadmap.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 12 12-6 12 6 12-6v30l-12 6-12-6-12 6zM18 6v30m12-24v30"/><path d="M12 29h11V20h13"/><circle cx="12" cy="29" r="2.5" fill="currentColor"/><circle cx="36" cy="20" r="2.5" fill="currentColor"/></svg><span><strong>学习路线</strong><small>完成任务，点亮站点</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
-        <div class="xp-meter xp-compact" data-learning-xp data-xp-autoload>
-          <div class="xp-top"><strong data-xp-level>Lv. 1 安全小白</strong><span data-xp-value>0 / 20 XP</span></div>
+    <nav class="explore-grid" aria-label="站点入口">
+      <a class="explore-card card-skills" href="skills.html">
+        <span class="card-topline"><span>01 / BUILD</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        <svg class="card-art art-skills" viewBox="0 0 150 100" fill="none" aria-hidden="true">
+          <path d="m72 13 36 21v41L72 96 36 75V34z" fill="#b9cdaa" stroke="#43694a"/><path d="m36 34 36 21 36-21M72 55v41" stroke="#43694a"/><path d="m72 13 36 21-36 21-36-21z" fill="#d9e5c8" stroke="#43694a"/><path d="m57 58-10 5 10 6m30-11 10 5-10 6" stroke="#43694a" stroke-width="2"/><path d="M17 26h15m80 49h20M20 78h8" stroke="#95ad83"/><circle cx="123" cy="24" r="9" fill="#d2b879"/><circle cx="22" cy="56" r="4" fill="#6e8d72"/>
+        </svg>
+        <span class="card-copy"><strong>技能地图</strong><span class="card-tagline">把知识，连成自己的网络。</span><span class="card-detail">17 项技能 · 开发 / 攻防 / AI</span></span>
+      </a>
+      <a class="explore-card card-route" href="roadmap.html">
+        <span class="card-topline"><span>02 / GROW</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        <svg class="card-art art-route" viewBox="0 0 150 100" fill="none" aria-hidden="true">
+          <path d="m25 68 29-17 27 16 43-26" stroke="#629088" stroke-width="12" stroke-linejoin="round"/><path d="m25 65 29-17 27 16 43-26" stroke="#e1f0e4" stroke-width="3" stroke-dasharray="4 5"/><path d="m35 32 22-13 23 13v24L57 69 35 56z" fill="#a9cfc2" stroke="#497a71"/><path d="m35 32 22 13 23-13M57 45v24" stroke="#497a71"/><path d="M111 16v25" stroke="#386b62" stroke-width="2"/><path d="m111 16 17 5-17 7" fill="#d0a061" stroke="#a9824c"/><circle cx="24" cy="66" r="7" fill="#4f8171"/><circle cx="124" cy="40" r="5" fill="#c2b577"/>
+        </svg>
+        <span class="card-copy"><strong>学习路线</strong><span class="card-tagline">点亮一站，再走远一点。</span><span class="card-detail">28 站主线 + 10 条支线</span></span>
+        <span class="xp-meter xp-compact card-xp" data-learning-xp data-xp-autoload>
+          <span class="xp-top"><strong data-xp-level>Lv. 1 安全小白</strong><span data-xp-value>0 / 20 XP</span></span>
           <progress data-xp-bar value="0" max="20" aria-label="当前等级经验"></progress>
-        </div>
-      </div>
-      <div class="portal">
-        <a class="portal-link" href="questions.html"><svg class="portal-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="8" width="30" height="34" rx="4"/><path d="M17 6h14v7H17zM17 21h3m6 0h6m-15 7h3m6 0h6m-15 7h3m6 0h6"/></svg><span><strong>题库</strong><small>基础练习到实战挑战</small></span><span class="portal-arrow" aria-hidden="true">↗</span></a>
-      </div>
+        </span>
+      </a>
+      <a class="explore-card card-questions" href="questions.html">
+        <span class="card-topline"><span>03 / CHALLENGE</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        <svg class="card-art art-questions" viewBox="0 0 150 100" fill="none" aria-hidden="true">
+          <path d="m39 31 57-15 18 62-57 15z" fill="#dcbaa4" stroke="#946c58"/><path d="m32 23 58-8 9 66-58 8z" fill="#f4e7ce" stroke="#a57b60"/><path d="m45 39 9 7 13-17m-18 29 9 7 13-17" stroke="#8a7054" stroke-width="2"/><path d="m75 33 11-2M77 51l11-2" stroke="#a58a6d"/><path d="m102 29 8-3 20 52-8 3z" fill="#6d8f96" stroke="#4b6d76"/><path d="m122 81 6 7 2-10" fill="#d7bba0"/><circle cx="23" cy="68" r="8" fill="#b9c7ad"/>
+        </svg>
+        <span class="card-copy"><strong>题库</strong><span class="card-tagline">把理解，交给一次实战。</span><span class="card-detail">34 道练习 · 基础 → 进阶 → 挑战</span></span>
+      </a>
     </nav>
-    <section class="lab-journal" aria-labelledby="lab-journal-title"><p class="lab-eyebrow">一点点成长</p><h2 id="lab-journal-title">从把虚拟机跑起来，<br>到把一个问题讲明白。</h2><p>刚学安全时，我追着报错找答案。后来，慢慢学会先复现、再分析，最后验证自己的判断。这个小站留着走过的路线，也留着还想继续拆解的问题。</p></section>
   </main>
-  <footer class="footer wrap"><span>© 2026 辣白菜</span></footer>
+  <footer class="footer wrap"><span>© 2026 辣白菜</span><span>保持好奇，慢慢升级。</span></footer>
 </body>
 </html>
