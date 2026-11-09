@@ -67,14 +67,25 @@ function renderQuestion(q, i) {
     link.href = q.lab;
     content.append(link, el("p", "bank-small", "在靶场验证正确的 flag 后，这道题会自动标记为完成。"));
   } else {
+    const form = el("form", "bank-flag-form");
+    const input = el("input", "bank-flag-input");
+    input.type = "text"; input.name = "flag"; input.placeholder = "flag{...}";
+    input.autocomplete = "off"; input.spellcheck = false; input.required = true;
+    input.setAttribute("aria-label", q.title + "的 flag");
+    const submit = el("button", "bank-flag-submit", "验证 flag"); submit.type = "submit";
+    const feedback = el("p", "bank-flag-feedback"); feedback.setAttribute("role", "status");
+    form.append(input, submit);
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      const value = input.value.trim();
+      if (!/^flag\{[^{}]+\}$/.test(value)) { feedback.textContent = "请按 flag{...} 格式提交。"; return; }
+      if (value !== q.answer) { feedback.textContent = "flag 不正确，请检查结果、大小写和题目要求的分隔符。"; return; }
+      setCompleted(q.id, true); feedback.textContent = "验证通过，已记录完成进度。";
+    });
     const answer = el("details", "bank-answer");
-    answer.append(el("summary", null, "参考答案"), el("p", null, q.answer));
-    const control = el("label", "bank-done");
-    check = el("input");
-    check.type = "checkbox";
-    check.addEventListener("change", () => setCompleted(q.id, check.checked));
-    control.append(check, el("span", null, "标记已完成"));
-    content.append(answer, control);
+    answer.append(el("summary", null, "查看 flag 与解析"), el("code", "bank-reference-flag", q.answer), el("p", null, q.explanation));
+    content.append(form, feedback, answer);
+
   }
   details.append(summary, content);
   get("bank-list").append(details);

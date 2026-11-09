@@ -309,7 +309,15 @@ export function buildLab() {
  box(.44,.065,.30,materials.aluminum,root,'Portable SSD enclosure',-.55,.25,1.94,.025);
  box(.06,.02,.02,materials.led,root,'Portable drive indicator',-.42,.289,2.08,.004);
  curve('Test lead', [[-2.8,.23,2.08],[-2.4,.23,2.2],[-2.19,.23,1.9],[-2.3,.23,1.65]],.009,materials.clay);
- for(let i=0;i<6;i++)box(.025,.035,.78,materials.aluminum,root,'Side wall ventilation louver',-3.48,.90+i*.11,.85,.006);
+ const windowMat=new T.MeshStandardMaterial({color:0xc9d7d5,roughness:.25,metalness:.25,emissive:0x9caaa4,emissiveIntensity:.18});
+ box(.035,.98,1.32,materials.dark,root,'Side window frame',-3.475,1.25,.85,.015);
+ box(.042,.88,1.22,windowMat,root,'Frosted window glass',-3.45,1.25,.85,.01);
+ for(let i=0;i<9;i++)box(.075,.035,1.2,materials.ceramic,root,'Window blind slat',-3.40,.86+i*.097,.85,.004);
+ box(.16,.045,1.39,materials.aluminum,root,'Window sill',-3.40,.75,.85,.012);
+ box(.72,.075,.22,materials.ceramic,root,'Desktop power strip',2.12,.25,1.97,.02);
+ for(let i=0;i<3;i++)for(const z of [1.94,2.00])box(.04,.008,.015,materials.dark,root,'Power strip socket',1.91+i*.20,.292,z,.002);
+ curve('Power strip cable',[[2.47,.24,1.98],[2.75,.22,2.14],[3.15,.22,1.75],[3.21,.22,1.15]],.014);
+
  box(.44,.27,.035,materials.ceramic,root,'Wall power outlet',-1.95,1.60,-2.17,.015);
  for(const x of [-2.05,-1.86])for(const y of [1.57,1.65])box(.02,.045,.012,materials.dark,root,'Outlet contact',x,y,-2.145,.002);
  for(const target of targets){
