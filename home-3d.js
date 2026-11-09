@@ -32,7 +32,7 @@
    try{
     const [T,{buildLab},{RoomEnvironment}]=await Promise.all([
      import("./vendor/three/three.module.min.js"),
-     import("./lab-model.js?v=growth4"),
+     import("./lab-model.js?v=studio6"),
      import("./vendor/three/RoomEnvironment.js")
     ]);
     if(!alive || reduced.matches)return;
@@ -49,7 +49,7 @@
     scene.environment=envMap.texture;scene.environmentIntensity=.7;
     environment.dispose();pmrem.dispose();
     const camera=new T.OrthographicCamera(-4,4,3.3,-3.3,.1,60);
-    camera.position.set(7.7,7.1,10);camera.lookAt(0,.65,0);
+    camera.position.set(7.7,7.1,10);camera.lookAt(0,1.20,0);
     scene.add(new T.HemisphereLight(0xf9f9e6,0x69795c,2.0));
     const key=new T.DirectionalLight(0xfff5df,3.4);key.position.set(-3.5,7,5);
     key.castShadow=true;key.shadow.mapSize.set(1536,1536);
@@ -84,7 +84,7 @@
       const {width,height}=viewport.getBoundingClientRect();
       if(width===0 || height===0)return;
       const aspect=width/height;
-      const half=Math.max(3.13,5.0/aspect);
+      const half=Math.max(3.60,5.3/aspect);
       camera.left=-half*aspect;camera.right=half*aspect;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();
       renderer.setSize(width,height,false);schedule();
     }

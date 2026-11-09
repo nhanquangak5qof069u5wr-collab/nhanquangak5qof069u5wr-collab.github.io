@@ -7,7 +7,7 @@ export const labContract = Object.freeze({
   laptop: {width:2.55, depth:1.62, foot:.18, hingeHeight:.30},
   server: {width:1.1, height:2.18, depth:1.08, foot:.18},
   router: {width:1.38, depth:.78, height:.31, foot:.18},
-  budgets: {triangles:150000, calls:165}
+  budgets: {triangles:150000, calls:210}
 });
 
 export function buildLab() {
@@ -252,6 +252,32 @@ export function buildLab() {
   box(.30,h,.30,[materials.blue,materials.clay,materials.ochre][i],root,'Growth step '+(i+1),x,.20+h/2,2.02,.025);
   cylinder(.04,.012,materials.led,root,'Milestone indicator',x,.208+h,2.02);
  }
+ // An architectural cutaway: real walls, a library and a climbing route.
+ const wallMat=new T.MeshStandardMaterial({color:0xbccbb1,roughness:.94});
+ const trimMat=new T.MeshStandardMaterial({color:0xf0dfb5,roughness:.72});
+ box(7.3,2.85,.13,wallMat,root,'Back wall of learning studio',0,1.62,-2.27,.035);
+ box(.13,1.65,4.5,wallMat,root,'Cutaway side wall',-3.56,1.02,0,.035);
+ box(7.35,.08,.18,materials.enamel,root,'Wall cap',0,3.08,-2.27,.025);
+ const sign=texture(1024,224,(c,w,h)=>{c.fillStyle='#294837';c.fillRect(0,0,w,h);c.fillStyle='#e7d5a0';c.font='bold 67px monospace';c.fillText('THE LEARNING LAB',45,100);c.font='25px monospace';c.fillStyle='#afc5a2';c.fillText('START SMALL. BUILD SOMETHING. GROW.',47,165);});
+ mesh(new T.PlaneGeometry(3.75,.82),new T.MeshBasicMaterial({map:sign}),root,'Learning lab wall sign',.4,2.43,-2.185).castShadow=false;
+ // Open shelves with colorful volumes and a physical achievement cup.
+ const shelf=new T.Group();shelf.name='Open library shelves';shelf.position.set(-3.26,.2,-.50);root.add(shelf);
+ for(const z of [-.66,.66])box(.10,1.48,.09,materials.enamel,shelf,'Shelf side upright',0,.74,z);
+ for(const y of [.12,.73,1.4])box(.55,.065,1.43,trimMat,shelf,'Open shelf',0,y,0);
+ for(let i=0;i<6;i++)box(.32,.34+(i%3)*.06,.10,[materials.blue,materials.clay,materials.ochre][i%3],shelf,'Library volume',0,.33+(i%3)*.03,-.49+i*.19,.012);
+ cylinder(.13,.03,materials.brass,shelf,'Achievement base',0,1.45,.22);
+ cylinder(.035,.18,materials.brass,shelf,'Achievement stem',0,1.55,.22);
+ mesh(new T.SphereGeometry(.14,16,10),materials.ochre,shelf,'Achievement sphere',0,1.75,.22);
+ // A wall-mounted three-step path, connected by brass rails.
+ for(let i=0;i<3;i++){
+  const x=1.65+i*.52,y=1.72+i*.40;
+  box(.42,.20,.36,[materials.blue,materials.clay,materials.ochre][i],root,'Wall growth step '+i,x,y,-2.00,.025);
+  box(.035,.38,.035,materials.brass,root,'Step marker '+i,x,y+.29,-2.00,.008);
+  mesh(new T.SphereGeometry(.075,12,8),materials.led,root,'Step light '+i,x,y+.52,-2.00);
+ }
+ // Warm framing strips make the room read as a miniature, not a flat board.
+ box(.10,2.85,.12,trimMat,root,'Left wall trim',-3.55,1.62,-2.16);
+ box(.10,2.85,.12,trimMat,root,'Right wall trim',3.55,1.62,-2.16);
  for(const target of targets){
   const highlight=new T.PointLight(0xc7ed9a,0,2.7,2);highlight.name='Hover accent';highlight.position.set(0,.9,1.4);target.add(highlight);target.userData.light=highlight;
  }
