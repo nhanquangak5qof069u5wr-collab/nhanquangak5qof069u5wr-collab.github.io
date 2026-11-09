@@ -8,6 +8,7 @@
   <title>我的技能地图：AI 开发与安全攻防 · 辣白菜的博客</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="skills-layout.css">
 </head>
 <body>
   <a class="skip" href="#main">跳到正文</a>
@@ -16,24 +17,46 @@
     <nav aria-label="主导航"><a href="./#notes">文章</a><a href="skills.html" aria-current="page">技能</a><a href="./#about">关于</a><a href="https://github.com/nhanquangak5qof069u5wr-collab" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
   </header>
   <main class="wrap" id="main">
-    <article class="skills-page">
-      <div class="skills-intro">
-        <a class="back" href="./#notes">← 返回文章列表</a>
-        <p class="eyebrow"><span></span>技能地图 / <time datetime="2026-11-09">2026 年 11 月 9 日</time></p>
-        <h1>我的技能地图：<br><span class="accent">AI 开发与安全攻防</span></h1>
-        <p class="lead">我能用 Python 做自动化工具和 Web 应用，也能从网络流量、应用代码和系统日志追踪问题。这份地图把课程中掌握的技术整理成四组，方便往后把笔记和项目记录归到对应的位置。</p>
-      </div>
-      <nav class="skills-nav" aria-label="技能分类">
-        <a href="#certifications">专业证书</a><a href="#development">01 开发与基础</a><a href="#offensive">02 漏洞分析与攻防</a><a href="#defense">03 检测与响应</a><a href="#ai">04 AI 与数据</a>
-      </nav>
-
-      <section class="skill-group" id="certifications" aria-labelledby="certifications-title">
-        <div class="skill-heading"><h2 id="certifications-title">专业证书</h2></div>
-        <div class="skill-card">
-          <h3>注册渗透测试工程师（CISP-PTE）</h3>
-          <p>颁发机构：中国信息安全测评中心</p>
-          <p>有效期：<time datetime="2026-03-26">2026 年 3 月 26 日</time>至<time datetime="2029-03-25">2029 年 3 月 25 日</time></p>
+    <article class="skills-page atlas">
+      <header class="atlas-hero">
+        <div class="atlas-hero-copy">
+          <div class="atlas-kicker"><span class="atlas-dot" aria-hidden="true"></span>辣白菜的技能地图</div>
+          <h1>AI 开发与<br><span class="accent">安全攻防</span></h1>
+          <p class="atlas-lead">从写代码、搭服务，到审计应用、分析流量和响应告警。这是我在 AI 与网络安全课程中掌握的技术。</p>
+          <a class="atlas-jump" href="#development">浏览技能 <span aria-hidden="true">↓</span></a>
         </div>
+        <div class="atlas-graphic" aria-hidden="true">
+          <svg viewBox="0 0 420 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="currentColor" opacity=".32"><circle cx="210" cy="140" r="106" stroke-dasharray="2 6"/><circle cx="210" cy="140" r="79"/><circle cx="210" cy="140" r="52"/><path d="M36 140h348M210 22v236M73 58l274 164M73 222L347 58"/></g>
+            <g stroke="currentColor" stroke-width="1.4"><path d="M94 63h53l63 77 63-77h53M94 217h53l63-77 63 77h53"/><path d="M200 133l-8 7 8 7m20-14 8 7-8 7m-6-21-8 28" stroke-linecap="round" stroke-linejoin="round"/></g>
+            <g fill="currentColor"><circle cx="94" cy="63" r="4"/><circle cx="326" cy="63" r="4"/><circle cx="94" cy="217" r="4"/><circle cx="326" cy="217" r="4"/></g>
+            <g fill="currentColor" font-family="ui-monospace, Consolas, monospace" font-size="12" letter-spacing="1.8"><text x="35" y="49">BUILD</text><text x="335" y="49">TEST</text><text x="35" y="241">DEFEND</text><text x="335" y="241">DATA</text></g>
+          </svg>
+        </div>
+      </header>
+
+      <div class="atlas-body">
+      <aside class="atlas-sidebar">
+        <nav class="atlas-nav" aria-label="技能页目录">
+          <p class="atlas-nav-title">页内目录</p>
+          <a href="#certifications"><span class="atlas-nav-index" aria-hidden="true">✧</span>专业证书</a>
+          <a href="#development"><span class="atlas-nav-index" aria-hidden="true">01</span>开发与基础</a>
+          <a href="#offensive"><span class="atlas-nav-index" aria-hidden="true">02</span>漏洞分析与攻防</a>
+          <a href="#defense"><span class="atlas-nav-index" aria-hidden="true">03</span>检测与响应</a>
+          <a href="#ai"><span class="atlas-nav-index" aria-hidden="true">04</span>AI 与数据</a>
+        </nav>
+      </aside>
+      <div class="atlas-content">
+
+      <section class="atlas-credential" id="certifications" aria-labelledby="certifications-title">
+        <div class="atlas-credential-heading">
+          <div class="atlas-credential-copy"><p class="atlas-kicker">专业证书</p><h2 id="certifications-title">CISP-PTE</h2><p>注册渗透测试工程师</p></div>
+          <div class="atlas-medal" aria-hidden="true"><svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="25" r="15"/><circle cx="30" cy="25" r="10"/><path d="m25 25 3 3 7-7M21 37l-3 14 12-5 12 5-3-14"/></svg></div>
+        </div>
+        <dl class="atlas-credential-details">
+          <div><dt>颁发机构</dt><dd>中国信息安全测评中心</dd></div>
+          <div><dt>有效期</dt><dd><time datetime="2026-03-26">2026.03.26</time> 至 <time datetime="2029-03-25">2029.03.25</time></dd></div>
+        </dl>
       </section>
 
       <section class="skill-group" id="development" aria-labelledby="development-title">
@@ -80,7 +103,9 @@
       <div class="skills-source">
         <h2>课程来源</h2>
         <p>这份技能地图根据《AI与安全攻防全栈工程师》课程明细与计划（v26.9）整理，覆盖主课、附加课程和数据治理、等级保护等就业专题。</p>
-        <p><a class="text-link" href="./#notes">返回文章列表 ↗</a></p>
+        <p><a class="text-link" href="./#notes">← 返回文章列表</a></p>
+      </div>
+      </div>
       </div>
     </article>
   </main>
