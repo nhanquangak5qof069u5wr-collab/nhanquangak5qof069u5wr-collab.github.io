@@ -12,10 +12,11 @@
   <link rel="stylesheet" href="learning-xp.css">
   <script src="roadmap-data.js" defer></script>
   <script src="learning-xp.js" defer></script>
-  <script src="roadmap.js?v=xp" defer></script>
+  <script src="roadmap.js?v=detail3" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
   <script src="motion-pointer.js" defer></script>
   <link rel="stylesheet" href="inner-surfaces.css?v=texture1">
+  <link rel="stylesheet" href="inner-detail.css?v=detail3">
 </head>
 <body class="motion-site page-route">
   <a class="skip" href="#main">跳到正文</a>
@@ -27,11 +28,11 @@
     <header class="route-hero motion-stage">
       <div class="route-hero-copy motion-copy">
         <p class="motion-index"><span>02</span>学习路线</p>
-        <h1>网络安全<br><em>学习路线图</em></h1>
-        <p>选一个站点，完成里面的任务就能点亮它。沿主线逐步前进，也可以先做感兴趣的支线。</p>
+        <h1>每一站练习，<br><em>都算数。</em></h1>
+        <p>38 个站点，76 项动手任务。从环境、编程到攻防和工程能力，把“看懂了”变成“能独立完成”。</p>
         <a class="route-button" href="#main-route">查看主线 <span aria-hidden="true">↓</span></a>
       </div>
-      <div class="route-dashboard motion-art">
+      <div class="route-scene motion-art"><img class="detail-scene-image" src="assets/route-terrain.svg" width="680" height="250" alt="以五个主线路标和两个分支构成的地形路线图"><div class="route-dashboard">
         <div class="route-dashboard-label"><span>主线进度</span><span id="route-percent">0%</span></div>
         <div class="route-total"><strong id="route-done">0</strong><span> / <span id="route-total">—</span> 个站点</span></div>
         <progress id="route-progress" max="1" value="0" aria-label="主线完成进度"></progress>
@@ -40,8 +41,9 @@
           <span id="route-next-label">从第一个站点开始</span>
           <button type="button" id="route-resume" disabled>打开任务 <span aria-hidden="true">↗</span></button>
         </div>
-      </div>
+      </div></div>
     </header>
+<div class="detail-guide"><div><span class="guide-number">01</span><strong>选定这一站</strong><p>主线补基础，支线按兴趣探索；不用一次做完所有方向。</p></div><div><span class="guide-number">02</span><strong>独立做一次</strong><p>先读任务要求，再搭环境、动手验证，保留过程与结果。</p></div><div><span class="guide-number">03</span><strong>点亮并复盘</strong><p>每项任务 +10 XP，完成本站全部任务点亮站点；进度可随时续上。</p></div></div>
     <section class="xp-meter xp-panel" data-learning-xp aria-labelledby="route-xp-title">
       <div class="xp-panel-heading">
         <h2 id="route-xp-title">成长经验</h2>
@@ -68,7 +70,6 @@
       <div id="route-side-groups" class="route-side-groups"></div>
     </section>
     <p class="route-save-note" id="route-save-note">进度保存在当前浏览器，刷新后可以继续。</p>
-    <p class="route-save-note">路线根据曾老师的《网络安全从入门开始学习顺序》整理。</p>
     <p id="route-announcement" class="route-sr" aria-live="polite"></p>
   </main>
   <dialog id="route-dialog" class="route-dialog" aria-labelledby="route-dialog-title">

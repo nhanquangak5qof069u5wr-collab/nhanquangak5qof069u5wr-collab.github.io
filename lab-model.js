@@ -372,7 +372,11 @@ export function buildWorkshopBackdrop(){
  const timber=new T.MeshStandardMaterial({map:wood,roughness:.75});
  const steel=new T.MeshStandardMaterial({color:0x3b4942,roughness:.5,metalness:.6});
  const paper=new T.MeshStandardMaterial({color:0xd9d6c1,roughness:.9});
- function box(w,h,d,m,x,y,z){const o=new T.Mesh(new T.BoxGeometry(w,h,d),m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;room.add(o);return o}
+ const batches=new Map();let roomParts=0;
+ function box(w,h,d,m,x,y,z){if(!batches.has(m))batches.set(m,[]);batches.get(m).push([w,h,d,x,y,z]);roomParts++}
+ function cylinder(r,h,m,x,y,z){const o=new T.Mesh(new T.CylinderGeometry(r,r,h,20),m);o.position.set(x,y,z);o.castShadow=true;o.receiveShadow=true;room.add(o);roomParts++;return o}
+ function pipe(points,r,m){const curve=new T.CatmullRomCurve3(points.map(p=>new T.Vector3(...p)));const o=new T.Mesh(new T.TubeGeometry(curve,32,r,6,false),m);o.castShadow=true;room.add(o);roomParts++;return o}
+
  const ground=new T.Mesh(new T.PlaneGeometry(36,36),floor);ground.rotation.x=-Math.PI/2;ground.position.y=-.105;ground.receiveShadow=true;room.add(ground);
  box(28,9,.16,wall,0,4.3,-5.5);box(.16,9,25,wall,-8,4.3,3.5);
  box(28,.12,.12,steel,0,.03,-5.35);box(.12,.12,25,steel,-7.85,.03,3.5);
@@ -398,5 +402,61 @@ export function buildWorkshopBackdrop(){
  for(let i=0;i<12;i++){const angle=i*2.39,base=.55+(i%4)*.23;const leaf=new T.Mesh(leafGeo,leafMat);leaf.position.set(-6.05+Math.cos(angle)*.10,base,1.6+Math.sin(angle)*.10);leaf.rotation.set(-.55,angle,.35);leaf.scale.setScalar(.8+(i%3)*.14);leaf.castShadow=true;room.add(leaf)}
  box(1.4,.08,.95,timber,5.60,.63,2.25);for(const x of [5.03,6.17])for(const z of [1.89,2.61])box(.045,.72,.045,steel,x,.23,z);
  for(let i=0;i<3;i++)box(.74,.05,.54,[paper,steel,timber][i],5.57,.72+i*.055,2.20);
+
+ // Workshop equipment fills the foreground and both edges of the room.
+ const clay=new T.MeshStandardMaterial({color:0x916b50,roughness:.73,metalness:.12});
+ const rubber=new T.MeshStandardMaterial({color:0x293b34,roughness:.85});
+ const blue=new T.MeshStandardMaterial({color:0x5d7478,roughness:.52,metalness:.43});
+ const brass=new T.MeshStandardMaterial({color:0xb39a63,roughness:.42,metalness:.7});
+ const pale=new T.MeshStandardMaterial({color:0xbac2ad,roughness:.65,metalness:.25});
+ // Low wheeled tool trolley, working instruments and translucent component bins.
+ const cx=-3.50,cz=4.85;
+ for(const x of [cx-.79,cx+.79])for(const z of [cz-.44,cz+.44]){
+  box(.065,.97,.065,steel,x,.48,z);
+  const wheel=cylinder(.11,.065,rubber,x,.025,z);wheel.rotation.x=Math.PI/2;
+ }
+ for(const y of [.16,.71])box(1.75,.06,1.05,timber,cx,y,cz);
+ for(const z of [cz-.51,cz+.51])box(1.75,.17,.035,clay,cx,.62,z);
+ box(1.35,.13,.73,blue,cx,.26,cz);box(1.38,.06,.75,steel,cx,.35,cz);
+ for(let i=0;i<5;i++){box(.21,.26,.32,[paper,clay,blue][i%3],cx-.60+i*.27,.51,cz+.04);box(.10,.04,.01,pale,cx-.60+i*.27,.53,cz+.205)}
+ box(.07,.29,1.04,steel,cx-.92,.84,cz);box(.07,.29,1.04,steel,cx+.92,.84,cz);
+ box(.75,.37,.39,pale,cx-.33,.95,cz-.16);box(.40,.26,.018,steel,cx-.43,.97,cz+.045);
+ const waveform=tex(256,(c,n)=>{c.fillStyle='#17392f';c.fillRect(0,0,n,n);c.strokeStyle='#7fbd94';c.lineWidth=3;c.beginPath();for(let x=0;x<n;x++){const y=125+Math.sin(x*.08)*35+Math.sin(x*.19)*10;x?c.lineTo(x,y):c.moveTo(x,y)}c.stroke();c.strokeStyle='#89ac8b44';c.lineWidth=1;for(let i=0;i<8;i++){c.beginPath();c.moveTo(i*32,0);c.lineTo(i*32,n);c.moveTo(0,i*32);c.lineTo(n,i*32);c.stroke()}});
+ const screen=new T.Mesh(new T.PlaneGeometry(.36,.22),new T.MeshBasicMaterial({map:waveform}));screen.position.set(cx-.43,.97,cz+.056);room.add(screen);
+ for(let i=0;i<3;i++){const knob=cylinder(.027,.025,brass,cx-.11,1.06-i*.08,cz+.065);knob.rotation.x=Math.PI/2}
+ cylinder(.14,.20,steel,cx+.52,.85,cz-.18);for(let i=0;i<5;i++)box(.014,.32,.014,[brass,blue,pale][i%3],cx+.45+i*.035,1.07,cz-.18);
+ pipe([[cx-.62,.78,cz+.12],[cx-.82,.72,cz+.37],[cx-.2,.73,cz+.36],[cx+.22,.78,cz+.10]],.014,clay);
+ // A woven antistatic mat and floor trunking replace the empty foreground floor.
+ const weave=tex(256,(c,n)=>{c.fillStyle='#7e8976';c.fillRect(0,0,n,n);for(let y=0;y<n;y+=4){c.strokeStyle=y%8?'#9ca38b':'#657561';c.beginPath();c.moveTo(0,y);c.lineTo(n,y);c.stroke()}for(let x=0;x<n;x+=7){c.fillStyle='#ced1b315';c.fillRect(x,0,1,n)}});
+ const mat=new T.Mesh(new T.PlaneGeometry(6.5,2.8),new T.MeshStandardMaterial({map:weave,roughness:.99}));mat.rotation.x=-Math.PI/2;mat.position.set(.20,-.093,4.50);mat.receiveShadow=true;room.add(mat);
+ for(const z of [3.14,5.86])box(6.5,.005,.025,brass,.20,-.087,z);
+ for(const x of [-3.02,3.42])box(.025,.005,2.8,brass,x,-.087,4.50);
+ box(9,.035,.18,steel,0,-.067,2.92);for(let i=0;i<34;i++)box(.016,.004,.13,pale,-4.3+i*.26,-.046,2.92);
+ // Rolling stool with chrome column and radial feet.
+ const sx=1.80,sz=5.05;
+ cylinder(.49,.15,blue,sx,.77,sz);cylinder(.36,.045,steel,sx,.675,sz);cylinder(.047,.64,brass,sx,.31,sz);
+ for(let i=0;i<5;i++){const angle=i*Math.PI*2/5;pipe([[sx,.13,sz],[sx+Math.cos(angle)*.25,.10,sz+Math.sin(angle)*.25],[sx+Math.cos(angle)*.53,.04,sz+Math.sin(angle)*.53]],.026,steel);const wheel=cylinder(.07,.05,rubber,sx+Math.cos(angle)*.53,-.025,sz+Math.sin(angle)*.53);wheel.rotation.z=Math.PI/2}
+ // Right-hand parts cabinet: panel seams, drawer handles, sample boards, cooling grille.
+ const rx=6.10,rz=-.65;
+ box(1.42,2.50,.84,steel,rx,1.15,rz);box(1.5,.065,.92,timber,rx,2.44,rz);
+ for(let row=0;row<6;row++)for(let col=0;col<2;col++){
+  const x=rx-.34+col*.68,y=.17+row*.38;box(.64,.34,.04,[blue,pale,clay][(row+col)%3],x,y,rz+.445);
+  box(.22,.025,.035,steel,x,y+.07,rz+.484);box(.14,.05,.008,paper,x,y-.045,rz+.471);
+ }
+ for(let j=0;j<7;j++)box(.035,.14,.32,[brass,steel,blue][j%3],rx-.52+j*.16,2.55,rz-.08);
+ for(let i=0;i<3;i++){box(1.17,.10,.57,[steel,blue,paper][i],rx,2.68+i*.14,rz);for(let j=0;j<8;j++)box(.025,.035,.01,brass,rx-.48+j*.13,2.68+i*.14,rz+.296)}
+ // Service panel on the left wall: coiled leads, sockets and metal cable guides.
+ box(.12,2.18,2.35,steel,-7.77,2.0,.20);box(.035,2.04,2.20,timber,-7.68,2.0,.20);
+ for(let i=0;i<4;i++){const coil=new T.Mesh(new T.TorusGeometry(.22+i%2*.04,.025,8,32),[rubber,clay,blue,brass][i]);coil.rotation.y=Math.PI/2;coil.position.set(-7.62,1.55+Math.floor(i/2)*.65,-.4+(i%2)*.85);coil.castShadow=true;room.add(coil)}
+ for(let i=0;i<3;i++)box(.08,.15,.23,pale,-7.60,2.80,-.55+i*.65);
+ pipe([[-7.58,.12,1.8],[-7.58,.5,1.8],[-7.58,.7,1.2],[-7.58,1.45,1.2]],.035,steel);
+ // Wall-mounted technical displays add structured detail above the bench.
+ const dashboard=tex(512,(c,n)=>{c.fillStyle='#213c35';c.fillRect(0,0,n,n);c.fillStyle='#a6b69c';for(let i=0;i<6;i++){c.globalAlpha=.25+i*.10;c.fillRect(25,28+i*66,75+i*46,26)}c.globalAlpha=1;c.strokeStyle='#d5b77b';c.lineWidth=3;c.beginPath();for(let i=0;i<30;i++){const x=280+i*7,y=220+Math.sin(i*.5)*47+i*3;i?c.lineTo(x,y):c.moveTo(x,y)}c.stroke();for(let j=0;j<5;j++)for(let i=0;i<4;i++){c.fillStyle=(i+j)%3?'#7e9f8a':'#c0a77a';c.fillRect(292+i*43,30+j*29,27,14)}});
+ for(let i=0;i<2;i++){const x=3.2+i*2.25;box(2.08,1.48,.10,steel,x,4.1,-4.99);const panel=new T.Mesh(new T.PlaneGeometry(1.94,1.33),new T.MeshBasicMaterial({map:dashboard}));panel.position.set(x,4.1,-4.932);room.add(panel);box(.08,.4,.30,steel,x,3.24,-5.05)}
+ // Archive cases and stacked binders give the window-side shelving more color.
+ for(let i=0;i<5;i++){box(.25,.46,.40,[clay,blue,pale,steel,brass][i],-6.73+i*.28,2.75,-2.8);box(.09,.14,.012,paper,-6.73+i*.28,2.75,-2.59)}
+ const geometry=new T.BoxGeometry(1,1,1),matrix=new T.Object3D();
+ for(const [material,items]of batches){const batch=new T.InstancedMesh(geometry,material,items.length);batch.name='Instanced room fittings '+material.uuid;items.forEach(([w,h,d,x,y,z],i)=>{matrix.position.set(x,y,z);matrix.scale.set(w,h,d);matrix.updateMatrix();batch.setMatrixAt(i,matrix.matrix)});batch.castShadow=true;batch.receiveShadow=true;room.add(batch)}
+ room.userData.metrics={parts:roomParts,batches:batches.size};
  room.userData.staticBackdrop=true;return room;
 }

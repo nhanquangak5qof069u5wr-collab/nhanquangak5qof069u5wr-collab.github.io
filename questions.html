@@ -9,11 +9,12 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="questions.css?v=flags68">
-  <script src="questions-data.js?v=flags68" defer></script>
-  <script src="questions.js?v=atlas2" defer></script>
+  <script src="questions-data.js?v=flags102" defer></script>
+  <script src="questions.js?v=hierarchy102" defer></script>
   <link rel="stylesheet" href="motion.css?v=pointer2">
   <script src="motion-pointer.js" defer></script>
   <link rel="stylesheet" href="inner-surfaces.css?v=texture1">
+  <link rel="stylesheet" href="inner-detail.css?v=detail3">
 </head>
 <body class="motion-site page-bank">
   <a class="skip" href="#main">跳到正文</a>
@@ -25,16 +26,18 @@
     <header class="bank-hero motion-stage">
       <div class="motion-copy">
         <p class="motion-index"><span>03</span>技能题库</p>
-        <h1>技能题库</h1>
-        <p class="bank-lead">68 道分级练习，覆盖 17 项技能。根据题目约定提交 flag{...}，验证通过后记录进度；也可以展开 flag 与解析复盘。</p>
+        <h1>带着问题来，<br><em>带着答案走。</em></h1>
+        <p class="bank-lead">102 道分级练习，覆盖 4 个方向、17 项技能。先判断条件，再动手推导，最后用 flag 验证结果。</p>
       </div>
-      <div class="bank-progress motion-art">
+      <div class="bank-scene motion-art"><img class="detail-scene-image" src="assets/bank-console.svg" width="680" height="250" alt="连接输入、验证与复盘三个环节的技术实验控制台"><div class="bank-progress">
         <span>练习进度</span>
         <strong id="bank-completed">0 / —</strong>
         <progress id="bank-progress" value="0" max="1" aria-label="题库完成进度"></progress>
-      </div>
+      </div></div>
     </header>
+<section class="bank-categories" aria-labelledby="bank-categories-title"><div class="detail-section-heading"><div><p>CHOOSE A DIRECTION</p><h2 id="bank-categories-title">按方向进入练习</h2></div><span>方向 → 技能 → 题目</span></div><div id="bank-category-grid" class="bank-category-grid"></div></section><div class="detail-guide"><div><span class="guide-number">01</span><strong>基础 · 找准一个概念</strong><p>读清输入、单位与格式，用一个关键知识点得到确定结果。</p></div><div><span class="guide-number">02</span><strong>进阶 · 串起几步推理</strong><p>处理边界、顺序与组合条件，解释结果为什么成立。</p></div><div><span class="guide-number">03</span><strong>挑战 · 验证完整思路</strong><p>从多条线索或实验反馈中推导答案，再用解析检查遗漏。</p></div></div>
     <section class="bank-body" aria-label="题目列表">
+      <div class="detail-section-heading"><div><p>EXERCISE INDEX</p><h2>题目索引</h2></div><span>支持技能、难度与未完成筛选</span></div>
       <div class="bank-toolbar" role="group" aria-label="筛选题目">
         <label for="bank-skill">技能<select id="bank-skill"><option value="">全部技能</option></select></label>
         <label for="bank-level">难度<select id="bank-level"><option value="">全部难度</option><option value="1">基础</option><option value="2">进阶</option><option value="3">挑战</option></select></label>
@@ -47,6 +50,16 @@
     </section>
     <p class="bank-save" id="bank-save">练习进度仅保存在当前浏览器。</p>
   </main>
+
+  <dialog id="bank-category-dialog" class="bank-dialog bank-category-dialog" aria-labelledby="bank-category-title" aria-describedby="bank-category-description">
+    <header class="bank-dialog-head"><div><p class="bank-dialog-eyebrow">LEVEL 01 / 选择技能</p><h2 id="bank-category-title"></h2></div><button type="button" class="bank-dialog-close" data-close="category" aria-label="关闭方向分类">×</button></header>
+    <p id="bank-category-description" class="bank-dialog-description">选择一个技能，进入该技能的六道分级练习。</p><div id="bank-category-skills" class="bank-category-skills"></div>
+  </dialog>
+  <dialog id="bank-skill-dialog" class="bank-dialog bank-skill-dialog" aria-labelledby="bank-skill-title" aria-describedby="bank-skill-description">
+    <header class="bank-dialog-head"><div><p id="bank-skill-breadcrumb" class="bank-dialog-eyebrow"></p><h2 id="bank-skill-title"></h2></div><button type="button" class="bank-dialog-close" data-close="skill" aria-label="关闭技能练习">×</button></header>
+    <div class="bank-dialog-subhead"><button type="button" id="bank-dialog-back">← 返回方向分类</button><span>基础 → 进阶 → 挑战</span></div><p id="bank-skill-description" class="bank-dialog-description">展开题目后提交 flag，验证通过即记录进度；解析可随时展开。</p>
+    <div id="bank-dialog-list"></div>
+  </dialog>
   <footer class="footer wrap"><span>© 2026 辣白菜</span><a href="#">回到顶部 ↑</a></footer>
 </body>
 </html>

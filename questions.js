@@ -60,7 +60,14 @@ function renderQuestion(q, i) {
   summary.append(el("span", "bank-number", String(i + 1).padStart(2, "0")), info, state, arrow);
 
   const content = el("div", "bank-prompt");
-  content.append(el("p", "bank-statement", q.prompt));
+  content.append(el("h4", "bank-prompt-label", "题目情境"));
+  const ruleMatch = /\n\n(?=(?:Flag 任务：|统一提交格式：))/.exec(q.prompt);
+  if (ruleMatch) {
+    content.append(el("p", "bank-statement", q.prompt.slice(0, ruleMatch.index)));
+    const rule = el("div", "bank-submit-rule");
+    rule.append(el("strong", null, "提交约定"), el("p", null, q.prompt.slice(ruleMatch.index).trim()));
+    content.append(rule);
+  } else content.append(el("p", "bank-statement", q.prompt));
   let check;
   if (q.lab) {
     const link = el("a", "bank-open-lab", "打开静默归档室 ↗");
@@ -112,6 +119,7 @@ function refresh() {
   get("bank-completed").textContent = completed.size + " / " + questions.length;
   get("bank-progress").max = questions.length;
   get("bank-progress").value = completed.size;
+  updateCategoryProgress();
 }
 
 function openLinkedQuestion() {
@@ -158,3 +166,83 @@ window.addEventListener("storage", () => {
   readProgress();
   refresh();
 });
+
+
+// Direction -> skill -> exercises: one set of live question nodes preserves form state.
+const categoryDialog = get("bank-category-dialog");
+const skillDialog = get("bank-skill-dialog");
+let activeCategory = null, categoryTrigger = null, returningToCategory = false, lastSkill = null;
+const categoryDescriptions = [
+  "系统、Python、Web 与部署，把基础知识连成可运行的工程。",
+  "Web、审计、内网、二进制与移动安全，从线索走到验证。",
+  "研判、取证、云安全与治理，用证据解释事件与风险。",
+  "生成式 AI、Agent、分析与深度学习，检验方法和结果。"
+];
+const categoryIcons = [
+  "M16 13 6 24l10 11m16-22 10 11-10 11M28 8l-8 32",
+  "M24 5 8 12v12c0 10 16 19 16 19s16-9 16-19V12zM17 24l5 5 10-11",
+  "M5 25h9l5-14 9 27 6-13h9M8 9h5m22 30h5",
+  "M16 16h16v16H16zM9 9l7 7m16 0 7-7M9 39l7-7m16 0 7 7M24 5v11m0 16v11M5 24h11m16 0h11"
+];
+function updateCategoryProgress() {
+  document.querySelectorAll("[data-category-progress]").forEach(node => {
+    const category = questionBank[Number(node.dataset.categoryProgress)];
+    const items = category.skills.flatMap(skill => skill.questions);
+    node.textContent = items.filter(q => completed.has(q.id)).length + " / " + items.length + " 已完成";
+  });
+}
+function restoreQuestionList() {
+  for (const q of questions) get("bank-list").append(byId.get(q.id).details);
+}
+function openCategory(category, trigger) {
+  activeCategory = category; categoryTrigger = trigger;
+  get("bank-category-title").textContent = category.group;
+  const list = get("bank-category-skills"); list.replaceChildren();
+  for (const [i, skill] of category.skills.entries()) {
+    const button = el("button", "bank-skill-tile"); button.type = "button"; button.dataset.skill = skill.id;
+    button.setAttribute("aria-haspopup", "dialog");
+    button.append(el("span", "bank-skill-index", String(i + 1).padStart(2,"0")), el("strong", null, skill.name), el("span", "bank-skill-count", skill.questions.length + " 题 · 基础 / 进阶 / 挑战"), el("span", "bank-tile-arrow", "↗"));
+    button.addEventListener("click", () => openSkill(skill)); list.append(button);
+  }
+  categoryDialog.showModal();
+}
+function openSkill(skill) {
+  lastSkill = skill.id;
+  get("bank-skill").value = skill.id;
+  get("bank-level").value = ""; get("bank-unfinished").checked = false;
+  refresh();
+  get("bank-skill-title").textContent = skill.name;
+  get("bank-skill-breadcrumb").textContent = "LEVEL 02 / " + activeCategory.group + " / " + skill.questions.length + " 道练习";
+  const list = get("bank-dialog-list"); list.replaceChildren();
+  for (const q of questions.filter(q => q.skill === skill.id)) list.append(byId.get(q.id).details);
+  categoryDialog.close(); skillDialog.showModal(); skillDialog.scrollTop = 0;
+}
+questionBank.forEach((category, i) => {
+  const button = el("button", "bank-category category-" + i); button.type = "button";
+  button.setAttribute("aria-haspopup", "dialog");
+  const icon = document.createElementNS("http://www.w3.org/2000/svg", "svg"); icon.setAttribute("viewBox","0 0 48 48"); icon.setAttribute("aria-hidden","true");
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path"); path.setAttribute("d",categoryIcons[i]);icon.append(path);
+  const top = el("span", "bank-category-top");top.append(el("span", null,"0"+(i+1)),icon,el("span",null,"↗"));
+  const progress = el("span", "bank-category-progress");progress.dataset.categoryProgress = i;
+  button.append(top,el("strong",null,category.group),el("span","bank-category-copy",categoryDescriptions[i]),progress);
+  button.addEventListener("click", () => openCategory(category,button)); get("bank-category-grid").append(button);
+});
+get("bank-dialog-back").addEventListener("click", () => {returningToCategory = true; skillDialog.close();});
+document.querySelector('[data-close="category"]').addEventListener("click", () => categoryDialog.close());
+document.querySelector('[data-close="skill"]').addEventListener("click", () => skillDialog.close());
+categoryDialog.addEventListener("close", () => {if (!skillDialog.open) categoryTrigger?.focus();});
+skillDialog.addEventListener("close", () => {
+  restoreQuestionList(); refresh();
+  if (returningToCategory) {
+    returningToCategory = false; categoryDialog.showModal();
+    get("bank-category-skills").querySelector('[data-skill="'+lastSkill+'"]')?.focus();
+  } else categoryTrigger?.focus();
+});
+for (const dialog of [categoryDialog,skillDialog]) {
+  dialog.addEventListener("click", event => {
+    if (event.target !== dialog) return;
+    const r=dialog.getBoundingClientRect();
+    if (event.clientX<r.left || event.clientX>r.right || event.clientY<r.top || event.clientY>r.bottom) dialog.close();
+  });
+}
+updateCategoryProgress();

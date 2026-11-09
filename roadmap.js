@@ -71,7 +71,7 @@ function renderStage(stage) {
     const dot = el("span", "route-station-dot");
     dot.setAttribute("aria-hidden", "true");
     top.append(marker, dot);
-    button.append(top, el("strong", null, node.title), status);
+    button.append(top, el("strong", null, node.title), el("span", "route-station-preview", node.tasks[0]), status);
     button.addEventListener("click", () => openNode(node));
     tiles.set(node.id, {button, status});
     item.append(button);

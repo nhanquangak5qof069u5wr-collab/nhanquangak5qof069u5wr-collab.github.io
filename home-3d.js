@@ -32,7 +32,7 @@
    try{
     const [T,{buildLab,buildWorkshopBackdrop},{RoomEnvironment}]=await Promise.all([
      import("./vendor/three/three.module.min.js"),
-     import("./lab-model.js?v=interior9"),
+     import("./lab-model.js?v=workshop10"),
      import("./vendor/three/RoomEnvironment.js")
     ]);
     if(!alive || reduced.matches)return;
@@ -77,6 +77,7 @@
         viewport.dataset.triangles=renderer.info.render.triangles;
         viewport.dataset.calls=renderer.info.render.calls;
         viewport.dataset.parts=root.userData.metrics.parts;
+        viewport.dataset.roomParts=surroundingRoom.userData.metrics.parts;
       }
       const moving=Math.abs(targetYaw+hoverYaw-yaw)+Math.abs(targetPitch+hoverPitch-pitch)>.0002;viewport.dataset.pose=moving?"moving":"settled";if(moving)schedule();
     }

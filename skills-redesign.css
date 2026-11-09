@@ -31,3 +31,20 @@ body.page-skills{background:radial-gradient(ellipse at 3% 9%,#d8e1cd90,transpare
 .page-skills .atlas-hero .atlas-lead{font-size:13px;line-height:1.9}
 .page-skills .atlas .skill-card{align-items:stretch}
 .page-skills .skill-practice{width:100%}
+
+/* Detail, evidence and typography give each skill a readable hierarchy. */
+.page-skills .atlas-hero{background-image:radial-gradient(ellipse at 80% 20%,#b5c9ab80,transparent 60%),linear-gradient(125deg,#e6eddb,#d9e1ce 55%,#dfd1b5)}
+.page-skills .atlas-graphic{position:relative;padding:13px;background:linear-gradient(140deg,#6a7d6060,#ece7d760);border:1px solid #9aa989;border-radius:13px;box-shadow:inset 0 1px 0 #fff6,0 8px 22px #29492a17}
+.page-skills .atlas .skill-group{position:relative;background-image:radial-gradient(ellipse at 100% 0%,#ffffffa0,transparent 50%),linear-gradient(115deg,var(--section-paper),#f7f7ef)}
+.skill-heading-count{margin-left:auto;font:10px/1.5 var(--mono);letter-spacing:.06em;color:var(--section-ink)}
+.skill-section-note{color:var(--section-ink);font-size:12px;line-height:1.7;margin:10px 0 0}
+.skill-card-index{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid #ccd4c1;padding-bottom:9px;font:9px/1.5 var(--mono);color:#7a876d;letter-spacing:.055em}.skill-card-index span:last-child{text-align:right}
+.page-skills .atlas .skill-card h3{font-size:19px;letter-spacing:-.025em;color:var(--section-ink)}
+.page-skills .atlas .skill-card p.skill-overview{font-size:12px;line-height:1.95;color:#68725f}.skill-overview strong{color:#40583c;font-weight:600}
+.skill-breakdown{margin:0;padding:11px 0 7px;border-top:1px dashed #c5ceb8;display:grid;gap:11px}
+.skill-breakdown>div{display:grid;grid-template-columns:57px minmax(0,1fr);gap:10px}.skill-breakdown dt{font-size:10px;font-weight:700;color:var(--section-ink);padding-top:2px;letter-spacing:.04em}.skill-breakdown dd{margin:0;font-size:12px;line-height:1.85;color:#57634f}.skill-breakdown strong{font-weight:650;color:#34513b;background:linear-gradient(transparent 60%,#c4d4af70 60%)}
+.page-skills #offensive .skill-card:last-child{display:flex;grid-column:1/-1}.page-skills #offensive .skill-card:last-child .skill-breakdown{grid-template-columns:1fr 1fr;gap:24px}
+.page-skills .atlas .skill-card .topics{margin-top:auto;padding-top:8px}.page-skills .skill-practice{padding-top:12px;font-size:12px;font-weight:600}.page-skills .skill-practice span{font-weight:400}
+@media(max-width:640px){.skill-heading-count{font-size:8px;max-width:85px;text-align:right}.skill-card-index{font-size:8px}.skill-breakdown>div{grid-template-columns:49px minmax(0,1fr);gap:8px}.page-skills .atlas .skill-card h3{font-size:17px}.page-skills #offensive .skill-card:last-child .skill-breakdown{grid-template-columns:1fr;gap:11px}.page-skills .atlas-graphic{padding:8px}.skill-section-note{font-size:11px}}
+
+.page-skills #offensive .skill-card:last-child h3{align-self:stretch}
